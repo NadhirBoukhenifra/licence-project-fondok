@@ -95,6 +95,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Globals.cs" />
     <Compile Include="Models\ClientsModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />

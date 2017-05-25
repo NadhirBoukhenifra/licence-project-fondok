@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,10 +25,34 @@ namespace Fondok.Views
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            if (Globals.DirectClosing)
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure to Exit?", "Exit from Fondok", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        MessageBox.Show("Good Bye :)", "Fondok");
+                        Application.Current.Shutdown();
+
+                        break;
+                    case MessageBoxResult.No:
+                        e.Cancel = true;
+                        break;
+                }
+
+            }
+            
+        }
+
+
+        private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.Show();
             this.Close();
         }
+
+        
     }
 }
