@@ -11,11 +11,11 @@
          TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
-         FontFamily="{DynamicResource MaterialDesignFont}">
+         FontFamily="{DynamicResource MaterialDesignFont}" Loaded="Window_Loaded">
     <DockPanel LastChildFill="True">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
-            <Button Command="{Binding NavigateCommand}" CommandParameter="RoomsView" Margin="5">Navigate to View A</Button>
-            <Button Command="{Binding NavigateCommand}" CommandParameter="ClientsView" Margin="5">Navigate to View B</Button>
+            <Button Command="{Binding NavigateCommand}" CommandParameter="RoomsView" Margin="5">Rooms</Button>
+            <Button Command="{Binding NavigateCommand}" CommandParameter="ClientsView" Margin="5">Client</Button>
         </StackPanel>
         <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="5"  />
     </DockPanel>

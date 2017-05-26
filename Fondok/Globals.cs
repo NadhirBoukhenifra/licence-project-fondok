@@ -8,6 +8,6 @@ namespace Fondok
 {
     public static class Globals
     {
-        public static bool DirectClosing = true;
+        public static bool isLogin;
     }
 }

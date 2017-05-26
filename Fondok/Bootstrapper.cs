@@ -11,15 +11,19 @@ namespace Fondok
     {
         protected override DependencyObject CreateShell()
         {
-            return Container.Resolve<MainWindow>();
+            //return Container.Resolve<MainWindow>();
+           
+                return Container.Resolve<MainWindow>();
+            
         }
+
 
         protected override void InitializeShell()
         {
-            //Application.Current.MainWindow.Show();
+
+            Application.Current.MainWindow.Show();
             
-            LoginView loginView = new LoginView();
-            loginView.Show();
+            
         }
 
         protected override void ConfigureModuleCatalog()

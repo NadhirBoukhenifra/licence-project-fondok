@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows;
 
 namespace Fondok.Views
@@ -11,20 +13,29 @@ namespace Fondok.Views
         public MainWindow()
         {
             InitializeComponent();
+            
 
         }
-        private void Window_Closing(object sender, CancelEventArgs e)
+        
+
+        private void Window_Closing(object sender, EventArgs e)
         {
-            MessageBoxResult result = MessageBox.Show("Are you sure to Exit?", "Exit from Fondok", MessageBoxButton.YesNo);
-            switch (result)
+
+            Application.Current.Shutdown();
+            Process.GetCurrentProcess().Kill();
+        }
+
+
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!Globals.isLogin)
             {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Good Bye :)", "Fondok");
-                    Application.Current.Shutdown();
-                    break;
-                case MessageBoxResult.No:
-                    e.Cancel = true;
-                    break;
+                LoginView _LoginView = new LoginView();
+                _LoginView.Show();
+
+                this.Hide();
             }
         }
     }

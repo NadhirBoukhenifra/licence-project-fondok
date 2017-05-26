@@ -19,6 +19,8 @@ namespace Fondok
 
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(RoomsView));
 
+
+
         }
 
         public void Initialize()
