@@ -42,6 +42,8 @@ namespace Fondok.Views
 
         private void Window_Closing(object sender, EventArgs e)
         {
+            MessageBox.Show("Good Bye From LoginWindow :)!");
+
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
 

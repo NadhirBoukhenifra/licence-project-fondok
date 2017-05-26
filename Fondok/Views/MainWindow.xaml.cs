@@ -20,9 +20,14 @@ namespace Fondok.Views
 
         private void Window_Closing(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Good Bye From Mainwindow :)!");
             Application.Current.Shutdown();
             Process.GetCurrentProcess().Kill();
+
+            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            //Application.Current.Shutdown();
+
+
         }
 
 
