@@ -9,5 +9,7 @@ namespace Fondok
     public static class Globals
     {
         public static bool isLogin;
+        public static string userNamePlus;
+        public static string userGradePlus;
     }
 }

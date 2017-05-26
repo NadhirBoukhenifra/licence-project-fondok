@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525" WindowStartupLocation="CenterScreen"
+        Title="{Binding Title}" Height="728" MinHeight="728" Width="1024" MinWidth="1024" WindowStartupLocation="CenterScreen"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
@@ -12,11 +12,117 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}" Loaded="Window_Loaded">
-    <DockPanel LastChildFill="True">
+   <!-- <DockPanel LastChildFill="True">
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5" >
             <Button Command="{Binding NavigateCommand}" CommandParameter="RoomsView" Margin="5">Rooms</Button>
             <Button Command="{Binding NavigateCommand}" CommandParameter="ClientsView" Margin="5">Client</Button>
         </StackPanel>
         <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="5"  />
-    </DockPanel>
+    </DockPanel>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58" />
+            <RowDefinition Height="128" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone Grid.Row="0" Padding="16" materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                                            Mode="PrimaryMid" DockPanel.Dock="Top">
+            <DockPanel>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="256" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="256" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="{Binding WelomeMsg}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Oblique" FontSize="14" Foreground="#FFFFFFFF"></TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">HOTEL EL KHAMS NJOM</TextBlock>
+
+                    <materialDesign:PopupBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Left" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                        <StackPanel>
+                            <Button x:Name="settingsButton" Content="Settings" />
+                            <Separator/>
+                            <Button x:Name="logOutButton" Content="Log Out" />
+                        </StackPanel>
+                    </materialDesign:PopupBox>
+
+                </Grid>
+            </DockPanel>
+        </materialDesign:ColorZone>
+        <materialDesign:Card Grid.Row="1" Margin="0" Padding="8,24,8,24" >
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" x:Name="Repo"/>
+
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0" Grid.Column="0" x:Name="ReservationsIcon" Kind="CalendarMultiple"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2" Grid.Column="0" Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Reservations Page" Command="{Binding NavigateCommand}" CommandParameter="Reservations" Click="Reservations_Click" x:Name="Reservations">Reservations</Button>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0"  x:Name="RoomsIcon" Kind="Hotel"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Rooms Page" Command="{Binding NavigateCommand}" CommandParameter="RoomsView" x:Name="Rooms" Click="Rooms_Click">Rooms</Button>
+                </Grid>
+
+                <Grid Grid.Row="1" Grid.Column="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0"  x:Name="ClientsIcon" Kind="AccountMultiple"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Clients Page" Command="{Binding NavigateCommand}" CommandParameter="ClientsView" Click="Clients_Click" x:Name="Clients">Clients</Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0"  x:Name="ServicesIcon" Kind="Silverware"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Services Page" Command="{Binding NavigateCommand}" CommandParameter="Services" Click="Services_Click" x:Name="Services">Services</Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0"  x:Name="InvoicesIcon" Kind="Printer"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Invoices Page" Command="{Binding NavigateCommand}" CommandParameter="Invoices" Click="Invoices_Click" x:Name="Invoices">Invoices</Button>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="12" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <materialDesign:PackIcon Grid.Row="0"  x:Name="ReportsIcon" Kind="ChartAreaspline"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Reports Page" Command="{Binding NavigateCommand}" CommandParameter="Reports" Click="Reports_Click" x:Name="Reports">Reports</Button>
+                </Grid>
+
+            </Grid>
+        </materialDesign:Card>
+        <Grid Grid.Row="2" >
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="16" />
+        </Grid>
+    </Grid>
 </Window>

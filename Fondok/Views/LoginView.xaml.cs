@@ -33,19 +33,34 @@ namespace Fondok.Views
         {
             Globals.isLogin = !Globals.isLogin;
 
+            Globals.userNamePlus = "Nadhir";
+            Globals.userGradePlus = "Admin";
 
             Application.Current.MainWindow.Show();
-
+            
             this.Hide();
             
         }
 
-        private void Window_Closing(object sender, EventArgs e)
+        private void Window_Closing(object sender, CancelEventArgs e)
         {
-            MessageBox.Show("Good Bye From LoginWindow :)!");
+            //MessageBox.Show("Good Bye From LoginWindow :)!");
+            MessageBoxResult result = MessageBox.Show("Are you sure to Exit? LoginWindow", "Exit from Fondok", MessageBoxButton.YesNo);
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Good Bye :) Login", "Fondok");
 
-            Application.Current.Shutdown();
-            Process.GetCurrentProcess().Kill();
+                    Application.Current.Shutdown();
+                    Process.GetCurrentProcess().Kill();
+
+                    break;
+                case MessageBoxResult.No:
+                    e.Cancel = true;
+                    break;
+            }
+
+            
 
         }
     }
