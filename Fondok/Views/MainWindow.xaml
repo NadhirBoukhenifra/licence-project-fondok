@@ -37,7 +37,7 @@
                         <ColumnDefinition Width="256" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="{Binding WelomeMsg}" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Oblique" FontSize="14" Foreground="#FFFFFFFF"></TextBlock>
+                    <TextBlock Text="" x:Name="dateText" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Oblique" FontSize="14" Foreground="#FFFFFFFF"></TextBlock>
                     <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">HOTEL EL KHAMS NJOM</TextBlock>
 
                     <materialDesign:PopupBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Left" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">

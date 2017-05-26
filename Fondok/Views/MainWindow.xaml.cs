@@ -16,9 +16,8 @@ namespace Fondok.Views
         {
             InitializeComponent();
             Rooms.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            //dateText.Content = DateTime.Now.ToLongDateString();
-            //string _string = String.Format("Welcome: {0}" , Globals.userNamePlus);
-            //dateText.Text = _string;
+
+            dateText.Text = DateTime.Now.ToLongDateString();
         }
 
         private void Reservations_Click(object sender, RoutedEventArgs e)

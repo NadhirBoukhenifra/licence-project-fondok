@@ -32,10 +32,7 @@ namespace Fondok.Views
         private void Login_Button_Click(object sender, RoutedEventArgs e)
         {
             Globals.isLogin = !Globals.isLogin;
-
-            Globals.userNamePlus = "Nadhir";
-            Globals.userGradePlus = "Admin";
-
+            
             Application.Current.MainWindow.Show();
             
             this.Hide();
