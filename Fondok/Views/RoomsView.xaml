@@ -3,7 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
+
+
     <Grid>
-        <TextBlock Text="RoomsView" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+
+            </Grid.ColumnDefinitions>
+            <!--<TextBlock  Grid.Row="0" Grid.Column="0"  Text="ADD" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFE6FF74" />
+            <TextBlock  Grid.Row="0" Grid.Column="1"  Text="Edit" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFE6FF74" />-->
+            <Label Grid.Row="0" Grid.Column="0" Content="Rooms:" VerticalContentAlignment="Center" x:Name="RoomsTitle"/>
+            <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Content="Edit Room" Margin="8,0,8,0" Click="Button_Click"/>
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Remove Room" Margin="8"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="Add Room" Margin="8,0,8,0" />
+
+        </Grid>
+        <Grid Grid.Row="1"></Grid>
+
+
+        <DataGrid x:Name="RoomsGrid" Grid.Row="1" AutoGenerateColumns="True" ColumnWidth="*" FontSize="16" ItemsSource="{Binding}" IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False" Background="{Binding MaterialDesignBackground}" BorderBrush="{x:Null}" >
+
+
+
+        </DataGrid>
+
+        <Grid Grid.Row="2"></Grid>
+
     </Grid>
+    
 </UserControl>

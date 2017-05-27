@@ -5,36 +5,37 @@ using System.Windows;
 
 namespace Fondok.ViewModels
 {
-    public class RoomsViewModel : BindableBase, IConfirmNavigationRequest
+    //public class RoomsViewModel : BindableBase, IConfirmNavigationRequest
+    public class RoomsViewModel : BindableBase
     {
         public RoomsViewModel()
         {
 
         }
 
-        public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
-        {
-            bool result = true;
+        //public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+        //{
+        //    bool result = true;
 
-            if (MessageBox.Show("Do you to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.No)
-                result = false;
+        //    if (MessageBox.Show("Do you to navigate?", "Navigate?", MessageBoxButton.YesNo) == MessageBoxResult.No)
+        //        result = false;
 
-            continuationCallback(result);
-        }
+        //    continuationCallback(result);
+        //}
 
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
+        //public bool IsNavigationTarget(NavigationContext navigationContext)
+        //{
+        //    return true;
+        //}
 
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
+        //public void OnNavigatedFrom(NavigationContext navigationContext)
+        //{
             
-        }
+        //}
 
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
+        //public void OnNavigatedTo(NavigationContext navigationContext)
+        //{
             
-        }
+        //}
     }
 }

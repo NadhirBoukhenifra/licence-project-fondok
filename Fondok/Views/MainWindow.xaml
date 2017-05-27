@@ -44,7 +44,7 @@
                         <StackPanel>
                             <Button x:Name="settingsButton" Content="Settings" />
                             <Separator/>
-                            <Button x:Name="logOutButton" Content="Log Out" />
+                            <Button x:Name="logOutButton" Content="Log Out" Click="LogOut"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
 

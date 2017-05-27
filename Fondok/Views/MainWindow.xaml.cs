@@ -136,13 +136,7 @@ namespace Fondok.Views
             InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
         }
 
-        private void logOutButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoginView lg = new LoginView();
-            lg.Show();
-            Application.Current.MainWindow.Hide();
-            //this.Close();
-        }
+    
 
        
         private void Window_Closing(object sender, CancelEventArgs e)
@@ -151,8 +145,10 @@ namespace Fondok.Views
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Good Bye :) Mainwindow", "Fondok");
+                    //MessageBox.Show("Good Bye :) Mainwindow", "Fondok");
 
+
+                    //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                     Application.Current.Shutdown();
                     Process.GetCurrentProcess().Kill();
 
@@ -162,25 +158,18 @@ namespace Fondok.Views
                     break;
             }
 
-
-            //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-            //Application.Current.Shutdown();
-
-
         }
 
-
+        private void LogOut(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!Globals.isLogin)
-            {
-                LoginView _LoginView = new LoginView();
-                _LoginView.Show();
-
-                this.Hide();
-            }
+            
+            
         }
     }
 }

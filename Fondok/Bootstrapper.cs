@@ -20,7 +20,8 @@ namespace Fondok
 
         protected override void InitializeShell()
         {
-
+            //LoginView _Login = new LoginView();
+            //_Login.Show();
             Application.Current.MainWindow.Show();
             
             
