@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using System.Windows.Controls;
@@ -65,17 +66,22 @@ namespace Fondok.Views
             string _RID = DB.ExecuteScalar(_RoomID);
             string _RType = DB.ExecuteScalar(_RoomType);
 
-            //object[,] MyRooms = new object[,];
-            //foreach (DataRow dtRow in Rooms.Rows)
-            //{
-            //    foreach (DataColumn dc in Rooms.Columns)
-            //    {
-            //        MessageBox.Show(Rooms.Columns.Count.ToString() + dtRow[dc].ToString());
-            //    }
+            List<string> RoomRow = new List<string>();
+            List<string> RoomCol = new List<string>();
 
-            //}
+            foreach (DataRow rRow in Rooms.Rows)
+            {
+                RoomRow.Add(rRow.ToString());
+                foreach (DataColumn rCol in Rooms.Columns)
+                {
+                    //MessageBox.Show(Rooms.Columns.Count.ToString() + dtRow[dc].ToString());
+                RoomRow.Add(rCol.ToString());
 
-            MessageBox.Show(Rooms.Columns.Count.ToString() + ToString());
+                }
+
+            }
+
+            MessageBox.Show(Rooms.Columns.Count.ToString() + RoomRow[1] );
 
 
             RoomsGrid.Items.Refresh();
