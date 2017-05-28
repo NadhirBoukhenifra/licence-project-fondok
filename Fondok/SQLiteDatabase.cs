@@ -9,6 +9,7 @@ namespace Fondok
 {
     class SQLiteDatabase
     {
+
         String dbConnection;
 
         /// <summary>
@@ -16,7 +17,7 @@ namespace Fondok
         /// </summary>
         public SQLiteDatabase()
         {
-            dbConnection = "Data Source=DataBase/database.db";
+            dbConnection = "Data Source=C:/Users/NADHIR/Desktop/Fondok/DataBase/database.db";
 
         }
 

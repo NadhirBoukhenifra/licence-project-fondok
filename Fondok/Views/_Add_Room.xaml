@@ -1,0 +1,111 @@
+﻿<Window x:Class="Fondok.Views._Add_Room"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fondok.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Add New Room" Height="Auto" MinHeight="512" MaxHeight="1024" Width="512" MinWidth="512" MaxWidth="512" WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Add New Room"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Hotel" 
+                                 Foreground="{Binding ElementName=RoomTypeField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="RoomTypeField"
+				    materialDesign:HintAssist.Hint="Room Type" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+                                 Foreground="{Binding ElementName=RoomReservedField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="RoomReservedField"
+				    materialDesign:HintAssist.Hint="Room Reserved" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+                                 Foreground="{Binding ElementName=RoomReservedFromField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="RoomReservedFromField"
+				    materialDesign:HintAssist.Hint="Room Reserved From" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+                                 Foreground="{Binding ElementName=RoomReservedToField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="RoomReservedToField"
+				    materialDesign:HintAssist.Hint="Room Reserved To" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+                                 Foreground="{Binding ElementName=RoomReservedByField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="RoomReservedByField"
+				    materialDesign:HintAssist.Hint="Room Reserved By" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddRoom_Button" Grid.Row="4"  Grid.Column="1" Content="Add Room" Click="AddRoom_Button_Click" Foreground="#DDFFFFFF"/>
+        </Grid>
+    </Grid>
+</Window>

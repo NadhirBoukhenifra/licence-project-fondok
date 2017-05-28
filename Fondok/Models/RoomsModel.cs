@@ -8,5 +8,9 @@ namespace Fondok.Models
 {
     class RoomsModel
     {
+        public RoomsModel() { }
+
+        public int ID_Room { get; set; }
+        public string Room_Type { get; set; }
     }
 }

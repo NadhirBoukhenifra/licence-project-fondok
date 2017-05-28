@@ -8,5 +8,6 @@ namespace Fondok
 {
     public static class Globals
     {
+        public static bool RoomAdded;
     }
 }
