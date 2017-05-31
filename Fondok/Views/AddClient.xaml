@@ -1,0 +1,57 @@
+﻿<Window x:Class="Fondok.Views.AddClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fondok.Views"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="16"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="Add New Client" Width="512"  WindowStyle="ToolWindow">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Add New Cleint:"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Account" 
+                                 Foreground="{Binding ElementName=clientFirstNameField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="clientFirstNameField"
+				    materialDesign:HintAssist.Hint="First Name" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="AddClient_Button" Grid.Row="4"  Grid.Column="1" Content="Add Client Now" Click="AddClientButtonClick" Foreground="#DDFFFFFF"/>
+        </Grid>
+        
+    </Grid>
+</Window>

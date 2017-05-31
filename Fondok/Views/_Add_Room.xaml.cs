@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Fondok.Views
         {
             InitializeComponent();
         }
-
+        private bool successAdd = false;
         private void AddRoom_Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -46,30 +47,28 @@ namespace Fondok.Views
                 data.Add("ReservedTo", RoomReservedToField.Text);
                 data.Add("ReservedBy", RoomReservedByField.Text);
 
+                try
+                {
+                    DB.Insert("Rooms", data);
+                    successAdd = true;
+
+                }
+                catch (Exception crap)
+                {
+                    MessageBox.Show(crap.Message);
+                }
+
             }
             else
             {
                 MessageBox.Show("Add some Text");
+               
             }
-
-
-
-            //data.Add("DESCRIPTION", descriptionTextBox.Text);
-            //data.Add("PREP_TIME", prepTimeTextBox.Text);
-            //data.Add("COOKING_TIME", cookingTimeTextBox.Text);
-            //data.Add("COOKING_DIRECTIONS", "Placeholder");
-
-            try
+            if (successAdd)
             {
-                DB.Insert("Rooms", data);
+                this.Close();
 
             }
-            catch (Exception crap)
-            {
-                MessageBox.Show(crap.Message);
-            }
-             
-            this.Close();
 
 
         }

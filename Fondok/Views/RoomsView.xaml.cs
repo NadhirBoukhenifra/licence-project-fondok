@@ -22,41 +22,30 @@ namespace Fondok.Views
 
 
         }
-        //private void EditRoomClick(object sender, RoutedEventArgs e)
-        //{
-            
-
-        //    SQLiteDatabase DB = new SQLiteDatabase();
-
-        //    DataTable Rooms;
-
-        //    String RoomsQuery = "select * from ROOMS";
-
-        //    Rooms = DB.GetDataTable(RoomsQuery);
-
-            
-        //    string _RoomID = "select RoomID from Rooms where RoomID='"+ RoomsGrid.SelectedItem+"'";
-            
-            
-
-
-
-        //    RoomsGrid.Items.Refresh();
-
-        //}
-
+ 
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {
             _Add_Room _Add_Room = new _Add_Room();
 
             _Add_Room.ShowDialog();
-            
+
+            //    RoomsGrid.Items.Refresh();
 
 
 
 
         }
 
-       
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            RoomsGrid.Items.Refresh();
+            //MessageBox.Show("hg");
+        }
+
+        private void RoomsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
     }
 }

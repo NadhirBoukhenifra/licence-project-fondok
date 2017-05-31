@@ -98,7 +98,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <materialDesign:PackIcon Grid.Row="0"  x:Name="ServicesIcon" Kind="Silverware"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Services Page" Command="{Binding NavigateCommand}" CommandParameter="Services" Click="Services_Click" x:Name="Services">Services</Button>
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Services Page" Command="{Binding NavigateCommand}" CommandParameter="BookView" Click="Services_Click" x:Name="Services">Services</Button>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="4">
                     <Grid.RowDefinitions>
@@ -122,7 +122,8 @@
             </Grid>
         </materialDesign:Card>
         <Grid Grid.Row="2" >
-            <ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="16" />
+            <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+            <!--<ContentControl prism:RegionManager.RegionName="ContentRegion" Margin="16" />-->
         </Grid>
     </Grid>
 </Window>

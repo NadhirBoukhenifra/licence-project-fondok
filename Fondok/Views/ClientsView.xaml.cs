@@ -11,5 +11,11 @@ namespace Fondok.Views
         {
             InitializeComponent();
         }
+
+        private void AddClientClick(object sender, System.Windows.RoutedEventArgs e)
+        {
+            AddClient ac = new AddClient();
+            ac.ShowDialog();
+        }
     }
 }

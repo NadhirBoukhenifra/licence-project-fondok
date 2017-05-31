@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Fondok.Views.BookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Fondok.Views"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:vm="clr-namespace:Fondok.ViewModels"
+               >
+    <UserControl.DataContext>
+        <vm:LibraryViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="sd" ItemsSource="{Binding Books}" CanUserDeleteRows="False" CanUserAddRows="False" IsReadOnly="True"  SelectedItem="{Binding SelectedBook}" >
+
+        </DataGrid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Name="CreateBookButton" Content="Create Book" Width="100" Command="{Binding CreateCommand}"/>
+            <Button Grid.Column="1" Name="UpdateBookButton" Content="Update Book" Width="100" Command="{Binding UpdateCommand}"/>
+            <Button Grid.Column="2" Name="DeleteBookButton" Content="Delete Book" Width="100" Command="{Binding DeleteCommand}" />
+        </Grid>
+    </Grid>
+    </UserControl>

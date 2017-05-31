@@ -4,6 +4,46 @@
              xmlns:prism="http://prismlibrary.com/"             
              prism:ViewModelLocator.AutoWireViewModel="True">
     <Grid>
-        <TextBlock Text="ClientsView" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Content="Clients:" VerticalContentAlignment="Center"/>
+            <Button Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignRaisedButton}" Content="Edit Client" Margin="8,0,8,0" />
+            <Button Grid.Row="0" Grid.Column="2" Style="{StaticResource MaterialDesignRaisedAccentButton}" Content="Remove Client" Margin="8"/>
+            <Button Grid.Row="0" Grid.Column="3" Content="Add Cliient" Margin="8,0,8,0" Click="AddClientClick" />
+
+        </Grid>
+        <Grid Grid.Row="1"></Grid>
+
+
+        <DataGrid x:Name="RoomsGrid" Grid.Row="1" AutoGenerateColumns="False" ColumnWidth="*" FontSize="16" SelectedItem="{Binding SelectedClient}"
+                  ItemsSource="{Binding ClientsSource,  UpdateSourceTrigger=PropertyChanged, IsAsync=True}" 
+                  IsReadOnly="True" SelectionMode="Single" CanUserResizeRows="False" Background="{Binding MaterialDesignBackground}"
+                  BorderBrush="{x:Null}" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Client ID" Binding="{Binding ID}"/>
+                <DataGridTextColumn Header="Client FIRSTNAME" Binding="{Binding FIRSTNAME}"/>
+                <DataGridTextColumn Header="Client LASTNAME" Binding="{Binding LASTNAME}"/>
+                <DataGridTextColumn Header="Client DOB" Binding="{Binding DOB}"/>
+                <DataGridTextColumn Header="Client ADDRESS" Binding="{Binding ADDRESS}"/>
+            </DataGrid.Columns>
+
+
+
+        </DataGrid>
+
+
+
     </Grid>
 </UserControl>
