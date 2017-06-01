@@ -13,23 +13,26 @@ namespace Fondok.ViewModels
     public class RoomsViewModel : BindableBase, INotifyPropertyChanged
     {
 
-    
-        //public DataTable RoomsSource { get; set; }
+
+        public DataTable Rooms { get; set; }
 
         public RoomsViewModel()
         {
-            //SQLiteDatabase DB = new SQLiteDatabase();
+            SQLiteDatabase DB = new SQLiteDatabase();
 
-            //String Query = "select * from ROOMS";
+            String Query = "select * from ROOMS";
 
-            //RoomsSource = DB.GetDataTable(Query);
-
-            //RoomsSource = DB.GetDataTable(Query);
+            Rooms = DB.GetDataTable(Query);
 
 
+            
 
         }
 
+        
+    }
+    public class RoomLibVM
+    {
 
     }
 }

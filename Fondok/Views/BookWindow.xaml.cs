@@ -27,6 +27,6 @@ namespace Fondok.Views
         {
             DialogResult = true;
         }
-    }
 
+    }
 }

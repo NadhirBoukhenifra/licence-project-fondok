@@ -1,19 +1,22 @@
-﻿using System;
+﻿using Fondok.Commands;
+using Fondok.Context;
+using Fondok.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Fondok.Models;
-using System.ComponentModel;
 using System.Windows.Input;
-using Fondok.Commands;
 
 namespace Fondok.ViewModels
 {
     class LibraryViewModel : INotifyPropertyChanged
     {
         private BookRepository rep;
-        private BookContext db;
+        //private BookContext db;
+        private DatabaseContext db;
+
         private BindingList<Book> _books;
         public BindingList<Book> Books
         {
@@ -45,7 +48,8 @@ namespace Fondok.ViewModels
 
         public LibraryViewModel()
         {
-            db = new BookContext();
+            db = new DatabaseContext();
+            //db = new BookContext();
             rep = new BookRepository(db);
             Books = rep.GetAllBooks();
             deleteCommand = new DelegateCommand(DeleteBook);

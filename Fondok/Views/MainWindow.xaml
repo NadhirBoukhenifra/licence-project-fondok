@@ -38,9 +38,9 @@
                     </Grid.ColumnDefinitions>
 
                     <TextBlock Text="" x:Name="dateText" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontStyle="Oblique" FontSize="14" Foreground="#FFFFFFFF"></TextBlock>
-                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">HOTEL EL KHAMS NJOM</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22" Foreground="#FFFFFFFF">HOTEL EL KHAMS NJOM</TextBlock>
 
-                    <materialDesign:PopupBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Left" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <materialDesign:PopupBox Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Left" Foreground="#FFFFFFFF" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel>
                             <Button x:Name="settingsButton" Content="Settings" />
                             <Separator/>
@@ -89,7 +89,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <materialDesign:PackIcon Grid.Row="0"  x:Name="ClientsIcon" Kind="AccountMultiple"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Clients Page" Command="{Binding NavigateCommand}" CommandParameter="ClientsView" Click="Clients_Click" x:Name="Clients">Clients</Button>
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Clients Page" Command="{Binding NavigateCommand}" CommandParameter="BookView" Click="Clients_Click" x:Name="Clients">Clients</Button>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="3">
                     <Grid.RowDefinitions>
@@ -98,7 +98,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <materialDesign:PackIcon Grid.Row="0"  x:Name="ServicesIcon" Kind="Silverware"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="28" Width="28" Foreground="{DynamicResource PrimaryHueMidBrush}" />
-                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Services Page" Command="{Binding NavigateCommand}" CommandParameter="BookView" Click="Services_Click" x:Name="Services">Services</Button>
+                    <Button Grid.Row="2"  Style="{StaticResource MaterialDesignFlatButton}" Margin="8,0,8,0" ToolTip="Services Page" Command="{Binding NavigateCommand}" CommandParameter="ServiceView" Click="Services_Click" x:Name="Services">Services</Button>
                 </Grid>
                 <Grid Grid.Row="1" Grid.Column="4">
                     <Grid.RowDefinitions>

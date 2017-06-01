@@ -1,4 +1,4 @@
-﻿<Window x:Class="Fondok.Views._Add_Room"
+﻿<Window x:Class="Fondok.Views.RoomWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -17,6 +17,7 @@
         Title="Add New Room" Height="Auto" MinHeight="512" MaxHeight="1024" Width="512" MinWidth="512" MaxWidth="512" WindowStyle="ToolWindow">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
@@ -48,7 +49,7 @@
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarCheck" 
                                  Foreground="{Binding ElementName=RoomReservedField, Path=BorderBrush}" 
                                   VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
             <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
@@ -62,7 +63,7 @@
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarPlus" 
                                  Foreground="{Binding ElementName=RoomReservedFromField, Path=BorderBrush}" 
                                   VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
             <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
@@ -77,7 +78,7 @@
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Calendar" 
                                  Foreground="{Binding ElementName=RoomReservedToField, Path=BorderBrush}" 
                                   VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
             <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
@@ -91,7 +92,7 @@
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="CalendarBlank" 
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Account" 
                                  Foreground="{Binding ElementName=RoomReservedByField, Path=BorderBrush}" 
                                   VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
             <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
@@ -102,10 +103,24 @@
         <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Coin" 
+                                 Foreground="{Binding ElementName=PriceField, Path=BorderBrush}" 
+                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
+            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="320"
+				    x:Name="PriceField"
+				    materialDesign:HintAssist.Hint="Room Price" HorizontalAlignment="Left" VerticalAlignment="Center" 
+            />
+        </Grid>
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="320"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button x:Name="AddRoom_Button" Grid.Row="4"  Grid.Column="1" Content="Add Room" Click="AddRoom_Button_Click" Foreground="#DDFFFFFF"/>
+            <Button x:Name="AddRoomButton" Grid.Row="4"  Grid.Column="1" Content="Add Room" Click="AddRoomClick" Foreground="#DDFFFFFF"/>
         </Grid>
     </Grid>
 </Window>

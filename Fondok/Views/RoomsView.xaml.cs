@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using MaterialDesignThemes.Wpf;
 using Fondok.ViewModels;
+using System.Data.SQLite;
 
 namespace Fondok.Views
 {
@@ -16,19 +17,18 @@ namespace Fondok.Views
         public RoomsView()
         {
             InitializeComponent();
-
-
-            DataContext = new RoomsViewModel();
+           DataContext = new RoomsViewModel();
 
 
         }
  
-        private void AddRoomClick(object sender, RoutedEventArgs e)
+        private void AddRoomsClick(object sender, RoutedEventArgs e)
         {
-            _Add_Room _Add_Room = new _Add_Room();
+            RoomWindow RoomWindow = new RoomWindow();
 
-            _Add_Room.ShowDialog();
+            RoomWindow.ShowDialog();
 
+           
             //    RoomsGrid.Items.Refresh();
 
 
@@ -36,16 +36,19 @@ namespace Fondok.Views
 
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void RoomsViewLoaded(object sender, RoutedEventArgs e)
         {
             RoomsGrid.Items.Refresh();
-            //MessageBox.Show("hg");
-        }
 
-        private void RoomsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            MessageBox.Show("RoomViewLoaded");
+        }
+      
+
+        private void RefreshClick(object sender, RoutedEventArgs e)
         {
-
+            RoomsGrid.Items.Refresh();
         }
 
+        
     }
 }

@@ -4,13 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Fondok.Context;
 
 namespace Fondok.Models
 {
     class BookRepository
     {
-        private BookContext db;
-        public BookRepository(BookContext _db)
+        //private BookContext db;
+        DatabaseContext db = new DatabaseContext();
+        public BookRepository(DatabaseContext _db)
         {
             db = _db;
             db.Books.Load();

@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Fondok.Views"
-             xmlns:prism="http://prismlibrary.com/"             
-             prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
              xmlns:vm="clr-namespace:Fondok.ViewModels"
-               >
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    
     <UserControl.DataContext>
         <vm:LibraryViewModel/>
     </UserControl.DataContext>
@@ -31,4 +33,4 @@
             <Button Grid.Column="2" Name="DeleteBookButton" Content="Delete Book" Width="100" Command="{Binding DeleteCommand}" />
         </Grid>
     </Grid>
-    </UserControl>
+</UserControl>
