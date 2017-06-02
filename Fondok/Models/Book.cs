@@ -2,15 +2,7 @@
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
-    //class Book
-    //{
-    //    public int id { get; set; }
-    //    public string name { get; set; }
-    //    public string author { get; set; }
-    //    public int pages { get; set; }
-    //    public int count { get; set; }
-    //    public int edition { get; set; }
-    //}
+   
 
     [Table(Name = "Book")]
     public class Book
@@ -34,8 +26,6 @@ namespace Fondok.Models
         [Column(Name = "edition", DbType = "INTEGER")]
         public int edition { get; set; }
 
-
-
-
+        
     }
 }

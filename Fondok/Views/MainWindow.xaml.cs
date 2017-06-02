@@ -15,131 +15,131 @@ namespace Fondok.Views
         public MainWindow()
         {
             InitializeComponent();
-            Rooms.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            RoomButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
 
             dateText.Text = DateTime.Now.ToLongDateString();
         }
 
-        private void Reservations_Click(object sender, RoutedEventArgs e)
+        private void ReservationClick(object sender, RoutedEventArgs e)
         {
-            Reservations.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            ReservationsIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            ReservationButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            ReservationIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
-            Rooms.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Clients.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Services.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Invoices.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Reports.Style = (Style)FindResource("MaterialDesignFlatButton");
+            RoomButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ClientButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ServiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReportButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            RoomsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ClientsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ServicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ReportsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            RoomIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ClientIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ServiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            InvoiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReportIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
 
         }
 
-        private void Rooms_Click(object sender, RoutedEventArgs e)
+        private void RoomClick(object sender, RoutedEventArgs e)
         {
-            Rooms.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            RoomsIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            RoomButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            RoomIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
 
-            Reservations.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Clients.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Services.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Invoices.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Reports.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReservationButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ClientButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ServiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReportButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            ReservationsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ClientsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ServicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ReportsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReservationIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ClientIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ServiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            InvoiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReportIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
 
         }
 
-        private void Clients_Click(object sender, RoutedEventArgs e)
+        private void ClientClick(object sender, RoutedEventArgs e)
         {
-            Clients.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            ClientsIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            ClientButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            ClientIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
-            Reservations.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Rooms.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Services.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Invoices.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Reports.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReservationButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            RoomButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ServiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReportButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            ReservationsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            RoomsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ServicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ReportsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReservationIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            RoomIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ServiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            InvoiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReportIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
 
         }
 
-        private void Services_Click(object sender, RoutedEventArgs e)
+        private void ServiceClick(object sender, RoutedEventArgs e)
         {
-            Services.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            ServicesIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            ServiceButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            ServiceIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
-            Reservations.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Rooms.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Clients.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Invoices.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Reports.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReservationButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            RoomButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ClientButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReportButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            ReservationsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            RoomsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ClientsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ReportsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReservationIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            RoomIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ClientIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            InvoiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReportIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
 
         }
 
-        private void Invoices_Click(object sender, RoutedEventArgs e)
+        private void InvoiceClick(object sender, RoutedEventArgs e)
         {
-            Invoices.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            InvoicesIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            InvoiceIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
 
-            Reservations.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Rooms.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Clients.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Services.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Reports.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReservationButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            RoomButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ClientButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ServiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReportButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            ReservationsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            RoomsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ClientsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ServicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ReportsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReservationIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            RoomIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ClientIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ServiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReportIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
 
         }
 
-        private void Reports_Click(object sender, RoutedEventArgs e)
+        private void ReportClick(object sender, RoutedEventArgs e)
         {
-            Reports.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
-            ReportsIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
+            ReportButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
+            ReportIcon.Foreground = FindResource("SecondaryAccentBrush") as SolidColorBrush;
 
 
-            Reservations.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Rooms.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Clients.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Services.Style = (Style)FindResource("MaterialDesignFlatButton");
-            Invoices.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ReservationButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            RoomButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ClientButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            ServiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
+            InvoiceButton.Style = (Style)FindResource("MaterialDesignFlatButton");
 
-            ReservationsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            RoomsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ClientsIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            ServicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
-            InvoicesIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ReservationIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            RoomIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ClientIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            ServiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
+            InvoiceIcon.Foreground = FindResource("PrimaryHueMidBrush") as SolidColorBrush;
         }
 
     
 
        
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private void WindowClosing(object sender, CancelEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure to Exit? Mainwindow", "Exit from Fondok", MessageBoxButton.YesNo);
             switch (result)
@@ -166,7 +166,7 @@ namespace Fondok.Views
         }
 
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void WindowLoaded(object sender, RoutedEventArgs e)
         {
             
             

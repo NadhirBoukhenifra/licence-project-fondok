@@ -30,7 +30,7 @@ namespace Fondok.Views
 
 
 
-        private void Login_Button_Click(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
             /*
             SQLiteDatabase DB = new SQLiteDatabase();
@@ -41,17 +41,17 @@ namespace Fondok.Views
 
             Login = DB.GetDataTable(Query);
 
-            string Grade = "select GRADE from USERS where USERNAME='" + this.userNameBox.Text + "' ";
-            string User = "select USERNAME from USERS where USERNAME='" + this.userNameBox.Text + "' ";
-            string Pass = "select PASSWORD from USERS where PASSWORD='" + this.userPasswordBox.Password + "' ";
+            string Grade = "select GRADE from USERS where USERNAME='" + this.userNameField.Text + "' ";
+            string User = "select USERNAME from USERS where USERNAME='" + this.userNameField.Text + "' ";
+            string Pass = "select PASSWORD from USERS where PASSWORD='" + this.userPasswordField.Password + "' ";
 
             string _Grade = DB.ExecuteScalar(Grade);
             string _UserName = DB.ExecuteScalar(User);
             string _Password = DB.ExecuteScalar(Pass);
 
-            if (this.userNameBox.Text != "" || this.userPasswordBox.Password != "")
+            if (this.userNameField.Text != "" || this.userPasswordField.Password != "")
             {
-                if (this.userNameBox.Text == _UserName || this.userPasswordBox.Password == _Password)
+                if (this.userNameField.Text == _UserName || this.userPasswordField.Password == _Password)
                 {
                     foreach (DataRow r in Login.Rows)
                     {
@@ -82,7 +82,7 @@ namespace Fondok.Views
 
         }
 
-        private void Window_Closing(object sender, CancelEventArgs e)
+        private void WindowClosing(object sender, CancelEventArgs e)
         {
             //MessageBox.Show("Good Bye From LoginWindow :)!");
             MessageBoxResult result = MessageBox.Show("Are you sure to Exit? LoginWindow", "Exit from Fondok", MessageBoxButton.YesNo);

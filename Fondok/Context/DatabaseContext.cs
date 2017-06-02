@@ -19,15 +19,12 @@ namespace Fondok.Context
             }, true)
         {
         }
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            base.OnModelCreating(modelBuilder);
-        }
+      
 
         //public DbSet<EmployeeMaster> EmployeeMaster { get; set; }
-        public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<Room> Rooms { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Service> Services { get; set; }
     }
 
 }

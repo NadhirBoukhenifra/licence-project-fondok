@@ -1,89 +1,134 @@
-﻿<Window x:Class="Fondok.Views.LoginView" Closing="Window_Closing"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Fondok.Views"
-        xmlns:prism="http://prismlibrary.com/"
-        prism:ViewModelLocator.AutoWireViewModel="True"
-        mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        
-        Title="{Binding Title}" Height="512" Width="512"
-        MaxHeight="512" MaxWidth="512" MinHeight="512" MinWidth="512"
-        TextElement.FontWeight="Regular"
-        TextElement.FontSize="16"
-        TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
-   
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="128" />
-            <RowDefinition Height="96" />
-            <RowDefinition Height="64" />
-            <RowDefinition Height="64" />
-            <RowDefinition Height="64" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        
-        <!--start info crad in the top-->
-        <materialDesign:Card x:Name="LoginInfoCard" Grid.Row="0" Margin="16" Padding="8" >
-            <Label Content="Log in to your account, Default User: user, Password: 123"/>
-        </materialDesign:Card>
-        <!--/ info crad in the top-->
-        
-        <!--start logo-->
-        <Ellipse Grid.Row="1" Width="96" Height="96" Fill="{Binding Background, ElementName=Login_Button}" />
-        <Image Grid.Row="1" x:Name="image" Source="/Assets/images/HotelLogo.png"></Image>
-        <!--/ logo-->
-        
-        <!--start the username input-->
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="256" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="2" Grid.Column="1" Kind="Account" 
-                                 Foreground="{Binding ElementName=userNameBox, Path=BorderBrush}" 
-                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
-            <TextBox Grid.Row="2" Grid.Column="1" Height="32" Width="256"
-				    x:Name="userNameBox"
-				    materialDesign:HintAssist.Hint="Username" HorizontalAlignment="Left" VerticalAlignment="Center" 
-            />
-        </Grid>
-        <!--/ username input-->
+﻿<Window
+  x:Class="Fondok.Views.LoginView"
+  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+  xmlns:local="clr-namespace:Fondok.Views"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:prism="http://prismlibrary.com/"
+  Title="{Binding Title}"
+  Width="512"
+  Height="512"
+  MinWidth="512"
+  MinHeight="512"
+  MaxWidth="512"
+  MaxHeight="512"
+  prism:ViewModelLocator.AutoWireViewModel="True"
+  Background="{DynamicResource MaterialDesignPaper}"
+  Closing="WindowClosing"
+  FontFamily="{DynamicResource MaterialDesignFont}"
+  ResizeMode="NoResize"
+  TextElement.FontSize="16"
+  TextElement.FontWeight="Regular"
+  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+  TextOptions.TextFormattingMode="Ideal"
+  TextOptions.TextRenderingMode="Auto"
+  WindowStartupLocation="CenterScreen"
+  mc:Ignorable="d">
 
-        <!--start password input-->
-        <Grid Grid.Row="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="256" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon Grid.Row="3" Grid.Column="1" Kind="Key" 
-                                 Foreground="{Binding ElementName=userPasswordBox, Path=BorderBrush}" 
-                                  VerticalAlignment="Center" HorizontalAlignment="Right" Height="28" Width="28" />
-            <PasswordBox Grid.Row="3" Grid.Column="1" Height="32" Width="256"
-				    x:Name="userPasswordBox"
-				    materialDesign:HintAssist.Hint="Password" HorizontalAlignment="Left"  
-                 />
-        </Grid>
-        <!--/ password input-->
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="128" />
+      <RowDefinition Height="96" />
+      <RowDefinition Height="64" />
+      <RowDefinition Height="64" />
+      <RowDefinition Height="64" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
 
-        <!--start login button-->
-        <Grid Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="256"/>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button x:Name="Login_Button" Grid.Row="4"  Grid.Column="1" Content="LOG IN NOW" Click="Login_Button_Click" Foreground="#DDFFFFFF"/>
-        </Grid>
-        <!--/ login button-->
+    <!--  start info crad in the top  -->
+    <materialDesign:Card
+      x:Name="LoginInfoCard"
+      Grid.Row="0"
+      Margin="16"
+      Padding="8">
+      <Label Content="Log in to your account, Default User: user, Password: 123" />
+    </materialDesign:Card>
+    <!--  / info crad in the top  -->
+
+    <!--  start logo  -->
+    <Ellipse
+      Grid.Row="1"
+      Width="96"
+      Height="96"
+      Fill="{Binding Background, ElementName=LoginButton}" />
+    <Image
+      x:Name="image"
+      Grid.Row="1"
+      Source="/Assets/images/HotelLogo.png" />
+    <!--  / logo  -->
+
+    <!--  start the username input  -->
+    <Grid Grid.Row="2">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="256" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=userNameField, Path=BorderBrush}"
+        Kind="Account" />
+      <TextBox
+        x:Name="userNameBox"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="256"
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Username" />
     </Grid>
+    <!--  / username input  -->
+
+    <!--  start password input  -->
+    <Grid Grid.Row="3">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="256" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="3"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=userPasswordField, Path=BorderBrush}"
+        Kind="Key" />
+      <PasswordBox
+        x:Name="userPasswordBox"
+        Grid.Row="3"
+        Grid.Column="1"
+        Width="256"
+        Height="32"
+        HorizontalAlignment="Left"
+        materialDesign:HintAssist.Hint="Password" />
+    </Grid>
+    <!--  / password input  -->
+
+    <!--  start login button  -->
+    <Grid Grid.Row="4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="256" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Button
+        x:Name="LoginButton"
+        Grid.Row="4"
+        Grid.Column="1"
+        Click="LoginClick"
+        Content="LOG IN NOW"
+        Foreground="#DDFFFFFF" />
+    </Grid>
+    <!--  / login button  -->
+  </Grid>
 </Window>

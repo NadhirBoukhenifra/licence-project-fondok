@@ -42,7 +42,7 @@ namespace Fondok.Views
             //    Designation = designation,
             //    Salary = salary
             //};
-            Rooms rooms = new Rooms()
+            Room rooms = new Room()
             {
                 Type = RoomTypeField.Text,
                 Reserved = RoomReservedField.Text,
