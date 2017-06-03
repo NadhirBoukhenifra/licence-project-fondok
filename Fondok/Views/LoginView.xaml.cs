@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fondok.Context;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
+using Fondok.Models;
 
 namespace Fondok.Views
 {
@@ -31,19 +34,47 @@ namespace Fondok.Views
 
 
         private void LoginClick(object sender, RoutedEventArgs e)
+
+
         {
+            
+            using (var context = new DatabaseContext())
+            {
+                var EmployeesList = (from s in context.Employees where s.EmployeeUserName == this.userNameField.Text select s).ToList<Employee>();
+
+
+                if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
+                {
+                    MessageBox.Show(" Welcome: "  + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirsName + " " + EmployeesList[0].EmployeeLastName);
+                    Application.Current.MainWindow.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+
+                //MessageBox.Show(EmployeesList[0].EmployeeUserName + EmployeesList[0].EmployeeEMail + EmployeesList.Count());
+
+
+
+            }
+
+
+           
+            //MessageBox.Show(a.ToString());
             /*
             SQLiteDatabase DB = new SQLiteDatabase();
 
             DataTable Login;
 
-            String Query = "select * from USERS where USERNAME='" + this.userNameBox.Text + "' and PASSWORD='" + this.userPasswordBox.Password + "'";
+            String Query = "select * from Employees where EmployeeUserName='" + this.userNameField.Text + "' and EmployeePassWord='" + this.userPasswordField.Password + "'";
 
             Login = DB.GetDataTable(Query);
 
-            string Grade = "select GRADE from USERS where USERNAME='" + this.userNameField.Text + "' ";
-            string User = "select USERNAME from USERS where USERNAME='" + this.userNameField.Text + "' ";
-            string Pass = "select PASSWORD from USERS where PASSWORD='" + this.userPasswordField.Password + "' ";
+            string Grade = "select EmployeeJob from Employees where EmployeeUserName='" + this.userNameField.Text + "' ";
+            string User = "select EmployeeUserName from Employees where EmployeeUserName='" + this.userNameField.Text + "' ";
+            string Pass = "select EmployeePassWord from Employees where EmployeePassWord='" + this.userPasswordField.Password + "' ";
 
             string _Grade = DB.ExecuteScalar(Grade);
             string _UserName = DB.ExecuteScalar(User);
@@ -77,8 +108,7 @@ namespace Fondok.Views
             //MainWindow _MainWindow = new MainWindow();
             //Application.Current.MainWindow = _MainWindow;
             //this.Hide();
-            Application.Current.MainWindow.Show();
-            this.Hide();
+            
 
         }
 

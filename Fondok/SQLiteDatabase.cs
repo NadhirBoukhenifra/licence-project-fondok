@@ -17,7 +17,7 @@ namespace Fondok
         /// </summary>
         public SQLiteDatabase()
         {
-            dbConnection = "Data Source=C:/Users/NADHIR/Desktop/Fondok/DataBase/database.db";
+            dbConnection = "Data Source=C:/Users/NADHIR/Desktop/database.db";
 
         }
 
