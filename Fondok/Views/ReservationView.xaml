@@ -1,5 +1,5 @@
 ﻿<UserControl
-  x:Class="Fondok.Views.RoomView"
+  x:Class="Fondok.Views.ReservationView"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,11 +8,11 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  Loaded="RoomViewLoaded"
+  Loaded="ReservationViewLoaded"
   mc:Ignorable="d">
 
     <UserControl.DataContext>
-        <vm:RoomLibraryViewModel />
+        <vm:ReservationLibraryViewModel />
     </UserControl.DataContext>
 
     <Grid>
@@ -30,7 +30,7 @@
         </Grid>
         <Grid Grid.Row="0">
             <DataGrid
-        x:Name="RoomGrid"
+        x:Name="ReservationsGrid"
         Grid.Row="0"
         AutoGenerateColumns="True"
         Background="{Binding MaterialDesignBackground}"
@@ -40,8 +40,8 @@
         ColumnWidth="*"
         FontSize="16"
         IsReadOnly="True"
-        ItemsSource="{Binding Rooms, IsAsync=True, Mode=TwoWay}"
-        SelectedItem="{Binding SelectedRoom}"
+        ItemsSource="{Binding Reservations, IsAsync=True, Mode=TwoWay}"
+        SelectedItem="{Binding SelectedReservation}"
         SelectionMode="Single">
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">
@@ -84,25 +84,25 @@
         Grid.Column="0"
         Margin="8,0,8,0"
         Command="{Binding UpdateCommand}"
-        Content="Edit Room"
+        Content="Edit Reservation"
         Foreground="White"
-        IsEnabled="{Binding ElementName=RoomGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=ReservationsGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
             <Button
         Grid.Row="2"
         Grid.Column="1"
         Margin="8"
         Command="{Binding DeleteCommand}"
-        Content="Remove Room"
+        Content="Remove Reservation"
         Foreground="White"
-        IsEnabled="{Binding ElementName=RoomGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=ReservationsGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
             <Button
         Grid.Row="2"
         Grid.Column="2"
         Margin="8,0,8,0"
         Command="{Binding CreateCommand}"
-        Content="Add Room"
+        Content="Add Reservation"
         Foreground="White"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
         </Grid>

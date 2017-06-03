@@ -13,30 +13,30 @@ using System.Windows;
 
 namespace Fondok.ViewModels
 {
-    class ServiceViewModel : INotifyPropertyChanged
+    class InvoiceViewModel : INotifyPropertyChanged
     {
-        
-        public ServiceViewModel() : this(null) { }
-        public ServiceViewModel(Service service)
+
+        public InvoiceViewModel() : this(null) { }
+        public InvoiceViewModel(Invoice Invoice)
         {
-            EditService = service;
+            EditInvoice = Invoice;
         }
-        private Service _editService;
-        public Service EditService
+        private Invoice _editInvoice;
+        public Invoice EditInvoice
         {
             get
             {
-                return _editService;
+                return _editInvoice;
             }
             set
             {
-                _editService = value;
-                NotifyPropertyChanged("EditService");
+                _editInvoice = value;
+                NotifyPropertyChanged("EditInvoice");
             }
         }
         public bool Run()
         {
-            ServiceWindow sw = new ServiceWindow();
+            InvoiceWindow sw = new InvoiceWindow();
             sw.DataContext = this;
             if (sw.ShowDialog() == true)
             {
@@ -55,44 +55,43 @@ namespace Fondok.ViewModels
 
 
 
-    class ServiceRepository
+    class InvoiceRepository
     {
 
         DatabaseContext db = new DatabaseContext();
-        public ServiceRepository(DatabaseContext _db)
+        public InvoiceRepository(DatabaseContext _db)
         {
             db = _db;
-            db.Services.Load();
+            db.Invoices.Load();
         }
-        public System.ComponentModel.BindingList<Service> GetAllServices()
+        public System.ComponentModel.BindingList<Invoice> GetAllInvoices()
         {
-            return db.Services.Local.ToBindingList();
+            return db.Invoices.Local.ToBindingList();
         }
-        public void AddService(Service service)
+        public void AddInvoice(Invoice Invoice)
         {
-            db.Services.Add(service);
+            db.Invoices.Add(Invoice);
             db.SaveChanges();
         }
-        public Service GetService(int id)
+        public Invoice GetInvoice(int id)
         {
-            return db.Services.Where(b => b.ServiceID.Equals(id)).First();
+            return db.Invoices.Where(b => b.InvoiceID.Equals(id)).First();
         }
-        public void UpdateService(int serviceID, string serviceTitle, string serviceResponsible, string servicePrice)
+        public void UpdateInvoice(int InvoiceID, string InvoiceDateTime, string InvoiceNumber)
         {
-            Service service = GetService(serviceID);
-            service.ServiceTitle = serviceTitle;
-            service.ServiceResponsible = serviceResponsible;
-            service.ServicePrice = servicePrice;
+            Invoice Invoice = GetInvoice(InvoiceID);
+            Invoice.InvoiceDateTime = InvoiceDateTime;
+            Invoice.InvoiceNumber = InvoiceNumber;
 
             db.SaveChanges();
         }
-        public void UpdateService(Service b)
+        public void UpdateInvoice(Invoice b)
         {
-            UpdateService(b.ServiceID, b.ServiceTitle, b.ServiceResponsible, b.ServicePrice);
+            UpdateInvoice(b.InvoiceID, b.InvoiceDateTime, b.InvoiceNumber);
         }
-        public void DeleteService(int id)
+        public void DeleteInvoice(int id)
         {
-            db.Services.Remove(GetService(id));
+            db.Invoices.Remove(GetInvoice(id));
             db.SaveChanges();
         }
     }
@@ -109,48 +108,48 @@ namespace Fondok.ViewModels
 
 
 
-    class ServiceLibraryViewModel : INotifyPropertyChanged
+    class InvoiceLibraryViewModel : INotifyPropertyChanged
     {
-        private ServiceRepository rep;
+        private InvoiceRepository rep;
         private DatabaseContext db;
-        private BindingList<Service> _services;
-        public BindingList<Service> Services
+        private BindingList<Invoice> _Invoices;
+        public BindingList<Invoice> Invoices
         {
             get
             {
-                return _services;
+                return _Invoices;
             }
             set
             {
-                _services = value;
-                NotifyPropertyChanged("Services");
+                _Invoices = value;
+                NotifyPropertyChanged("Invoices");
             }
         }
-        private Service _selectedService;
-        public Service SelectedService
+        private Invoice _selectedInvoice;
+        public Invoice SelectedInvoice
         {
             get
             {
-                return _selectedService;
+                return _selectedInvoice;
             }
             set
             {
-                _selectedService = value;
-                NotifyPropertyChanged("SelectedService");
+                _selectedInvoice = value;
+                NotifyPropertyChanged("SelectedInvoice");
             }
         }
-        public ServiceLibraryViewModel()
+        public InvoiceLibraryViewModel()
         {
             db = new DatabaseContext();
-            rep = new ServiceRepository(db);
-            Services = rep.GetAllServices();
-            deleteCommand = new DelegateCommand(DeleteService);
-            updateCommand = new DelegateCommand(UpdateService);
-            createCommand = new DelegateCommand(CreateService);
+            rep = new InvoiceRepository(db);
+            Invoices = rep.GetAllInvoices();
+            deleteCommand = new DelegateCommand(DeleteInvoice);
+            updateCommand = new DelegateCommand(UpdateInvoice);
+            createCommand = new DelegateCommand(CreateInvoice);
         }
         public bool IsSelected()
         {
-            return SelectedService != null;
+            return SelectedInvoice != null;
         }
         private ICommand deleteCommand;
         public ICommand DeleteCommand
@@ -160,13 +159,13 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
-        public void DeleteService()
+        public void DeleteInvoice()
         {
             if (!IsSelected())
             {
                 return;
             }
-            rep.DeleteService(SelectedService.ServiceID);
+            rep.DeleteInvoice(SelectedInvoice.InvoiceID);
         }
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
@@ -176,16 +175,16 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
-        public void UpdateService()
+        public void UpdateInvoice()
         {
             if (!IsSelected())
             {
                 return;
             }
-            ServiceViewModel bwvm = new ServiceViewModel(SelectedService);
+            InvoiceViewModel bwvm = new InvoiceViewModel(SelectedInvoice);
             if (bwvm.Run())
             {
-                rep.UpdateService(SelectedService);
+                rep.UpdateInvoice(SelectedInvoice);
             }
         }
         private DelegateCommand createCommand;
@@ -196,13 +195,13 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
-        public void CreateService()
+        public void CreateInvoice()
         {
-            Service bk = new Service();
-            ServiceViewModel bwvm = new ServiceViewModel(bk);
+            Invoice bk = new Invoice();
+            InvoiceViewModel bwvm = new InvoiceViewModel(bk);
             if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
             {
-                rep.AddService(bk);
+                rep.AddInvoice(bk);
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

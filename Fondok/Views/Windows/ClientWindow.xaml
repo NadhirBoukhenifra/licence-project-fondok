@@ -1,18 +1,15 @@
 ﻿<Window
-  x:Class="Fondok.Views.ServiceWindow"
+  x:Class="Fondok.Views.Windows.ClientWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  Title="Service Settings"
+  Title="Client Settings"
   Width="512"
-  Height="Auto"
   MinWidth="512"
-  MinHeight="512"
   MaxWidth="512"
-  MaxHeight="1024"
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
@@ -32,13 +29,12 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid
       Grid.Row="0"
       HorizontalAlignment="Center"
       VerticalAlignment="Center">
-            <TextBlock Text="Service Settings" />
+            <TextBlock Text="Client Settings" />
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -53,18 +49,18 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=TitleField, Path=BorderBrush}"
-        Kind="ChemicalWeapon" />
+        Foreground="{Binding ElementName=ClientFirstNameField, Path=BorderBrush}"
+        Kind="Face" />
             <TextBox
-        x:Name="TitleField"
+        x:Name="ClientFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Service Title"
-        Text="{Binding EditService.Title}" />
+        materialDesign:HintAssist.Hint="Client First Name"
+        Text="{Binding EditClient.ClientFirstName}" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
@@ -79,19 +75,20 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ResponsibleField, Path=BorderBrush}"
-        Kind="Worker" />
+        Foreground="{Binding ElementName=ClientLastNameField, Path=BorderBrush}"
+        Kind="Account" />
             <TextBox
-        x:Name="ResponsibleField"
+        x:Name="ClientLastNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Service Responsible"
-        Text="{Binding EditService.Responsible}" />
+        materialDesign:HintAssist.Hint="Client Last Name"
+        Text="{Binding EditClient.ClientLastName}" />
         </Grid>
+
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -105,59 +102,31 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=DurationField, Path=BorderBrush}"
-        Kind="Clock" />
+        Foreground="{Binding ElementName=ClientDateOfBirthField, Path=BorderBrush}"
+        Kind="Calendar" />
             <TextBox
-        x:Name="DurationField"
+        x:Name="ClientDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Service Duration"
-        Text="{Binding EditService.Duration}" />
+        materialDesign:HintAssist.Hint="Client Date Of Birth"
+        Text="{Binding EditClient.ClientDateOfBirth}" />
         </Grid>
-
-
         <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="320" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=PriceField, Path=BorderBrush}"
-        Kind="Coin" />
-            <TextBox
-        x:Name="PriceField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        Height="32"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Service Price"
-        Text="{Binding EditService.Price}" />
-        </Grid>
-        <Grid Grid.Row="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
             <Button
-        x:Name="AddServiceButton"
+        x:Name="AddClientButton"
         Grid.Row="4"
         Grid.Column="1"
-        Click="AddServiceClick"
-        Content="Confirm Service"
+        Click="AddClientClick"
+        Content="Confirm Client"
         Foreground="#DDFFFFFF" />
         </Grid>
     </Grid>

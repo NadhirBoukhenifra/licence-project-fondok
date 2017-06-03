@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
-using System.Data.SQLite;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fondok.Models
 {
@@ -16,28 +7,27 @@ namespace Fondok.Models
     [Table(Name = "Rooms")]
     public class Room
     {
-        [Column(Name = "ID", IsDbGenerated = true, IsPrimaryKey = true, DbType = "INTEGER")]
+        [Column(Name = "RoomID", IsDbGenerated = true, IsPrimaryKey = true, DbType = "INTEGER")]
         [Key]
-        public int ID { get; set; }
+        public int RoomID { get; set; }
 
-        [Column(Name = "Type", DbType = "VARCHAR")]
-        public string Type { get; set; }
+        [Column(Name = "RoomNumber", DbType = "VARCHAR")]
+        public string RoomNumber { get; set; }
 
-        [Column(Name = "Reserved", DbType = "VARCHAR")]
-        public string Reserved { get; set; }
+        [Column(Name = "RoomFloor", DbType = "VARCHAR")]
+        public string RoomFloor { get; set; }
 
-        [Column(Name = "ReservedFrom", DbType = "VARCHAR")]
-        public string ReservedFrom { get; set; }
+        [Column(Name = "RoomType", DbType = "VARCHAR")]
+        public string RoomType { get; set; }
 
-        [Column(Name = "ReservedTo", DbType = "VARCHAR")]
-        public string ReservedTo { get; set; }
+        [Column(Name = "RoomCapacity", DbType = "VARCHAR")]
+        public string RoomCapacity { get; set; }
 
-        [Column(Name = "ReservedBy", DbType = "VARCHAR")]
-        public string ReservedBy { get; set; }
+        [Column(Name = "RoomStatus", DbType = "VARCHAR")]
+        public string RoomStatus { get; set; }
 
-        [Column(Name = "Price", DbType = "DOUBLE")]
-        public double Price { get; set; }
-
-
+        [Column(Name = "RoomPrice", DbType = "VARCHAR")]
+        public string RoomPrice { get; set; }
+        
     }
 }

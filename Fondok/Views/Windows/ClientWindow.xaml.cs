@@ -12,21 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Fondok.Views
+namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for BookWindow.xaml
+    /// Interaction logic for ClientWindow.xaml
     /// </summary>
-    public partial class BookWindow : Window
+    public partial class ClientWindow : Window
     {
-        public BookWindow()
+        public ClientWindow()
         {
             InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddClientClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-        }
 
+        }
     }
 }

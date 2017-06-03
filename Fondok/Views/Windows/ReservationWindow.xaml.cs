@@ -10,19 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fondok.Views
+namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for ReportsView.xaml
+    /// Interaction logic for ReservationWindow.xaml
     /// </summary>
-    public partial class ReportsView : UserControl
+    public partial class ReservationWindow : Window
     {
-        public ReportsView()
+        public ReservationWindow()
         {
             InitializeComponent();
+        }
+
+        private void AddReservationClick(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
+
         }
     }
 }

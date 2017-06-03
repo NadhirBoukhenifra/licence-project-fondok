@@ -10,25 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fondok.Views
+namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for EmployeeWindow.xaml
     /// </summary>
-    public partial class ServiceView : UserControl
+    public partial class EmployeeWindow : Window
     {
-        public ServiceView()
+        public EmployeeWindow()
         {
             InitializeComponent();
         }
-        void ServiceViewLoaded(object sender, RoutedEventArgs e)
+
+        private void AddEmployeeClick(object sender, RoutedEventArgs e)
         {
-            ServicesGrid.UpdateLayout();
-            ServicesGrid.Items.Refresh();
+            DialogResult = true;
+
         }
-        
     }
 }

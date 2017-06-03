@@ -8,47 +8,13 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
+  Loaded="ServiceViewLoaded"
   mc:Ignorable="d">
 
   <UserControl.DataContext>
     <vm:ServiceLibraryViewModel />
   </UserControl.DataContext>
 
-  <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="20" />
-        </Grid.RowDefinitions>
-        <DataGrid
-      Name="sd"
-      CanUserAddRows="False"
-      CanUserDeleteRows="False"
-      IsReadOnly="True"
-      ItemsSource="{Binding Services}"
-      SelectedItem="{Binding SelectedService}" />
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button
-        Grid.Column="0"
-        Width="100"
-        Command="{Binding CreateCommand}"
-        Content="Create Service" />
-            <Button
-        Grid.Column="1"
-        Width="100"
-        Command="{Binding UpdateCommand}"
-        Content="Update Service" />
-            <Button
-        Grid.Column="2"
-        Width="100"
-        Command="{Binding DeleteCommand}"
-        Content="Delete Service" />
-        </Grid>
-    </Grid>-->
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
@@ -104,14 +70,7 @@
             </Style.Triggers>
           </Style>
         </DataGrid.CellStyle>
-        <!--<DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding RoomID}" Header="RoomID" />
-                    <DataGridTextColumn Binding="{Binding RoomType}" Header="Room Type" />
-                    <DataGridTextColumn Binding="{Binding Reserved}" Header="Reserved" />
-                    <DataGridTextColumn Binding="{Binding ReservedFrom}" Header="Reserved From" />
-                    <DataGridTextColumn Binding="{Binding ReservedTo}" Header="Reserved To" />
-                    <DataGridTextColumn Binding="{Binding ReservedBy}" Header="Reserved By" />
-                </DataGrid.Columns>-->
+
       </DataGrid>
     </Grid>
     <Grid Grid.Row="2">

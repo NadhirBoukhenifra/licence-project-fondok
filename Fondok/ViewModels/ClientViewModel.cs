@@ -13,30 +13,30 @@ using System.Windows;
 
 namespace Fondok.ViewModels
 {
-    class ServiceViewModel : INotifyPropertyChanged
+    class ClientViewModel : INotifyPropertyChanged
     {
-        
-        public ServiceViewModel() : this(null) { }
-        public ServiceViewModel(Service service)
+
+        public ClientViewModel() : this(null) { }
+        public ClientViewModel(Client Client)
         {
-            EditService = service;
+            EditClient = Client;
         }
-        private Service _editService;
-        public Service EditService
+        private Client _editClient;
+        public Client EditClient
         {
             get
             {
-                return _editService;
+                return _editClient;
             }
             set
             {
-                _editService = value;
-                NotifyPropertyChanged("EditService");
+                _editClient = value;
+                NotifyPropertyChanged("EditClient");
             }
         }
         public bool Run()
         {
-            ServiceWindow sw = new ServiceWindow();
+            ClientWindow sw = new ClientWindow();
             sw.DataContext = this;
             if (sw.ShowDialog() == true)
             {
@@ -55,44 +55,44 @@ namespace Fondok.ViewModels
 
 
 
-    class ServiceRepository
+    class ClientRepository
     {
 
         DatabaseContext db = new DatabaseContext();
-        public ServiceRepository(DatabaseContext _db)
+        public ClientRepository(DatabaseContext _db)
         {
             db = _db;
-            db.Services.Load();
+            db.Clients.Load();
         }
-        public System.ComponentModel.BindingList<Service> GetAllServices()
+        public System.ComponentModel.BindingList<Client> GetAllClients()
         {
-            return db.Services.Local.ToBindingList();
+            return db.Clients.Local.ToBindingList();
         }
-        public void AddService(Service service)
+        public void AddClient(Client Client)
         {
-            db.Services.Add(service);
+            db.Clients.Add(Client);
             db.SaveChanges();
         }
-        public Service GetService(int id)
+        public Client GetClient(int id)
         {
-            return db.Services.Where(b => b.ServiceID.Equals(id)).First();
+            return db.Clients.Where(b => b.ClientID.Equals(id)).First();
         }
-        public void UpdateService(int serviceID, string serviceTitle, string serviceResponsible, string servicePrice)
+        public void UpdateClient(int ClientID, string ClientFirstName, string ClientLastName, string ClientDateOfBirth)
         {
-            Service service = GetService(serviceID);
-            service.ServiceTitle = serviceTitle;
-            service.ServiceResponsible = serviceResponsible;
-            service.ServicePrice = servicePrice;
+            Client Client = GetClient(ClientID);
+            Client.ClientFirstName = ClientFirstName;
+            Client.ClientLastName = ClientLastName;
+            Client.ClientDateOfBirth = ClientDateOfBirth;
 
             db.SaveChanges();
         }
-        public void UpdateService(Service b)
+        public void UpdateClient(Client b)
         {
-            UpdateService(b.ServiceID, b.ServiceTitle, b.ServiceResponsible, b.ServicePrice);
+            UpdateClient(b.ClientID, b.ClientFirstName, b.ClientLastName, b.ClientDateOfBirth);
         }
-        public void DeleteService(int id)
+        public void DeleteClient(int id)
         {
-            db.Services.Remove(GetService(id));
+            db.Clients.Remove(GetClient(id));
             db.SaveChanges();
         }
     }
@@ -109,48 +109,48 @@ namespace Fondok.ViewModels
 
 
 
-    class ServiceLibraryViewModel : INotifyPropertyChanged
+    class ClientLibraryViewModel : INotifyPropertyChanged
     {
-        private ServiceRepository rep;
+        private ClientRepository rep;
         private DatabaseContext db;
-        private BindingList<Service> _services;
-        public BindingList<Service> Services
+        private BindingList<Client> _Clients;
+        public BindingList<Client> Clients
         {
             get
             {
-                return _services;
+                return _Clients;
             }
             set
             {
-                _services = value;
-                NotifyPropertyChanged("Services");
+                _Clients = value;
+                NotifyPropertyChanged("Clients");
             }
         }
-        private Service _selectedService;
-        public Service SelectedService
+        private Client _selectedClient;
+        public Client SelectedClient
         {
             get
             {
-                return _selectedService;
+                return _selectedClient;
             }
             set
             {
-                _selectedService = value;
-                NotifyPropertyChanged("SelectedService");
+                _selectedClient = value;
+                NotifyPropertyChanged("SelectedClient");
             }
         }
-        public ServiceLibraryViewModel()
+        public ClientLibraryViewModel()
         {
             db = new DatabaseContext();
-            rep = new ServiceRepository(db);
-            Services = rep.GetAllServices();
-            deleteCommand = new DelegateCommand(DeleteService);
-            updateCommand = new DelegateCommand(UpdateService);
-            createCommand = new DelegateCommand(CreateService);
+            rep = new ClientRepository(db);
+            Clients = rep.GetAllClients();
+            deleteCommand = new DelegateCommand(DeleteClient);
+            updateCommand = new DelegateCommand(UpdateClient);
+            createCommand = new DelegateCommand(CreateClient);
         }
         public bool IsSelected()
         {
-            return SelectedService != null;
+            return SelectedClient != null;
         }
         private ICommand deleteCommand;
         public ICommand DeleteCommand
@@ -160,13 +160,13 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
-        public void DeleteService()
+        public void DeleteClient()
         {
             if (!IsSelected())
             {
                 return;
             }
-            rep.DeleteService(SelectedService.ServiceID);
+            rep.DeleteClient(SelectedClient.ClientID);
         }
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
@@ -176,16 +176,16 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
-        public void UpdateService()
+        public void UpdateClient()
         {
             if (!IsSelected())
             {
                 return;
             }
-            ServiceViewModel bwvm = new ServiceViewModel(SelectedService);
+            ClientViewModel bwvm = new ClientViewModel(SelectedClient);
             if (bwvm.Run())
             {
-                rep.UpdateService(SelectedService);
+                rep.UpdateClient(SelectedClient);
             }
         }
         private DelegateCommand createCommand;
@@ -196,13 +196,13 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
-        public void CreateService()
+        public void CreateClient()
         {
-            Service bk = new Service();
-            ServiceViewModel bwvm = new ServiceViewModel(bk);
+            Client bk = new Client();
+            ClientViewModel bwvm = new ClientViewModel(bk);
             if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
             {
-                rep.AddService(bk);
+                rep.AddClient(bk);
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

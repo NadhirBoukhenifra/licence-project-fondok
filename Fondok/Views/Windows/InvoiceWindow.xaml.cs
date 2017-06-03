@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fondok.Views
+namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for InvoiceWindow.xaml
     /// </summary>
-    public partial class ServiceView : UserControl
+    public partial class InvoiceWindow : Window
     {
-        public ServiceView()
+        public InvoiceWindow()
         {
             InitializeComponent();
         }
-        void ServiceViewLoaded(object sender, RoutedEventArgs e)
+        private void AddInvoiceClick(object sender, RoutedEventArgs e)
         {
-            ServicesGrid.UpdateLayout();
-            ServicesGrid.Items.Refresh();
+            DialogResult = true;
+
         }
-        
     }
 }

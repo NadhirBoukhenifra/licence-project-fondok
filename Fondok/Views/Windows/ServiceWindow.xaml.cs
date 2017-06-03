@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fondok.Context;
+using Fondok.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,25 +12,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fondok.Views
+namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for ServiceWindow.xaml
     /// </summary>
-    public partial class ServiceView : UserControl
+    public partial class ServiceWindow : Window
     {
-        public ServiceView()
+        public ServiceWindow()
         {
             InitializeComponent();
         }
-        void ServiceViewLoaded(object sender, RoutedEventArgs e)
+        private void AddServiceClick(object sender, RoutedEventArgs e)
         {
-            ServicesGrid.UpdateLayout();
-            ServicesGrid.Items.Refresh();
+            DialogResult = true;
+            
         }
-        
     }
 }

@@ -6,6 +6,7 @@ using System.Windows.Controls.Primitives;
 using MaterialDesignThemes.Wpf;
 using Fondok.ViewModels;
 using System.Data.SQLite;
+using Fondok.Views.Windows;
 namespace Fondok.Views
 {
     public partial class RoomView : UserControl
@@ -13,21 +14,15 @@ namespace Fondok.Views
         public RoomView()
         {
             InitializeComponent();
-            DataContext = new RoomViewModel();
         }
-        private void AddRoomsClick(object sender, RoutedEventArgs e)
+       
+       
+        void RoomViewLoaded(object sender, RoutedEventArgs e)
         {
-            RoomWindow RoomWindow = new RoomWindow();
-            RoomWindow.ShowDialog();
+            RoomGrid.UpdateLayout();
+            RoomGrid.Items.Refresh();
+
         }
-        private void RoomsViewLoaded(object sender, RoutedEventArgs e)
-        {
-            RoomsGrid.Items.Refresh();
-            MessageBox.Show("RoomViewLoaded");
-        }
-        private void RefreshClick(object sender, RoutedEventArgs e)
-        {
-            RoomsGrid.Items.Refresh();
-        }
+
     }
 }

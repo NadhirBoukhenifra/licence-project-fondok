@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace Fondok.Views
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for ReservationView.xaml
     /// </summary>
-    public partial class ServiceView : UserControl
+    public partial class ReservationView : UserControl
     {
-        public ServiceView()
+        public ReservationView()
         {
             InitializeComponent();
         }
-        void ServiceViewLoaded(object sender, RoutedEventArgs e)
+
+        void ReservationViewLoaded(object sender, RoutedEventArgs e)
         {
-            ServicesGrid.UpdateLayout();
-            ServicesGrid.Items.Refresh();
+            ReservationsGrid.UpdateLayout();
+            ReservationsGrid.Items.Refresh();
         }
-        
     }
 }

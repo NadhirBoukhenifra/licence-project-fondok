@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace Fondok.Views
 {
     /// <summary>
-    /// Interaction logic for BookView.xaml
+    /// Interaction logic for EmployeeView.xaml
     /// </summary>
-    public partial class BookView : UserControl
+    public partial class EmployeeView : UserControl
     {
-        public BookView()
+        public EmployeeView()
         {
             InitializeComponent();
+        }
+         void EmployeeViewLoaded(object sender, RoutedEventArgs e)
+        {
+            EmployeesGrid.UpdateLayout();
+            EmployeesGrid.Items.Refresh();
         }
     }
 }

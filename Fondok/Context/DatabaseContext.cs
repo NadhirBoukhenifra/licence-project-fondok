@@ -15,16 +15,18 @@ namespace Fondok.Context
         public DatabaseContext() :
             base(new SQLiteConnection()
             {
-                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = "C:\\USERS\\Nadhir\\Desktop\\data.db", ForeignKeys = true }.ConnectionString
+                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = "C:\\USERS\\Nadhir\\Desktop\\database.db", ForeignKeys = true }.ConnectionString
             }, true)
         {
         }
       
 
-        //public DbSet<EmployeeMaster> EmployeeMaster { get; set; }
+        public DbSet<Employee> Employees { get; set; }
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<Book> Books { get; set; }
+        public DbSet<Client> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
     }
 
 }

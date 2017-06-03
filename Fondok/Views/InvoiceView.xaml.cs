@@ -16,19 +16,18 @@ using System.Windows.Shapes;
 namespace Fondok.Views
 {
     /// <summary>
-    /// Interaction logic for ServiceView.xaml
+    /// Interaction logic for InvoiceView.xaml
     /// </summary>
-    public partial class ServiceView : UserControl
+    public partial class InvoiceView : UserControl
     {
-        public ServiceView()
+        public InvoiceView()
         {
             InitializeComponent();
         }
-        void ServiceViewLoaded(object sender, RoutedEventArgs e)
+        void InvoiceViewLoaded(object sender, RoutedEventArgs e)
         {
-            ServicesGrid.UpdateLayout();
-            ServicesGrid.Items.Refresh();
+            InvoicesGrid.UpdateLayout();
+            InvoicesGrid.Items.Refresh();
         }
-        
     }
 }
