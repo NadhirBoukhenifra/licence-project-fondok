@@ -24,10 +24,20 @@ namespace Fondok.Views.Windows
         public ServiceWindow()
         {
             InitializeComponent();
-        }
-        private void AddServiceClick(object sender, RoutedEventArgs e)
+
+            //using (var context = new DatabaseContext())
+            //{
+            //    var EmployeesList = (from s in context.Employees select s).ToList<Employee>();
+
+            //}
+           
+
+    }
+    private void AddServiceClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+
+
             
         }
     }

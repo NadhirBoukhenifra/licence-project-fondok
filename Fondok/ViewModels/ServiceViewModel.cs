@@ -10,16 +10,60 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
+using System.Collections.ObjectModel;
 
 namespace Fondok.ViewModels
 {
+
     class ServiceViewModel : INotifyPropertyChanged
     {
-        
+        private string _title = "HMS Login";
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                Title = _title;
+
+            }
+        }
+
         public ServiceViewModel() : this(null) { }
         public ServiceViewModel(Service service)
         {
             EditService = service;
+
+            using (var context = new DatabaseContext())
+            {
+                var EmployeesList = (from s in context.Employees select s).ToList<Employee>();
+
+                for (int i = 0; i < EmployeesList.Count(); i++)
+                {
+                    ResList = EmployeesList[i].EmployeeUserName;
+                }
+                //ResList = "Hekk" + EmployeesList[0].EmployeeJob;
+                ResList = EmployeesList.Count();
+            }
+
+
+
+
+        }
+        private object _ResList;
+        public object ResList 
+        {
+            get
+            {
+                return _ResList;
+            }
+            set
+            {
+                _ResList = value;
+                NotifyPropertyChanged("ResList");
+            }
         }
         private Service _editService;
         public Service EditService
@@ -49,6 +93,9 @@ namespace Fondok.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+
     }
 
 
@@ -200,7 +247,8 @@ namespace Fondok.ViewModels
         {
             Service bk = new Service();
             ServiceViewModel bwvm = new ServiceViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            if (bwvm.Run() && bk.ServiceTitle != "" && bk.ServiceResponsible != "" && bk.ServicePrice != "" 
+                && bk.ServiceTitle != null && bk.ServiceResponsible != null && bk.ServicePrice != null)
             {
                 rep.AddService(bk);
             }

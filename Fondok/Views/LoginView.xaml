@@ -43,7 +43,7 @@
       Grid.Row="0"
       Margin="16"
       Padding="8">
-      <Label Content="Log in to your account, Default User: user, Password: 123" />
+      <Label Content="Log in to your account, Default User: user, Password: user" />
     </materialDesign:Card>
     <!--  / info crad in the top  -->
 

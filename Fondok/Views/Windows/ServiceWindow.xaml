@@ -29,6 +29,7 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Grid
       Grid.Row="0"
@@ -77,8 +78,12 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ResponsibleField, Path=BorderBrush}"
         Kind="Worker" />
-      <TextBox
+
+            <ComboBox
         x:Name="ResponsibleField"
+        ItemsSource="{Binding ResList}"
+        SelectedItem="{Binding SelectedRes}"
+        IsSynchronizedWithCurrentItem="True"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
@@ -87,7 +92,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Responsible"
         Text="{Binding EditService.ServiceResponsible}" />
-    </Grid>
+        </Grid>
   
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
@@ -129,5 +134,6 @@
         Content="Confirm Service"
         Foreground="#DDFFFFFF" />
     </Grid>
+        <TextBlock Grid.Row="5" Text="{Binding ResList}" x:Name="TestBoucle"></TextBlock>
   </Grid>
 </Window>
