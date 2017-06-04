@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fondok.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,14 @@ namespace Fondok.Views.Windows
         public EmployeeWindow()
         {
             InitializeComponent();
+            //var context = new DatabaseContext();
+
+            //var EmployeeJobList = (from s in context.Employees select s.EmployeeUserName).ToArray();
+            string[] EmployeeJobList = new string[] { "Admin", "Receptionist"};
+
+            EmployeeJobField.ItemsSource = EmployeeJobList;
+
+
         }
 
         private void AddEmployeeClick(object sender, RoutedEventArgs e)

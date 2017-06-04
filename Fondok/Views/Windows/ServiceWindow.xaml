@@ -85,7 +85,7 @@
 
         <ComboBox 
         x:Name="ResponsibleField"
-        ItemsSource="{Binding REmployeesList}"
+        ItemsSource="{Binding ResponsibleList}"
         SelectedItem="{Binding EditService.ServiceResponsible}"
         IsSynchronizedWithCurrentItem="True"
         Grid.Row="2"
