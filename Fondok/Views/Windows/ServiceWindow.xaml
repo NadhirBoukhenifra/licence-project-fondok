@@ -20,9 +20,13 @@
   TextOptions.TextRenderingMode="Auto"
   WindowStartupLocation="CenterScreen"
   WindowStyle="ToolWindow"
-  mc:Ignorable="d">
-
-  <Grid>
+  xmlns:prism="http://prismlibrary.com/"
+  xmlns:vm="clr-namespace:Fondok.ViewModels"
+  prism:ViewModelLocator.AutoWireViewModel="True">
+    <Window.DataContext>
+        <vm:ServiceLibraryViewModel />
+    </Window.DataContext>
+    <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
@@ -79,19 +83,19 @@
         Foreground="{Binding ElementName=ResponsibleField, Path=BorderBrush}"
         Kind="Worker" />
 
-            <ComboBox
+        <ComboBox 
         x:Name="ResponsibleField"
-        ItemsSource="{Binding ResList}"
-        SelectedItem="{Binding SelectedRes}"
+        ItemsSource="{Binding REmployeesList}"
+        SelectedItem="{Binding EditService.ServiceResponsible}"
         IsSynchronizedWithCurrentItem="True"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Height="Auto"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Responsible"
-        Text="{Binding EditService.ServiceResponsible}" />
+         />
         </Grid>
   
     <Grid Grid.Row="3">

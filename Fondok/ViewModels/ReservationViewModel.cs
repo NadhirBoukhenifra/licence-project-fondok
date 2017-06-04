@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
+using System;
 
 namespace Fondok.ViewModels
 {
@@ -206,7 +207,7 @@ namespace Fondok.ViewModels
         {
             Reservation bk = new Reservation();
             ReservationViewModel bwvm = new ReservationViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            if (bwvm.Run())
             {
                 rep.AddReservation(bk);
             }

@@ -10,9 +10,8 @@
   prism:ViewModelLocator.AutoWireViewModel="True"
   Loaded="ReservationViewLoaded"
   mc:Ignorable="d">
-
     <UserControl.DataContext>
-        <vm:ReservationLibraryViewModel />
+        <vm:ReservationLibraryViewModel/>
     </UserControl.DataContext>
 
     <Grid>

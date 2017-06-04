@@ -149,7 +149,6 @@
     </ApplicationDefinition>
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
-    <Compile Include="Globals.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Invoice.cs" />
@@ -160,7 +159,6 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="ModuleInitializer.cs" />
     <Compile Include="Context\SQLiteConfiguration.cs" />
-    <Compile Include="SQLiteDatabase.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\InvoiceViewModel.cs" />

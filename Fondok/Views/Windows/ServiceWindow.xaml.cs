@@ -1,5 +1,6 @@
 ﻿using Fondok.Context;
 using Fondok.Models;
+using Fondok.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,19 +26,16 @@ namespace Fondok.Views.Windows
         {
             InitializeComponent();
 
-            //using (var context = new DatabaseContext())
-            //{
-            //    var EmployeesList = (from s in context.Employees select s).ToList<Employee>();
+            var context = new DatabaseContext();
 
-            //}
-           
-
-    }
+            var EmployeesList = (from s in context.Employees select s.EmployeeUserName).ToArray();
+                     
+            ResponsibleField.ItemsSource = EmployeesList;
+            
+        }
     private void AddServiceClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-
-
             
         }
     }
