@@ -6,10 +6,13 @@
   xmlns:local="clr-namespace:Fondok.Views"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:prism="http://prismlibrary.com/"
+  xmlns:vm="clr-namespace:Fondok.ViewModels"
   Title="Service Settings"
   Width="512"
   MinWidth="512"
   MaxWidth="512"
+  prism:ViewModelLocator.AutoWireViewModel="True"
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
@@ -19,14 +22,11 @@
   TextOptions.TextFormattingMode="Ideal"
   TextOptions.TextRenderingMode="Auto"
   WindowStartupLocation="CenterScreen"
-  WindowStyle="ToolWindow"
-  xmlns:prism="http://prismlibrary.com/"
-  xmlns:vm="clr-namespace:Fondok.ViewModels"
-  prism:ViewModelLocator.AutoWireViewModel="True">
-    <Window.DataContext>
-        <vm:ServiceLibraryViewModel />
-    </Window.DataContext>
-    <Grid>
+  WindowStyle="ToolWindow">
+  <Window.DataContext>
+    <vm:ServiceLibraryViewModel />
+  </Window.DataContext>
+  <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
@@ -83,11 +83,8 @@
         Foreground="{Binding ElementName=ResponsibleField, Path=BorderBrush}"
         Kind="Worker" />
 
-        <ComboBox 
+      <ComboBox
         x:Name="ResponsibleField"
-        ItemsSource="{Binding ResponsibleList}"
-        SelectedItem="{Binding EditService.ServiceResponsible}"
-        IsSynchronizedWithCurrentItem="True"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
@@ -95,9 +92,11 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Responsible"
-         />
-        </Grid>
-  
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding ResponsibleList}"
+        SelectedItem="{Binding EditService.ServiceResponsible}" />
+    </Grid>
+
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -138,6 +137,9 @@
         Content="Confirm Service"
         Foreground="#DDFFFFFF" />
     </Grid>
-        <TextBlock Grid.Row="5" Text="{Binding ResList}" x:Name="TestBoucle"></TextBlock>
+    <TextBlock
+      x:Name="TestBoucle"
+      Grid.Row="5"
+      Text="{Binding ResList}" />
   </Grid>
 </Window>

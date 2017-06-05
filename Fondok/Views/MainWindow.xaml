@@ -211,7 +211,7 @@
             Services
           </Button>
         </Grid>
-          
+
         <Grid Grid.Row="1" Grid.Column="4">
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -239,7 +239,7 @@
             Invoices
           </Button>
         </Grid>
-          
+
         <Grid Grid.Row="1" Grid.Column="5">
           <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -268,13 +268,13 @@
           </Button>
         </Grid>
 
-                <Grid Grid.Row="1" Grid.Column="6">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="12" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <materialDesign:PackIcon
+        <Grid Grid.Row="1" Grid.Column="6">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="12" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+          <materialDesign:PackIcon
             x:Name="EmployeeIcon"
             Grid.Row="0"
             Width="28"
@@ -282,8 +282,8 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Foreground="{DynamicResource PrimaryHueMidBrush}"
-            Kind="Worker"/>
-                    <Button
+            Kind="Worker" />
+          <Button
             x:Name="EmployeeButton"
             Grid.Row="2"
             Margin="8,0,8,0"
@@ -292,10 +292,10 @@
             CommandParameter="EmployeeView"
             Style="{StaticResource MaterialDesignFlatButton}"
             ToolTip="Employees Page">
-                        Employees
-                    </Button>
-                </Grid>
-            </Grid>
+            Employees
+          </Button>
+        </Grid>
+      </Grid>
     </materialDesign:Card>
     <Grid Grid.Row="2">
       <ContentControl prism:RegionManager.RegionName="ContentRegion" />

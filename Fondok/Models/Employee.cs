@@ -28,9 +28,8 @@ namespace Fondok.Models
         [Column(Name = "EmployeeLastName", DbType = "VARCHAR")]
         public string EmployeeLastName { get; set; }
 
-        [Column(Name = "EmployeeDateOfBirth", DbType = "VARCHAR")]
-        public string EmployeeDateOfBirth { get; set; }
-
+        [Column(Name = "EmployeeDateOfBirth", DbType = "DATETIME")]
+        public DateTime EmployeeDateOfBirth  { get; set; }
 
     }
 }

@@ -1,0 +1,2 @@
+xstyler.exe -d "C:\Users\NADHIR\Source\Repos\Fondok\Fondok\Views\Windows" -c xstyler.exe.config
+xstyler.exe -d "C:\Users\NADHIR\Source\Repos\Fondok\Fondok\Views" -c xstyler.exe.config
