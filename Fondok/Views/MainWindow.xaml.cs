@@ -237,6 +237,7 @@ namespace Fondok.Views
                     //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                     Application.Current.Shutdown();
                     Process.GetCurrentProcess().Kill();
+                    
 
                     break;
                 case MessageBoxResult.No:

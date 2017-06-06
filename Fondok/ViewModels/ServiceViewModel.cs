@@ -10,17 +10,73 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Fondok.ViewModels
 {
+
     class ServiceViewModel : INotifyPropertyChanged
     {
-        
+        private string _title = "Services";
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                Title = _title;
+
+            }
+        }
+
         public ServiceViewModel() : this(null) { }
         public ServiceViewModel(Service service)
         {
             EditService = service;
+
+            //using (var context = new DatabaseContext())
+            //{
+            //    //List<Employee> EmployeesList = (from s in context.Employees select s).ToList<Employee>();
+            //    List<Employee> EmployeesList = (from s in context.Employees select s).ToList<Employee>();
+
+            //    //ResList = EmployeesList[0].EmployeeLastName.ToList();
+            //    //for (int i = 0; i < EmployeesList.Count(); i++)
+            //    //{
+            //    //    ResList = EmployeesList[i].EmployeeUserName;
+            //    //}
+            //    //ResList = "Hekk" + EmployeesList[0].EmployeeJob;
+            //    //ResList = EmployeesList[0].EmployeeLastName;
+            //    //REmployeesList = new List<Employee> { };
+            //    //foreach (var s in EmployeesList)
+            //    //{
+            //    //    REmployeesList.Add(EmployeesList[i].ToString());
+            //    //}
+            //    MessageBox.Show(EmployeesList.Count().ToString() + EmployeesList[0].EmployeeUserName + EmployeesList[1].EmployeeUserName);
+                
+
+            //}
+
+
+
+
         }
+
+        //private string _REmployeesList;
+        //public string REmployeesList
+        //{
+        //    get
+        //    {
+        //        return REmployeesList;
+        //    }
+        //    set
+        //    {
+        //        _REmployeesList = value;
+        //        NotifyPropertyChanged("REmployeesList");
+        //    }
+        //}
         private Service _editService;
         public Service EditService
         {
@@ -49,6 +105,9 @@ namespace Fondok.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
+
     }
 
 
@@ -77,7 +136,7 @@ namespace Fondok.ViewModels
         {
             return db.Services.Where(b => b.ServiceID.Equals(id)).First();
         }
-        public void UpdateService(int serviceID, string serviceTitle, string serviceResponsible, string servicePrice)
+        public void UpdateService(int serviceID, string serviceTitle, string serviceResponsible, int servicePrice)
         {
             Service service = GetService(serviceID);
             service.ServiceTitle = serviceTitle;
@@ -200,10 +259,11 @@ namespace Fondok.ViewModels
         {
             Service bk = new Service();
             ServiceViewModel bwvm = new ServiceViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            if (bwvm.Run() && bk.ServiceTitle != "" && bk.ServiceResponsible != "" && bk.ServicePrice > 0)
             {
                 rep.AddService(bk);
             }
+            
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)

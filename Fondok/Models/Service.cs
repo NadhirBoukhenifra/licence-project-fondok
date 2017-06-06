@@ -15,8 +15,8 @@ namespace Fondok.Models
         [Column(Name = "ServiceResponsible", DbType = "VARCHAR")]
         public string ServiceResponsible { get; set; }
 
-        [Column(Name = "ServicePrice", DbType = "VARCHAR")]
-        public string ServicePrice { get; set; }
+        [Column(Name = "ServicePrice", DbType = "INTEGER")]
+        public int ServicePrice { get; set; }
 
     }
 }
