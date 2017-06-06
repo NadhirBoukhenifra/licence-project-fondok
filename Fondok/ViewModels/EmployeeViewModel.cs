@@ -87,6 +87,8 @@ namespace Fondok.ViewModels
         public void AddEmployee(Employee Employee)
         {
             db.Employees.Add(Employee);
+            //Employee.EmployeeDateOfBirth = Convert.ToDateTime(String.Format("{0:d}", Employee.EmployeeDateOfBirth).ToString());
+
             db.SaveChanges();
         }
         public Employee GetEmployee(int id)
@@ -94,7 +96,7 @@ namespace Fondok.ViewModels
             return db.Employees.Where(b => b.EmployeeID.Equals(id)).First();
         }
         public void UpdateEmployee(int EmployeeID, string EmployeeUserName, string EmployeePassWord, string EmployeeEMail
-            , string EmployeeJob, string EmployeeFirsName, string EmployeeLastName, DateTime EmployeeDateOfBirth)
+            , string EmployeeJob, string EmployeeFirsName, string EmployeeLastName, Date EmployeeDateOfBirth)
         {
             Employee Employee = GetEmployee(EmployeeID);
             
@@ -106,13 +108,14 @@ namespace Fondok.ViewModels
             Employee.EmployeeFirsName = EmployeeFirsName;
             Employee.EmployeeLastName = EmployeeLastName;
 
-            //Employee.EmployeeDateOfBirth = DateTime.Parse(EmployeeDateOfBirth.ToString(), new CultureInfo("en-US", true));
-            //var date = DateTime.Parse(strDate, new CultureInfo("en-US", true))
+            /*String.Format("{0:d}", EmployeeDateOfBirth)*/;
+            //EmployeeDateOfBirth = Convert.ToDateTime(String.Format("{0:d}", EmployeeDateOfBirth).ToString());
+            //MessageBox.Show(String.Format("{0:d}", EmployeeDateOfBirthField.SelectedDate).ToString());
 
-            //Employee.EmployeeDateOfBirth = Convert.ToDateTime(EmployeeDateOfBirth.Year.ToString());
-            //Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
+            //Employee.EmployeeDateOfBirth = Convert.ToDateTime(String.Format("{0:d}", EmployeeDateOfBirth).ToString());
+
+            //Employee.EmployeeDateOfBirth = Convert.ToDateTime(String.Format("{0:d}", EmployeeDateOfBirth).ToString());
             Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
-            //Employee.EmployeeDateOfBirth = EmployeeDateOfBirth.yea;
 
             db.SaveChanges();
         }
@@ -230,7 +233,6 @@ namespace Fondok.ViewModels
         public void CreateEmployee()
         {
             Employee bk = new Employee();
-            bk.EmployeeDateOfBirth = DateTime.Now;
 
             EmployeeViewModel bwvm = new EmployeeViewModel(bk);
             if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)

@@ -285,7 +285,7 @@
         PreviewTouchDown="TextBoxPreviewTouchDown"
         SelectedDate="{Binding EditEmployee.EmployeeDateOfBirth}"
          
-        SelectedDateChanged="DatePickerSelectedDateChanged"
+        SelectedDateChanged="DatePickerSelectedDateChanged" SelectedDateFormat="Short"
           />
     </Grid>
     <Grid Grid.Row="8">
