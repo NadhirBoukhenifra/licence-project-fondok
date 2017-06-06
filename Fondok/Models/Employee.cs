@@ -31,7 +31,7 @@ namespace Fondok.Models
 
         
         [Column(Name = "EmployeeDateOfBirth", DbType = "DATE")]
-        public Date EmployeeDateOfBirth  { get; set; }
+        public DateTime EmployeeDateOfBirth  { get; set; }
 
     }
 }

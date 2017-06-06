@@ -62,10 +62,11 @@ namespace Fondok.Views.Windows
 
             //EmployeeDateOfBirthField.SelectedDate = DateTime.ParseExact(@EmployeeDateOfBirthField.SelectedDate.Value.ToString(), @"dd/MM/yy",
             //    System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
-            
+
             //MessageBox.Show("02::" + EmployeeDateOfBirthField.SelectedDate.Value.ToString());
             //MessageBox.Show("03::" + EmployeeDateOfBirthField.SelectedDate.Value.ToShortDateString());
-
+            //EmployeeDateOfBirthField.SelectedDate = DateTime.Now;
+            //EmployeeDateOfBirthField.SelectedDate = DateTime.Now;
         }
 
     }
