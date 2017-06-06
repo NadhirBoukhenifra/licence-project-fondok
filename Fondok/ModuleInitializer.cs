@@ -20,6 +20,7 @@ namespace Fondok
             _regionManager.RegisterViewWithRegion("ContentRegion", typeof(ReservationView));
 
 
+			
 
         }
 

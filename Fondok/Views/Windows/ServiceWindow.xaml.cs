@@ -28,7 +28,7 @@ namespace Fondok.Views.Windows
 
             var context = new DatabaseContext();
 
-            var ResponsibleList = (from s in context.Employees select s.EmployeeUserName).ToArray();
+            var ResponsibleList = (from s in context.Employees where(s.EmployeeID == 1) select s.EmployeeUserName).ToArray();
                      
             ResponsibleField.ItemsSource = ResponsibleList;
             

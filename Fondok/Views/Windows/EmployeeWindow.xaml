@@ -7,6 +7,7 @@
   xmlns:local="clr-namespace:Fondok.Views"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:commands="clr-namespace:Fondok.Commands"
   Title="Employee Settings"
   Width="512"
   MinWidth="512"
@@ -66,7 +67,7 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee User Name"
-        Text="{Binding EditEmployee.EmployeeUserName}" />
+        Text="{Binding EditEmployee.EmployeeUserName, ValidatesOnDataErrors=True}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -175,18 +176,18 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=EmployeeFirsNameField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=EmployeeFirstNameField, Path=BorderBrush}"
         Kind="Face" />
       <TextBox
-        x:Name="EmployeeFirsNameField"
+        x:Name="EmployeeFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Employee Firs Name"
-        Text="{Binding EditEmployee.EmployeeFirsName}" />
+        materialDesign:HintAssist.Hint="Employee First Name"
+        Text="{Binding EditEmployee.EmployeeFirstName}" />
     </Grid>
 
     <Grid Grid.Row="6">
@@ -271,7 +272,7 @@
         SelectedDateFormat="Long" />-->
             <!--SelectedDate="{Binding EditEmployee.EmployeeDateOfBirth, StringFormat='{}{0:yyyy-MM-dd , System.Globalization.CultureInfo.InvariantCulture}'}"-->
 
-            <DatePicker
+            <!--<DatePicker
         x:Name="EmployeeDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
@@ -284,10 +285,33 @@
         PreviewMouseDown="TextBoxPreviewMouseDown"
         PreviewTouchDown="TextBoxPreviewTouchDown"
         SelectedDate="{Binding EditEmployee.EmployeeDateOfBirth}"
-         
         SelectedDateChanged="DatePickerSelectedDateChanged" SelectedDateFormat="Short"
-          />
-    </Grid>
+          />-->
+            <DatePicker x:Name="EmployeeDateOfBirthField"  
+                        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        Panel.ZIndex="0"
+        materialDesign:HintAssist.Hint="Employee Date Of Birth"
+        PreviewMouseDown="TextBoxPreviewMouseDown"
+        PreviewTouchDown="TextBoxPreviewTouchDown" 
+        
+        SelectedDateChanged="DatePickerSelectedDateChanged" SelectedDateFormat="Short"
+                        >
+                <DatePicker.SelectedDate>
+                    <Binding Path="EditEmployee.EmployeeDateOfBirth" 
+                             UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <commands:FutureDateValidationRule 
+                                ValidatesOnTargetUpdated="True" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </Grid>
     <Grid Grid.Row="8">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />

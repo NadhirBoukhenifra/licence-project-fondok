@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
@@ -6,6 +7,7 @@ namespace Fondok.Models
     [Table(Name = "Employees")]
     public class Employee
     {
+        
         [Column(Name = "EmployeeID", IsDbGenerated = true, IsPrimaryKey = true, DbType = "INTEGER")]
         [Key]
         public int EmployeeID { get; set; }
@@ -22,8 +24,8 @@ namespace Fondok.Models
         [Column(Name = "EmployeeJob", DbType = "VARCHAR")]
         public string EmployeeJob { get; set; }
 
-        [Column(Name = "EmployeeFirsName", DbType = "VARCHAR")]
-        public string EmployeeFirsName { get; set; }
+        [Column(Name = "EmployeeFirstName", DbType = "VARCHAR")]
+        public string EmployeeFirstName { get; set; }
 
         [Column(Name = "EmployeeLastName", DbType = "VARCHAR")]
         public string EmployeeLastName { get; set; }

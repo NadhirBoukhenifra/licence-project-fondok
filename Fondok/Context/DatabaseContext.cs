@@ -19,6 +19,7 @@ namespace Fondok.Context
             }, true)
         {
         }
+
       
 
         public DbSet<Employee> Employees { get; set; }

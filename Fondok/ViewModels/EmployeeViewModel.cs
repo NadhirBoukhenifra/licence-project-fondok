@@ -15,15 +15,16 @@ using System.Windows;
 
 namespace Fondok.ViewModels
 {
-    class EmployeeViewModel : INotifyPropertyChanged
+    class EmployeeViewModel : INotifyPropertyChanged 
     {
 
         public EmployeeViewModel() : this(null) { }
+        private DateTime? _futureValidatingDate;
         public EmployeeViewModel(Employee Employee)
         {
             EditEmployee = Employee;
 
-            Employee.EmployeeDateOfBirth = DateTime.Now;
+            Employee.EmployeeDateOfBirth = DateTime.Now.Date;
         }
         private Employee _editEmployee;
         public Employee EditEmployee
@@ -47,7 +48,29 @@ namespace Fondok.ViewModels
         //    get { return _EmployeeDateOfBirth; }
         //    set { _EmployeeDateOfBirth = value; NotifyPropertyChanged("EmployeeDateOfBirth"); }
         //}
+        private int _EmployeeUserName;
+       public int EmployeeUserName
+        {
+          get
+          {
+             return _EmployeeUserName;
+           }
+           set
+           {
+                _EmployeeUserName = value;
+                NotifyPropertyChanged("EmployeeUserName");
+          }
+       }
 
+        public DateTime? FutureValidatingDate
+        {
+            get { return _futureValidatingDate; }
+            set
+            {
+                _futureValidatingDate = EditEmployee.EmployeeDateOfBirth;
+                NotifyPropertyChanged("FutureValidatingDate");
+            }
+        }
 
 
         public bool Run()
@@ -94,7 +117,7 @@ namespace Fondok.ViewModels
             return db.Employees.Where(b => b.EmployeeID.Equals(id)).First();
         }
         public void UpdateEmployee(int EmployeeID, string EmployeeUserName, string EmployeePassWord, string EmployeeEMail
-            , string EmployeeJob, string EmployeeFirsName, string EmployeeLastName, DateTime EmployeeDateOfBirth)
+            , string EmployeeJob, string EmployeeFirstName, string EmployeeLastName, DateTime EmployeeDateOfBirth)
         {
             Employee Employee = GetEmployee(EmployeeID);
             
@@ -103,16 +126,16 @@ namespace Fondok.ViewModels
             Employee.EmployeePassWord = EmployeePassWord;
             Employee.EmployeeEMail = EmployeeEMail;
             Employee.EmployeeJob = EmployeeJob;
-            Employee.EmployeeFirsName = EmployeeFirsName;
+            Employee.EmployeeFirstName = EmployeeFirstName;
             Employee.EmployeeLastName = EmployeeLastName;
-            Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
+            Employee.EmployeeDateOfBirth = EmployeeDateOfBirth.Date;
 
             db.SaveChanges();
         }
         public void UpdateEmployee(Employee b)
         {
             UpdateEmployee(b.EmployeeID, b.EmployeeUserName, b.EmployeePassWord, b.EmployeeEMail
-                , b.EmployeeJob, b.EmployeeFirsName, b.EmployeeLastName, b.EmployeeDateOfBirth);
+                , b.EmployeeJob, b.EmployeeFirstName, b.EmployeeLastName, b.EmployeeDateOfBirth);
         }
         public void DeleteEmployee(int id)
         {
@@ -225,9 +248,19 @@ namespace Fondok.ViewModels
             Employee bk = new Employee();
 
             EmployeeViewModel bwvm = new EmployeeViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+        
+            if (bwvm.Run() && bk.EmployeeDateOfBirth < DateTime.Now && bk.EmployeeFirstName != null && bk.EmployeeLastName != null && bk.EmployeeUserName != null
+                && bk.EmployeePassWord != null && bk.EmployeeJob != null && bk.EmployeeEMail != null)
             {
+                //if (bk.EmployeeFirsName == null)
+                //{
+                //    MessageBox.Show("gggggggggggggggggg");
+                //}
                 rep.AddEmployee(bk);
+            }
+            else
+            {
+                MessageBox.Show("Hello");
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

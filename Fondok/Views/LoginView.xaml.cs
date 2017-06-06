@@ -45,7 +45,7 @@ namespace Fondok.Views
 
                 if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
                 {
-                    MessageBox.Show(" Welcome: "  + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirsName + " " + EmployeesList[0].EmployeeLastName);
+                    MessageBox.Show(" Welcome: "  + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirstName + " " + EmployeesList[0].EmployeeLastName);
                     Application.Current.MainWindow.Show();
                     this.Hide();
                 }

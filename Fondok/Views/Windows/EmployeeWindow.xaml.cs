@@ -28,11 +28,17 @@ namespace Fondok.Views.Windows
             string[] EmployeeJobList = new string[] { "Admin", "Receptionist"};
 
             EmployeeJobField.ItemsSource = EmployeeJobList;
-
+            MessageBox.Show(DateTime.Now.Date.AddYears(-50).ToString());
+            MessageBox.Show(DateTime.Now.Date.AddYears(-10)
+                .ToString());
         }
 
         private void AddEmployeeClick(object sender, RoutedEventArgs e)
         {
+            if (EmployeeUserNameField.Text == "")
+            {
+                MessageBox.Show("Edit Content");
+            }
             DialogResult = true;
 
         }
@@ -50,23 +56,7 @@ namespace Fondok.Views.Windows
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             EmployeeDateOfBirthField.IsDropDownOpen = false;
-            //string date = 
-            //    EmployeeDateOfBirthField.SelectedDate.Value.Month.ToString()+"/"+ EmployeeDateOfBirthField.SelectedDate.Value.Day.ToString()+"/"+
-            //            EmployeeDateOfBirthField.SelectedDate.Value.Year.ToString();
-
-            //MessageBox.Show("01::"+date);
-            //EmployeeDateOfBirthField.SelectedDate = Convert.ToDateTime(date);
-
-            //MessageBox.Show("02::" + EmployeeDateOfBirthField.SelectedDate.Value.ToShortDateString());
-
-
-            //EmployeeDateOfBirthField.SelectedDate = DateTime.ParseExact(@EmployeeDateOfBirthField.SelectedDate.Value.ToString(), @"dd/MM/yy",
-            //    System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
-
-            //MessageBox.Show("02::" + EmployeeDateOfBirthField.SelectedDate.Value.ToString());
-            //MessageBox.Show("03::" + EmployeeDateOfBirthField.SelectedDate.Value.ToShortDateString());
-            //EmployeeDateOfBirthField.SelectedDate = DateTime.Now;
-            //EmployeeDateOfBirthField.SelectedDate = DateTime.Now;
+            EmployeeDateOfBirthField.SelectedDate = EmployeeDateOfBirthField.SelectedDate.Value.Date;
         }
 
     }
