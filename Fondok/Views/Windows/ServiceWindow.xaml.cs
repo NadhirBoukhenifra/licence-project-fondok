@@ -28,9 +28,9 @@ namespace Fondok.Views.Windows
 
             var context = new DatabaseContext();
 
-            var EmployeesList = (from s in context.Employees select s.EmployeeUserName).ToArray();
+            var ResponsibleList = (from s in context.Employees select s.EmployeeUserName).ToArray();
                      
-            ResponsibleField.ItemsSource = EmployeesList;
+            ResponsibleField.ItemsSource = ResponsibleList;
             
         }
     private void AddServiceClick(object sender, RoutedEventArgs e)

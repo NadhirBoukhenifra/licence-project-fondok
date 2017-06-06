@@ -2,13 +2,15 @@
 using Fondok.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Fondok.Views;
 using Fondok.Views.Windows;
 using Fondok.Context;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
+using System;
+using System.Windows.Controls;
+using System.Globalization;
 using System.Windows;
 
 namespace Fondok.ViewModels
@@ -20,6 +22,8 @@ namespace Fondok.ViewModels
         public EmployeeViewModel(Employee Employee)
         {
             EditEmployee = Employee;
+
+            Employee.EmployeeDateOfBirth = DateTime.Now;
         }
         private Employee _editEmployee;
         public Employee EditEmployee
@@ -34,6 +38,18 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("EditEmployee");
             }
         }
+
+        //private Nullable<DateTime> _EmployeeDateOfBirth = DateTime.Now;
+        ////[TypeConverterAttribute(typeof(DateTimeTypeConverter))]
+
+        //public Nullable<DateTime> EmployeeDateOfBirth
+        //{
+        //    get { return _EmployeeDateOfBirth; }
+        //    set { _EmployeeDateOfBirth = value; NotifyPropertyChanged("EmployeeDateOfBirth"); }
+        //}
+
+
+
         public bool Run()
         {
             EmployeeWindow sw = new EmployeeWindow();
@@ -78,16 +94,18 @@ namespace Fondok.ViewModels
             return db.Employees.Where(b => b.EmployeeID.Equals(id)).First();
         }
         public void UpdateEmployee(int EmployeeID, string EmployeeUserName, string EmployeePassWord, string EmployeeEMail
-            , string EmployeeJob, string EmployeeFirsName, string EmployeeLastName, string EmployeeDateOfBirth)
+            , string EmployeeJob, string EmployeeFirsName, string EmployeeLastName, DateTime EmployeeDateOfBirth)
         {
             Employee Employee = GetEmployee(EmployeeID);
+            
+
             Employee.EmployeeUserName = EmployeeUserName;
             Employee.EmployeePassWord = EmployeePassWord;
             Employee.EmployeeEMail = EmployeeEMail;
             Employee.EmployeeJob = EmployeeJob;
             Employee.EmployeeFirsName = EmployeeFirsName;
-            Employee.EmployeeEMail = EmployeeLastName;
-            Employee.EmployeeEMail = EmployeeDateOfBirth;
+            Employee.EmployeeLastName = EmployeeLastName;
+            Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
 
             db.SaveChanges();
         }
@@ -205,6 +223,7 @@ namespace Fondok.ViewModels
         public void CreateEmployee()
         {
             Employee bk = new Employee();
+
             EmployeeViewModel bwvm = new EmployeeViewModel(bk);
             if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
             {
