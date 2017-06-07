@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fondok.Context;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,12 @@ namespace Fondok.Views.Windows
         public ReservationWindow()
         {
             InitializeComponent();
+
+            var context = new DatabaseContext();
+
+            var RoomAva = (from s in context.Rooms where(s.RoomNumber == 1) select s.RoomNumber).ToArray();
+
+            ReservationInField.ItemsSource = RoomAva;
         }
 
         private void AddReservationClick(object sender, RoutedEventArgs e)

@@ -15,7 +15,7 @@ namespace Fondok.Views
         public MainWindow()
         {
             InitializeComponent();
-            ReservationButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            ReportButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
 
             dateText.Text = DateTime.Now.ToLongDateString();
         }
