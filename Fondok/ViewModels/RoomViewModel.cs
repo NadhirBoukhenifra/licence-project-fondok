@@ -13,24 +13,46 @@ using System.Windows;
 using System.ComponentModel.DataAnnotations;
 using MvvmValidation;
 using System;
+using System.Windows.Controls;
 
 namespace Fondok.ViewModels
 {
     class RoomViewModel : INotifyPropertyChanged , IDataErrorInfo
     {
+
+        private bool _IsValidProperty;
+        public bool IsValidProperty
+        {
+            get
+            {
+                return _IsValidProperty;
+            }
+            set
+            {
+                if (_IsValidProperty != value)
+                {
+                    _IsValidProperty = value;
+                    NotifyPropertyChanged("IsValidProperty");
+
+                }
+            }
+        }
         public RoomViewModel() : this(null) { }
         public RoomViewModel(Room Room)
         {
             EditRoom = Room;
             this.RoomNumber = EditRoom.RoomNumber;
+            IsValidProperty = false;
+        }
+        public string Error
+        {
+            get { throw new NotImplementedException(); }
         }
         public int? RoomNumber { get; set; }
 
-        public string Error
-        {
-            get { return null; }
-        }
+       
 
+        
 
         public string this[string columnName]
         {
@@ -47,6 +69,21 @@ namespace Fondok.ViewModels
                 return string.Empty;
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         private Room _editRoom;
         public Room EditRoom

@@ -22,11 +22,16 @@ namespace Fondok.Views.Windows
     /// Interaction logic for 
     /// </summary>
     public partial class RoomWindow : Window
+
     {
+        private int errorCount;
+        
         public RoomWindow()
         {
             InitializeComponent();
 
+
+            
             string[] RoomTypeList = new string[] { "Signle", "Double", "Double Double", "Twin", "InterConnecting", "Adjoining", "Duplex", "Cabana", "Studio", "Parlor", "Lenai", "Efficiency", "Hospitality", "Suite", "King BedRoom", "Queen BedRoom" };
             RoomTypeField.ItemsSource = RoomTypeList;
 
@@ -36,7 +41,48 @@ namespace Fondok.Views.Windows
         
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {
+
+            
             DialogResult = true;
+
+
+        }
+
+        private void OnErrorEvent(object sender, RoutedEventArgs e)
+        {
+            var validationEventArgs = e as ValidationErrorEventArgs;
+            if (validationEventArgs == null)
+                throw new Exception("Unexpected event args");
+            switch (validationEventArgs.Action)
+            {
+                case ValidationErrorEventAction.Added:
+                    {
+                        errorCount++; break;
+                    }
+                case ValidationErrorEventAction.Removed:
+                    {
+                        errorCount--; break;
+                    }
+                default:
+                    {
+                        throw new Exception("Unknown action");
+                    }
+            }
+            AddRoomButton.IsEnabled = errorCount == 0;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+
+        {
+            
+
+            MessageBox.Show(errorCount.ToString());
+
+            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
+
+            MessageBox.Show(errorCount.ToString());
+
+            AddRoomButton.IsEnabled = false;
 
         }
     }

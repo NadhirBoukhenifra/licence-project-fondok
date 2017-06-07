@@ -20,10 +20,11 @@
   TextOptions.TextRenderingMode="Auto"
   WindowStartupLocation="CenterScreen"
   WindowStyle="ToolWindow"
-  mc:Ignorable="d">
-
-  <Grid>
-    <Grid.RowDefinitions>
+  mc:Ignorable="d" Loaded="Window_Loaded">
+    
+    <Grid>
+      
+        <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
@@ -63,7 +64,10 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
-        Text="{Binding Path=RoomNumber, Mode=TwoWay,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}">
+        Text="{Binding Path=RoomNumber, Mode=TwoWay,
+          ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged,
+          NotifyOnValidationError=true}">
           
           </TextBox>
    
@@ -235,14 +239,15 @@
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <Button
+            <Button
         x:Name="AddRoomButton"
         Grid.Row="4"
         Grid.Column="1"
         Click="AddRoomClick"
         Content="Confirm Room"
-        Foreground="#DDFFFFFF" 
-/>
-    </Grid>
+        Foreground="#DDFFFFFF">
+                
+            </Button>
+        </Grid>
   </Grid>
 </Window>
