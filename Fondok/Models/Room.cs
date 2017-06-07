@@ -12,6 +12,7 @@ namespace Fondok.Models
         public int RoomID { get; set; }
 
         //[StringLength(2, ErrorMessage = "Max 2 digits")]
+        [Range(1, 100, ErrorMessage = "Age should be between 1 to 100")]
 
         [Column(Name = "RoomNumber", DbType = "INTEGER")]
         public int? RoomNumber { get; set; }

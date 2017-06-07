@@ -214,10 +214,11 @@ namespace Fondok.ViewModels
             Room bk = new Room();
             RoomViewModel bwvm = new RoomViewModel(bk);
             bk.RoomNumber = null;
-            if (bwvm.Run() && bk.RoomCapacity > 1 && bk.RoomCapacity <= 25
-                            && bk.RoomFloor >= 0 && bk.RoomFloor <= 90
-                            && bk.RoomNumber > 1 && bk.RoomNumber <= 999
-                            && bk.RoomPrice > 1 && bk.RoomPrice <= 100000
+            //&& bk.RoomCapacity > 1 && bk.RoomCapacity <= 25
+            //                && bk.RoomFloor >= 0 && bk.RoomFloor <= 90
+            //                && bk.RoomNumber > 1 && bk.RoomNumber <= 999
+            //                && bk.RoomPrice > 1 && bk.RoomPrice <= 100000
+            if (bwvm.Run() 
                             )
             {
                 rep.AddRoom(bk);
