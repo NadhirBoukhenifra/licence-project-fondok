@@ -40,15 +40,7 @@ namespace Fondok.ViewModels
             }
         }
 
-        //private Nullable<DateTime> _EmployeeDateOfBirth = DateTime.Now;
-        ////[TypeConverterAttribute(typeof(DateTimeTypeConverter))]
-
-        //public Nullable<DateTime> EmployeeDateOfBirth
-        //{
-        //    get { return _EmployeeDateOfBirth; }
-        //    set { _EmployeeDateOfBirth = value; NotifyPropertyChanged("EmployeeDateOfBirth"); }
-        //}
-        private int _EmployeeUserName;
+         private int _EmployeeUserName;
        public int EmployeeUserName
         {
           get

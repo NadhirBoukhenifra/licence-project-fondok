@@ -28,9 +28,7 @@ namespace Fondok.Views.Windows
             string[] EmployeeJobList = new string[] { "Admin", "Receptionist"};
 
             EmployeeJobField.ItemsSource = EmployeeJobList;
-            MessageBox.Show(DateTime.Now.Date.AddYears(-50).ToString());
-            MessageBox.Show(DateTime.Now.Date.AddYears(-10)
-                .ToString());
+
         }
 
         private void AddEmployeeClick(object sender, RoutedEventArgs e)
@@ -39,6 +37,8 @@ namespace Fondok.Views.Windows
             {
                 MessageBox.Show("Edit Content");
             }
+
+           
             DialogResult = true;
 
         }
@@ -56,7 +56,7 @@ namespace Fondok.Views.Windows
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             EmployeeDateOfBirthField.IsDropDownOpen = false;
-            EmployeeDateOfBirthField.SelectedDate = EmployeeDateOfBirthField.SelectedDate.Value.Date;
+          //  EmployeeDateOfBirthField.SelectedDate = EmployeeDateOfBirthField.SelectedDate.Value.Date;
         }
 
     }

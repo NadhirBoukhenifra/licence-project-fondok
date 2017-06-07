@@ -10,11 +10,20 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
+using System.ComponentModel.DataAnnotations;
 
 namespace Fondok.ViewModels
 {
-    class RoomViewModel : INotifyPropertyChanged
+    class RoomViewModel : INotifyPropertyChanged 
     {
+        private Room _RoomNumber;
+
+        [Required]
+        public Room RoomNumber
+        {
+            get { return _RoomNumber; }
+            set { NotifyPropertyChanged("RoomNumber"); }
+        }
 
         public RoomViewModel() : this(null) { }
         public RoomViewModel(Room Room)
@@ -77,8 +86,8 @@ namespace Fondok.ViewModels
         {
             return db.Rooms.Where(b => b.RoomID.Equals(id)).First();
         }
-        public void UpdateRoom(int RoomID, string RoomNumber, string RoomFloor, string RoomType,
-                                string RoomCapacity, string RoomStatus, string RoomPrice)
+        public void UpdateRoom(int RoomID, int? RoomNumber, int? RoomFloor, string RoomType,
+                                int? RoomCapacity, string RoomStatus, double? RoomPrice)
         {
             Room Room = GetRoom(RoomID);
             Room.RoomNumber = RoomNumber;
@@ -204,10 +213,16 @@ namespace Fondok.ViewModels
         {
             Room bk = new Room();
             RoomViewModel bwvm = new RoomViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            bk.RoomNumber = null;
+            if (bwvm.Run() && bk.RoomCapacity > 1 && bk.RoomCapacity <= 25
+                            && bk.RoomFloor >= 0 && bk.RoomFloor <= 90
+                            && bk.RoomNumber > 1 && bk.RoomNumber <= 999
+                            && bk.RoomPrice > 1 && bk.RoomPrice <= 100000
+                            )
             {
                 rep.AddRoom(bk);
             }
+            
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)

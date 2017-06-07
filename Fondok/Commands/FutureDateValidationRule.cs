@@ -15,8 +15,9 @@ namespace Fondok.Commands
                 DateTimeStyles.AssumeLocal | DateTimeStyles.AllowWhiteSpaces,
                 out time)) return new ValidationResult(false, "Invalid date");
 
-            return time.Date > DateTime.Now.AddYears(-1) && time.Date < DateTime.Now.AddYears(1) && time.Date < DateTime.Now
-                ? new ValidationResult(false, "Enter valide date between:" + DateTime.Now.AddYears(-1).ToString() + " and "+ DateTime.Now.AddYears(1).ToString())
+            /* return time.Date < DateTime.Now.AddYears(-1) && time.Date > DateTime.Now.AddYears(1) && time.Date < DateTime.Now*/
+            return time.Date >= DateTime.Now.Date.AddYears(-10) || time.Date <= DateTime.Now.Date.AddYears(-50)
+                ? new ValidationResult(false, "Enter valide date between:" + DateTime.Now.Date.AddYears(-50).ToString() + " & "+ DateTime.Now.Date.AddYears(-10).ToString())
                 : ValidationResult.ValidResult;
         }
     }

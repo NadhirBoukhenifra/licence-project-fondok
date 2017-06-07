@@ -59,11 +59,11 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
-        Text="{Binding EditRoom.RoomNumber}" />
+        Text="{Binding Path=EditRoom.RoomNumber, Mode=TwoWay,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -85,7 +85,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
@@ -107,17 +107,29 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomTypeField, Path=BorderBrush}"
         Kind="Hotel" />
-      <TextBox
+      <!--<TextBox
         x:Name="RoomTypeField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Type"
-        Text="{Binding EditRoom.RoomType}" />
-    </Grid>
+        Text="{Binding EditRoom.RoomType}" />-->
+            <ComboBox
+        x:Name="RoomTypeField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Room Type"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding RoomTypeList}"
+          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+        SelectedItem="{Binding EditRoom.RoomType}" />
+        </Grid>
 
     <Grid Grid.Row="4">
       <Grid.ColumnDefinitions>
@@ -139,7 +151,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Capacity"
@@ -161,17 +173,29 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomStatusField, Path=BorderBrush}"
         Kind="CheckboxMarkedOutline" />
-      <TextBox
+      <!--<TextBox
         x:Name="RoomStatusField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Status"
-        Text="{Binding EditRoom.RoomStatus}" />
-    </Grid>
+        Text="{Binding EditRoom.RoomStatus}" />-->
+            <ComboBox
+        x:Name="RoomStatusField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Room Status"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding RoomStatusList}"
+          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+        SelectedItem="{Binding EditRoom.RoomStatus}" />
+        </Grid>
 
     <Grid Grid.Row="6">
       <Grid.ColumnDefinitions>
@@ -193,7 +217,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Price For One Night"
@@ -213,7 +237,8 @@
         Grid.Column="1"
         Click="AddRoomClick"
         Content="Confirm Room"
-        Foreground="#DDFFFFFF" />
+        Foreground="#DDFFFFFF" 
+/>
     </Grid>
   </Grid>
 </Window>

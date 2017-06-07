@@ -15,7 +15,9 @@ namespace Fondok.Context
         public DatabaseContext() :
             base(new SQLiteConnection()
             {
-                ConnectionString = new SQLiteConnectionStringBuilder() { DataSource = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\database.db", ForeignKeys = true }.ConnectionString
+                ConnectionString = new SQLiteConnectionStringBuilder() {
+                    DataSource = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\database.db", ForeignKeys = true
+                                                                        }.ConnectionString
             }, true)
         {
         }

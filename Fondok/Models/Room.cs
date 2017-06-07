@@ -11,23 +11,25 @@ namespace Fondok.Models
         [Key]
         public int RoomID { get; set; }
 
-        [Column(Name = "RoomNumber", DbType = "VARCHAR")]
-        public string RoomNumber { get; set; }
+        //[StringLength(2, ErrorMessage = "Max 2 digits")]
 
-        [Column(Name = "RoomFloor", DbType = "VARCHAR")]
-        public string RoomFloor { get; set; }
+        [Column(Name = "RoomNumber", DbType = "INTEGER")]
+        public int? RoomNumber { get; set; }
+
+        [Column(Name = "RoomFloor", DbType = "INTEGER")]
+        public int? RoomFloor { get; set; }
 
         [Column(Name = "RoomType", DbType = "VARCHAR")]
         public string RoomType { get; set; }
 
-        [Column(Name = "RoomCapacity", DbType = "VARCHAR")]
-        public string RoomCapacity { get; set; }
+        [Column(Name = "RoomCapacity", DbType = "INTEGER")]
+        public int? RoomCapacity { get; set; }
 
         [Column(Name = "RoomStatus", DbType = "VARCHAR")]
         public string RoomStatus { get; set; }
 
-        [Column(Name = "RoomPrice", DbType = "VARCHAR")]
-        public string RoomPrice { get; set; }
+        [Column(Name = "RoomPrice", DbType = "DOUBLE")]
+        public double? RoomPrice { get; set; }
         
     }
 }

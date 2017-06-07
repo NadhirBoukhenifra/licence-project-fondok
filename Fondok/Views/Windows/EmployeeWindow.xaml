@@ -24,32 +24,32 @@
   WindowStyle="ToolWindow"
   mc:Ignorable="d">
 
-  <Grid>
+    <Grid>
 
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Grid
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
       Grid.Row="0"
       HorizontalAlignment="Center"
       VerticalAlignment="Center">
-      <TextBlock Text="Employee Settings" />
-    </Grid>
-    <Grid Grid.Row="1">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+            <TextBlock Text="Employee Settings" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -58,24 +58,25 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeeUserNameField, Path=BorderBrush}"
         Kind="Account" />
-      <TextBox
+            <TextBox
         x:Name="EmployeeUserNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+       
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee User Name"
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditEmployee.EmployeeUserName, ValidatesOnDataErrors=True}" />
-    </Grid>
-    <Grid Grid.Row="2">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -84,25 +85,26 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeePassWordField, Path=BorderBrush}"
         Kind="Key" />
-      <TextBox
+            <TextBox
         x:Name="EmployeePassWordField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Pass Word"
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditEmployee.EmployeePassWord}" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="3">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -111,26 +113,27 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeeEMailField, Path=BorderBrush}"
         Kind="Email" />
-      <TextBox
+            <TextBox
         x:Name="EmployeeEMailField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee EMail"
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditEmployee.EmployeeEMail}" />
-    </Grid>
+        </Grid>
 
 
-    <Grid Grid.Row="4">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -139,7 +142,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeeJobField, Path=BorderBrush}"
         Kind="Worker" />
-      <!--<TextBox
+            <!--<TextBox
         x:Name="EmployeeJobField"
         Grid.Row="2"
         Grid.Column="1"
@@ -149,27 +152,28 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Job"
         Text="{Binding EditEmployee.EmployeeJob}" />-->
-      <ComboBox
+            <ComboBox
         x:Name="EmployeeJobField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="Auto"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Job"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}"
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding EmployeeJobList}"
         SelectedItem="{Binding EditEmployee.EmployeeJob}" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="5">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -178,25 +182,26 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeeFirstNameField, Path=BorderBrush}"
         Kind="Face" />
-      <TextBox
+            <TextBox
         x:Name="EmployeeFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee First Name"
+          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditEmployee.EmployeeFirstName}" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="6">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -205,26 +210,26 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=EmployeeLastNameField, Path=BorderBrush}"
         Kind="AccountCircle" />
-      <TextBox
+            <TextBox
         x:Name="EmployeeLastNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Last Name"
+         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditEmployee.EmployeeLastName}" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="7" Panel.ZIndex="1">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
-        Grid.Row="2"
+        <Grid Grid.Row="7" Panel.ZIndex="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Column="1"
         Width="28"
         Height="28"
@@ -233,9 +238,9 @@
         Panel.ZIndex="2"
         Background="White"
         Foreground="{Binding ElementName=EmployeeDateOfBirthField, Path=BorderBrush}"
-        Kind="Calendar" />
+        Kind="Calendar" Margin="0,11,0,17" />
 
-      <!--<TextBox
+            <!--<TextBox
         x:Name="EmployeeDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
@@ -245,7 +250,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Date Of Birth"
         Text="{Binding EditEmployee.EmployeeDateOfBirth}" />-->
-      <!--<DatePicker
+            <!--<DatePicker
         x:Name="EmployeeDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
@@ -259,7 +264,7 @@
         PreviewTouchDown="TextBoxPreviewTouchDown"
         SelectedDateChanged="DatePickerSelectedDateChanged"
         SelectedDate="{Binding EditEmployee.EmployeeDateOfBirth , Mode=TwoWay}" />-->
-      <!--<DatePicker
+            <!--<DatePicker
         x:Name="EmployeeDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
@@ -291,14 +296,14 @@
                         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         Panel.ZIndex="0"
         materialDesign:HintAssist.Hint="Employee Date Of Birth"
         PreviewMouseDown="TextBoxPreviewMouseDown"
         PreviewTouchDown="TextBoxPreviewTouchDown" 
-        
+        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
         SelectedDateChanged="DatePickerSelectedDateChanged" SelectedDateFormat="Short"
                         >
                 <DatePicker.SelectedDate>
@@ -312,19 +317,19 @@
                 </DatePicker.SelectedDate>
             </DatePicker>
         </Grid>
-    <Grid Grid.Row="8">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Button
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
         x:Name="AddEmployeeButton"
         Grid.Row="4"
         Grid.Column="1"
         Click="AddEmployeeClick"
         Content="Confirm Employee"
         Foreground="#DDFFFFFF" />
+        </Grid>
     </Grid>
-  </Grid>
 </Window>

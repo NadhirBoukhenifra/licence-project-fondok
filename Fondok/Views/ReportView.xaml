@@ -9,7 +9,8 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  mc:Ignorable="d">
+  mc:Ignorable="d" Loaded="UserControl_Loaded"
+    >
   <Grid Margin="18">
 
     <Grid.RowDefinitions>
@@ -35,33 +36,30 @@
       </lvc:CartesianChart>
 
       <lvc:PieChart
+        x:Name="RoomsStatsCircle"
         Grid.Column="1"
         DataClick=" PieChart_OnDataClick"
         DataTooltip="{x:Null}"
         Hoverable="False"
         LegendLocation="Bottom">
-        <lvc:PieChart.Series>
-          <lvc:PieSeries
-            Title="Maria"
-            DataLabels="True"
-            LabelPoint="{Binding PiePointLabel}"
-            Values="3" />
-          <lvc:PieSeries
-            Title="Charles"
+        <!--<lvc:PieChart.Series
+            Series="{Binding RommsStats}">
+          <lvc:PieSeries 
+            Title="Reserved"
             DataLabels="True"
             LabelPoint="{Binding PiePointLabel}"
             Values="4" />
-          <lvc:PieSeries
-            Title="Frida"
+           <lvc:PieSeries
+            Title="NOT Reserved"
             DataLabels="True"
             LabelPoint="{Binding PiePointLabel}"
             Values="6" />
           <lvc:PieSeries
-            Title="Frederic"
+            Title="OUT service"
             DataLabels="True"
             LabelPoint="{Binding PiePointLabel}"
             Values="2" />
-        </lvc:PieChart.Series>
+        </lvc:PieChart.Series>-->
       </lvc:PieChart>
 
     </Grid>

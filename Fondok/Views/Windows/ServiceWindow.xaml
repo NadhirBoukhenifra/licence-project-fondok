@@ -33,7 +33,6 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
     <Grid
       Grid.Row="0"
@@ -61,7 +60,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Title"
@@ -88,12 +87,13 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="Auto"
+        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Responsible"
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding ResponsibleList}"
+          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
         SelectedItem="{Binding EditService.ServiceResponsible}" />
     </Grid>
 
@@ -117,7 +117,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Price"

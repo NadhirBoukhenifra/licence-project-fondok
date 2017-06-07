@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using LiveCharts;
 using LiveCharts.Wpf;
-
+using Fondok.Context;
 
 namespace Fondok.Views
 {
@@ -77,13 +77,42 @@ namespace Fondok.Views
 
 
 
-
+       
+            
             PiePointLabel = chartPoint =>
     string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
             //DataContext = this;
+            //var context = new DatabaseContext();
+
+            ////var RoomsReserved = (from s in context.Employees select s.EmployeeUserName).ToArray().Count();
 
 
+
+            //RoomsStatsCircle.Series = new SeriesCollection
+            //{
+            //    new PieSeries
+            //    {
+            //        Title = "Reserved",
+            //        Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Reserved") select s.RoomID).ToArray().Count()},
+            //        DataLabels = true,
+            //        LabelPoint = PiePointLabel
+            //    },
+            //    new PieSeries
+            //    {
+            //        Title = "NOT Reserved",
+            //        Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Not Reserved") select s.RoomID).ToArray().Count()},
+            //        DataLabels = true,
+            //        LabelPoint = PiePointLabel
+            //    },
+            //    new PieSeries
+            //    {
+            //        Title = "OUT Service",
+            //        Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Out Service") select s.RoomID).ToArray().Count()},
+            //        DataLabels = true,
+            //        LabelPoint = PiePointLabel
+            //    }
+            //};
 
 
 
@@ -121,15 +150,12 @@ namespace Fondok.Views
         public SeriesCollection LineSeriesCollection { get; set; }
         public string[] LineLabels { get; set; }
         public Func<double, string> LineYFormatter { get; set; }
-
-
-
-
+        
 
 
 
         public Func<ChartPoint, string> PiePointLabel { get; set; }
-
+        public Func<ChartPoint, int> AllReservedRooms { get; set; }
         private void PieChart_OnDataClick(object sender, ChartPoint chartpoint)
         {
             var chart = (LiveCharts.Wpf.PieChart)chartpoint.ChartView;
@@ -153,6 +179,39 @@ namespace Fondok.Views
         public string[] CartesianLabels { get; set; }
         public Func<double, string> CartesianFormatter { get; set; }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            var context = new DatabaseContext();
 
+            //var RoomsReserved = (from s in context.Employees select s.EmployeeUserName).ToArray().Count();
+
+
+
+            RoomsStatsCircle.Series = new SeriesCollection
+            {
+                new PieSeries
+                {
+                    Title = "Reserved",
+                    Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Reserved") select s.RoomID).ToArray().Count()},
+                    DataLabels = true,
+                    LabelPoint = PiePointLabel
+                },
+                new PieSeries
+                {
+                    Title = "NOT Reserved",
+                    Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Not Reserved") select s.RoomID).ToArray().Count()},
+                    DataLabels = true,
+                    LabelPoint = PiePointLabel
+                },
+                new PieSeries
+                {
+                    Title = "OUT Service",
+                    Values = new ChartValues<double> {(from s in context.Rooms where(s.RoomStatus == "Out Service") select s.RoomID).ToArray().Count()},
+                    DataLabels = true,
+                    LabelPoint = PiePointLabel
+                }
+            };
+
+        }
     }
 }

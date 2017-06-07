@@ -26,6 +26,12 @@ namespace Fondok.Views.Windows
         public RoomWindow()
         {
             InitializeComponent();
+
+            string[] RoomTypeList = new string[] { "Signle", "Double", "Double Double", "Twin", "InterConnecting", "Adjoining", "Duplex", "Cabana", "Studio", "Parlor", "Lenai", "Efficiency", "Hospitality", "Suite", "King BedRoom", "Queen BedRoom" };
+            RoomTypeField.ItemsSource = RoomTypeList;
+
+            string[] RoomStatusList = new string[] { "Reserved", "Not Reserved", "Out Service"};
+            RoomStatusField.ItemsSource = RoomStatusList;
         }
         
         private void AddRoomClick(object sender, RoutedEventArgs e)
