@@ -63,7 +63,11 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
-        Text="{Binding Path=EditRoom.RoomNumber, Mode=TwoWay,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}" />
+        Text="{Binding Path=RoomNumber, Mode=TwoWay,ValidatesOnDataErrors=True,UpdateSourceTrigger=PropertyChanged}">
+          
+          </TextBox>
+   
+    
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>

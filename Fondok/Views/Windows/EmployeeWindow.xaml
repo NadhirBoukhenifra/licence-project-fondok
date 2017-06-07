@@ -310,7 +310,7 @@
                     <Binding Path="EditEmployee.EmployeeDateOfBirth" 
                              UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <commands:FutureDateValidationRule 
+                            <commands:LessThenZeroValidation 
                                 ValidatesOnTargetUpdated="True" />
                         </Binding.ValidationRules>
                     </Binding>

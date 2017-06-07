@@ -11,25 +11,42 @@ using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
 using System.ComponentModel.DataAnnotations;
+using MvvmValidation;
+using System;
 
 namespace Fondok.ViewModels
 {
-    class RoomViewModel : INotifyPropertyChanged 
+    class RoomViewModel : INotifyPropertyChanged , IDataErrorInfo
     {
-        private Room _RoomNumber;
-
-        [Required]
-        public Room RoomNumber
-        {
-            get { return _RoomNumber; }
-            set { NotifyPropertyChanged("RoomNumber"); }
-        }
-
         public RoomViewModel() : this(null) { }
         public RoomViewModel(Room Room)
         {
             EditRoom = Room;
+            this.RoomNumber = EditRoom.RoomNumber;
         }
+        public int? RoomNumber { get; set; }
+
+        public string Error
+        {
+            get { return null; }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch (columnName)
+                {
+                    case "RoomNumber":
+                        if (this.RoomNumber < 1 || this.RoomNumber > 10000)
+                            return "Room Number Must Be Between 1 & 10000";
+                        break;
+                }
+
+                return string.Empty;
+            }
+        }
+
         private Room _editRoom;
         public Room EditRoom
         {
@@ -39,10 +56,16 @@ namespace Fondok.ViewModels
             }
             set
             {
-                _editRoom = value;
-                NotifyPropertyChanged("EditRoom");
+                if (_editRoom != value)
+                {
+                    _editRoom = value;
+                    NotifyPropertyChanged("EditRoom");
+
+                }
             }
         }
+
+
         public bool Run()
         {
             RoomWindow sw = new RoomWindow();
@@ -214,12 +237,8 @@ namespace Fondok.ViewModels
             Room bk = new Room();
             RoomViewModel bwvm = new RoomViewModel(bk);
             bk.RoomNumber = null;
-            //&& bk.RoomCapacity > 1 && bk.RoomCapacity <= 25
-            //                && bk.RoomFloor >= 0 && bk.RoomFloor <= 90
-            //                && bk.RoomNumber > 1 && bk.RoomNumber <= 999
-            //                && bk.RoomPrice > 1 && bk.RoomPrice <= 100000
-            if (bwvm.Run() 
-                            )
+
+            if (bwvm.Run())
             {
                 rep.AddRoom(bk);
             }
