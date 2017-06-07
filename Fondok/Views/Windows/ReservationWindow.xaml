@@ -190,7 +190,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ReservationInField, Path=BorderBrush}"
         Kind="Hotel" />
-      <TextBox
+      <!--<TextBox
         x:Name="ReservationInField"
         Grid.Row="2"
         Grid.Column="1"
@@ -199,8 +199,20 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Reservation In"
-        Text="{Binding EditReservation.ReservationIn}" />
-    </Grid>
+        Text="{Binding EditReservation.ReservationIn}" />-->
+            <ComboBox
+        x:Name="ReservationInField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="Auto"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Rooms available"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding RoomAva}"
+        SelectedItem="{Binding EditReservation.ReservationIn}" />
+        </Grid>
 
     <Grid Grid.Row="7">
       <Grid.ColumnDefinitions>

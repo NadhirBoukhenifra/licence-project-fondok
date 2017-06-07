@@ -77,8 +77,8 @@ namespace Fondok.ViewModels
         {
             return db.Rooms.Where(b => b.RoomID.Equals(id)).First();
         }
-        public void UpdateRoom(int RoomID, string RoomNumber, string RoomFloor, string RoomType,
-                                string RoomCapacity, string RoomStatus, string RoomPrice)
+        public void UpdateRoom(int RoomID, int RoomNumber, int RoomFloor, string RoomType,
+                                int RoomCapacity, string RoomStatus, int RoomPrice)
         {
             Room Room = GetRoom(RoomID);
             Room.RoomNumber = RoomNumber;
@@ -204,7 +204,7 @@ namespace Fondok.ViewModels
         {
             Room bk = new Room();
             RoomViewModel bwvm = new RoomViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            if (bwvm.Run() && bk.RoomCapacity > 0 && bk.RoomFloor >= 0 &&  bk.RoomNumber > 0 && bk.RoomPrice > 0)
             {
                 rep.AddRoom(bk);
             }

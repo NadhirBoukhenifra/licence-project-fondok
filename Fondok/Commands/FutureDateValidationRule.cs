@@ -16,7 +16,8 @@ namespace Fondok.Commands
                 out time)) return new ValidationResult(false, "Invalid date");
 
             return time.Date > DateTime.Now.AddYears(-1) && time.Date < DateTime.Now.AddYears(1) && time.Date < DateTime.Now
-                ? new ValidationResult(false, "Enter valide date between:" + DateTime.Now.AddYears(-1).ToString() + " and "+ DateTime.Now.AddYears(1).ToString())
+                ? new ValidationResult(false, "Enter valide date between:" + DateTime.Now.AddYears(-1).ToString() +
+                " and "+ DateTime.Now.AddYears(1).ToString())
                 : ValidationResult.ValidResult;
         }
     }
