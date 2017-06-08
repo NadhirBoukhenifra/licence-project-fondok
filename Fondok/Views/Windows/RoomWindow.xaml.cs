@@ -15,75 +15,79 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Fondok.Views.Windows
 {
-    /// <summary>
-    /// Interaction logic for 
-    /// </summary>
     public partial class RoomWindow : Window
-
     {
         private int errorCount;
-        
         public RoomWindow()
         {
             InitializeComponent();
-
-
-            
-            string[] RoomTypeList = new string[] { "Signle", "Double", "Double Double", "Twin", "InterConnecting", "Adjoining", "Duplex", "Cabana", "Studio", "Parlor", "Lenai", "Efficiency", "Hospitality", "Suite", "King BedRoom", "Queen BedRoom" };
+            string[] RoomTypeList = new string[] {
+    "Signle",
+    "Double",
+    "Double Double",
+    "Twin",
+    "InterConnecting",
+    "Adjoining",
+    "Duplex",
+    "Cabana",
+    "Studio",
+    "Parlor",
+    "Lenai",
+    "Efficiency",
+    "Hospitality",
+    "Suite",
+    "King BedRoom",
+    "Queen BedRoom"
+   };
             RoomTypeField.ItemsSource = RoomTypeList;
-
-            string[] RoomStatusList = new string[] { "Reserved", "Not Reserved", "Out Service"};
+            string[] RoomStatusList = new string[] {
+    "Reserved",
+    "Not Reserved",
+    "Out Service"
+   };
             RoomStatusField.ItemsSource = RoomStatusList;
         }
-        
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {
-
-            
             DialogResult = true;
-
-
         }
-
         private void OnErrorEvent(object sender, RoutedEventArgs e)
         {
             var validationEventArgs = e as ValidationErrorEventArgs;
-            if (validationEventArgs == null)
+            if (validationEventArgs == null) {
+
                 throw new Exception("Unexpected event args");
+            }
             switch (validationEventArgs.Action)
             {
                 case ValidationErrorEventAction.Added:
                     {
-                        errorCount++; break;
+                        errorCount++;
+                        break;
                     }
                 case ValidationErrorEventAction.Removed:
                     {
-                        errorCount--; break;
+                        errorCount--;
+                        break;
                     }
                 default:
                     {
                         throw new Exception("Unknown action");
                     }
             }
+           
             AddRoomButton.IsEnabled = errorCount == 0;
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
-
         {
-            
-
-            MessageBox.Show(errorCount.ToString());
-
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
-
-            MessageBox.Show(errorCount.ToString());
-
-            AddRoomButton.IsEnabled = false;
-
+            RoomNumberField.Focus();
+            if (string.IsNullOrEmpty(RoomNumberField.Text.ToString()))
+            {
+                RoomNumberField.Text = "";
+            }
         }
     }
 }

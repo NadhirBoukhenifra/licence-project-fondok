@@ -60,10 +60,10 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Title"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditService.ServiceTitle}" />
     </Grid>
     <Grid Grid.Row="2">
@@ -87,14 +87,13 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Responsible"
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding ResponsibleList}"
-          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-        SelectedItem="{Binding EditService.ServiceResponsible}" />
+        SelectedItem="{Binding EditService.ServiceResponsible}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
     </Grid>
 
     <Grid Grid.Row="3">
@@ -117,10 +116,10 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Service Price"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding EditService.ServicePrice}" />
     </Grid>
     <Grid Grid.Row="4">

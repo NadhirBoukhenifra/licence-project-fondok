@@ -80,7 +80,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="256"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Username" />
@@ -108,8 +108,10 @@
         Grid.Row="3"
         Grid.Column="1"
         Width="256"
-        Height="32"
+        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
         HorizontalAlignment="Left"
+        
+        VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Password" />
     </Grid>
     <!--  / password input  -->

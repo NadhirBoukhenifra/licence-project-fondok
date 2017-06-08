@@ -9,8 +9,8 @@
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  mc:Ignorable="d" Loaded="UserControl_Loaded"
-    >
+  Loaded="UserControl_Loaded"
+  mc:Ignorable="d">
   <Grid Margin="18">
 
     <Grid.RowDefinitions>
@@ -44,7 +44,7 @@
         LegendLocation="Bottom">
         <!--<lvc:PieChart.Series
             Series="{Binding RommsStats}">
-          <lvc:PieSeries 
+          <lvc:PieSeries
             Title="Reserved"
             DataLabels="True"
             LabelPoint="{Binding PiePointLabel}"
