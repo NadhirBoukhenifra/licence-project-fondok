@@ -23,6 +23,8 @@ namespace Fondok.Views.Windows
         public RoomWindow()
         {
             InitializeComponent();
+            
+            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
             string[] RoomTypeList = new string[] {
     "Signle",
     "Double",
@@ -51,12 +53,15 @@ namespace Fondok.Views.Windows
         }
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {
+            //MessageBox.Show(RoomNumberField.ToString());
+
             DialogResult = true;
         }
         private void OnErrorEvent(object sender, RoutedEventArgs e)
         {
             var validationEventArgs = e as ValidationErrorEventArgs;
-            if (validationEventArgs == null) {
+            if (validationEventArgs == null)
+            {
 
                 throw new Exception("Unexpected event args");
             }
@@ -77,17 +82,29 @@ namespace Fondok.Views.Windows
                         throw new Exception("Unknown action");
                     }
             }
-           
+
             AddRoomButton.IsEnabled = errorCount == 0;
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
-            RoomNumberField.Focus();
-            if (string.IsNullOrEmpty(RoomNumberField.Text.ToString()))
-            {
-                RoomNumberField.Text = "";
-            }
+            this.DataContext = new RoomViewModel();
+            RoomViewModel an = new RoomViewModel();
+            an.nRoomNumber = 111;
+            //RoomNumberField.Text = "999";
+            //RoomNumberField.Focus();
+
+            //if (string.IsNullOrEmpty(RoomNumberField.Text.ToString()))
+            //{
+            //RoomNumberField.Text = "";
+            //RoomFloorField.Text = "";
+            //RoomCapacityField.Text = "";
+            //RoomPriceField.Text = "";
+
+            //RoomTypeField.SelectedIndex = 1;
+            //RoomStatusField.SelectedIndex = 1;
+            //}
+            //RoomTypeField.SelectedIndex = 1;
+            //MessageBox.Show(this.RoomTypeField..ToString());
         }
     }
 }

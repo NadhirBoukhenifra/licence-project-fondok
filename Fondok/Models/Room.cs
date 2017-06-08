@@ -4,6 +4,7 @@ using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
 
+
     [Table(Name = "Rooms")]
     public class Room
     {
@@ -29,5 +30,7 @@ namespace Fondok.Models
         [Column(Name = "RoomPrice", DbType = "DOUBLE")]
         public double? RoomPrice { get; set; }
         
+
+
     }
 }

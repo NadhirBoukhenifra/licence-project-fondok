@@ -56,7 +56,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomNumberField, Path=BorderBrush}"
         Kind="Counter" />
-      <TextBox
+            <TextBox
         x:Name="RoomNumberField"
         Grid.Row="2"
         Grid.Column="1"
@@ -65,11 +65,12 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding Path=RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True,
-          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding nRoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}">
+            </TextBox>
 
 
-    </Grid>
+        </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -94,7 +95,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding Path=RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True,
+        Text="{Binding EditRoom.RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True,
           UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"/>
         
     </Grid>
@@ -133,9 +134,11 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Type"
         IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding RoomTypeList}"
-        SelectedItem="{Binding EditRoom.RoomType}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        ItemsSource="{Binding Path=RoomTypeList}"
+        SelectedItem="{Binding Path=EditRoom.RoomType, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+        />
     </Grid>
 
     <Grid Grid.Row="4">
@@ -162,7 +165,8 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Capacity"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EditRoom.RoomCapacity}" />
+        Text="{Binding EditRoom.RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="5">
@@ -200,7 +204,8 @@
         materialDesign:HintAssist.Hint="Room Status"
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomStatusList}"
-        SelectedItem="{Binding EditRoom.RoomStatus}"
+        SelectedItem="{Binding EditRoom.RoomStatus, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
     </Grid>
 
@@ -228,7 +233,8 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Price For One Night"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EditRoom.RoomPrice}" />
+        Text="{Binding EditRoom.RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
 
