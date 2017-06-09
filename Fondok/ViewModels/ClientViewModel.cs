@@ -44,20 +44,38 @@ namespace Fondok.ViewModels
                 return string.Empty;
             }
         }
-        private string _nRoomNumber;
-        public string nRoomNumber
+        private string _nFirstName;
+        public string nFirstName
         {
             get
             {
-                return _nRoomNumber;
+                return _nFirstName;
             }
             set
             {
                 //if (_nRoomNumber != value)
                 //{
-                _nRoomNumber = value;
-                EditClient.ClientFirstName = _nRoomNumber;
-                NotifyPropertyChanged("_nRoomNumber");
+                _nFirstName = value;
+                EditClient.ClientFirstName = _nFirstName;
+                NotifyPropertyChanged("nFirstName");
+                //}
+            }
+        }
+
+        private string _nLastName;
+        public string nLastName
+        {
+            get
+            {
+                return _nLastName;
+            }
+            set
+            {
+                //if (_nRoomNumber != value)
+                //{
+                _nLastName = value;
+                EditClient.ClientLastName = _nLastName;
+                NotifyPropertyChanged("nLastName");
                 //}
             }
         }
@@ -69,9 +87,13 @@ namespace Fondok.ViewModels
                 string FillRequired = "Please Fill The Field";
                 switch (columnName)
                 {
-                    case "nRoomNumber":
-                        if (nRoomNumber == null) return FillRequired;
+                    case "nFirstName":
+                        if (nFirstName == null) return FillRequired;
                         break;
+                    case "nLastName":
+                        if (nLastName == null) return FillRequired;
+                        break;
+
                 }
                 return string.Empty;
             }

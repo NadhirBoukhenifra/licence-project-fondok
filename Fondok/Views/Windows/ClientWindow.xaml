@@ -60,7 +60,7 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client First Name"
-         Text="{Binding nRoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True,
+         Text="{Binding nFirstName, Mode=TwoWay, ValidatesOnDataErrors=True,
           UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"/>
     </Grid>
     <Grid Grid.Row="2">
@@ -87,7 +87,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Last Name"
-        Text="{Binding EditClient.ClientLastName}" />
+          Text="{Binding nLastName, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+ />
     </Grid>
 
     <Grid Grid.Row="3">
