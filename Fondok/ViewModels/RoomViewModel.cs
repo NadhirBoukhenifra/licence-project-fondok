@@ -38,7 +38,8 @@ namespace Fondok.ViewModels
         public RoomViewModel(Room Room)
         {
             EditRoom = Room;
-            
+            //EditRoom.RoomNumber = nRoomNumber;
+            //EditRoom.RoomNumber = nRoomNumber.Value;
 
             IsValidProperty = false;
 
@@ -57,8 +58,24 @@ namespace Fondok.ViewModels
         //public int? nRoomCapacity { get; set; }
         //public string nRoomStatus { get; set; }
         //public double? nRoomPrice { get; set; }
-        public int? nRoomNumber { get; set; }
-
+        //public int? nRoomNumber { get; set; }
+        private int? _nRoomNumber;
+        public int? nRoomNumber
+        {
+            get
+            {
+                return _nRoomNumber;
+            }
+            set
+            {
+                //if (_nRoomNumber != value)
+                //{
+                    _nRoomNumber = value;
+                
+                    NotifyPropertyChanged("_nRoomNumber");
+                //}
+            }
+        }
         public string this[string columnName]
         {
             get
@@ -114,6 +131,8 @@ namespace Fondok.ViewModels
                 {
                     _editRoom = value;
 
+                    EditRoom.RoomNumber = nRoomNumber;
+
                     NotifyPropertyChanged("EditRoom");
                 }
             }
@@ -141,7 +160,6 @@ namespace Fondok.ViewModels
     }
     class RoomRepository
     {
-        RoomViewModel an = new RoomViewModel();
         DatabaseContext db = new DatabaseContext();
         public RoomRepository(DatabaseContext _db)
         {
@@ -156,7 +174,12 @@ namespace Fondok.ViewModels
         {
 
             db.Rooms.Add(Room);
-            
+            //Room.RoomFloor = 2;
+            //Room.RoomType = "hhhh";
+            //Room.RoomStatus = "gggg";
+            //Room.RoomCapacity = 4;
+            //Room.RoomPrice = 222;
+            MessageBox.Show(Room.RoomNumber.ToString());
             db.SaveChanges();
         }
         public Room GetRoom(int id)
@@ -276,10 +299,12 @@ namespace Fondok.ViewModels
         {
             Room bk = new Room();
             RoomViewModel bwvm = new RoomViewModel(bk);
-            
+            //bk.RoomNumber = 1000;
             //bk.RoomNumber = null;
             if (bwvm.Run())
             {
+                //MessageBox.Show(bk.RoomNumber.ToString());
+
                 rep.AddRoom(bk);
             }
         }

@@ -19,14 +19,45 @@ namespace Fondok.Views.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
+        private int errorCount;
         public ClientWindow()
         {
             InitializeComponent();
+            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
         }
         private void AddClientClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
 
+        }
+
+        private void OnErrorEvent(object sender, RoutedEventArgs e)
+        {
+            var validationEventArgs = e as ValidationErrorEventArgs;
+            if (validationEventArgs == null)
+            {
+
+                throw new Exception("Unexpected event args");
+            }
+            switch (validationEventArgs.Action)
+            {
+                case ValidationErrorEventAction.Added:
+                    {
+                        errorCount++;
+                        break;
+                    }
+                case ValidationErrorEventAction.Removed:
+                    {
+                        errorCount--;
+                        break;
+                    }
+                default:
+                    {
+                        throw new Exception("Unknown action");
+                    }
+            }
+
+            AddClientButton.IsEnabled = errorCount == 0;
         }
     }
 }

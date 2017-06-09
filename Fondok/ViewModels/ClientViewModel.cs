@@ -13,13 +13,68 @@ using System.Windows;
 
 namespace Fondok.ViewModels
 {
-    class ClientViewModel : INotifyPropertyChanged
+    class ClientViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
-
+        private bool _IsValidProperty;
+        public bool IsValidProperty
+        {
+            get
+            {
+                return _IsValidProperty;
+            }
+            set
+            {
+                if (_IsValidProperty != value)
+                {
+                    _IsValidProperty = value;
+                    NotifyPropertyChanged("IsValidProperty");
+                }
+            }
+        }
         public ClientViewModel() : this(null) { }
         public ClientViewModel(Client Client)
         {
             EditClient = Client;
+            IsValidProperty = false;
+        }
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+        private string _nRoomNumber;
+        public string nRoomNumber
+        {
+            get
+            {
+                return _nRoomNumber;
+            }
+            set
+            {
+                //if (_nRoomNumber != value)
+                //{
+                _nRoomNumber = value;
+                EditClient.ClientFirstName = _nRoomNumber;
+                NotifyPropertyChanged("_nRoomNumber");
+                //}
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                string FillRequired = "Please Fill The Field";
+                switch (columnName)
+                {
+                    case "nRoomNumber":
+                        if (nRoomNumber == null) return FillRequired;
+                        break;
+                }
+                return string.Empty;
+            }
         }
         private Client _editClient;
         public Client EditClient
@@ -71,6 +126,7 @@ namespace Fondok.ViewModels
         public void AddClient(Client Client)
         {
             db.Clients.Add(Client);
+
             db.SaveChanges();
         }
         public Client GetClient(int id)
