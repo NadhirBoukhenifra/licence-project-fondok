@@ -22,9 +22,19 @@ namespace Fondok.Views.Windows
         private int errorCount;
         public ClientWindow()
         {
+           
+
             InitializeComponent();
 
+            //MessageBox.Show(ClientFirstNameField.Text);
+            //MessageBox.Show(ClientLastNameField.Text);
+            //MessageBox.Show(ClientDateOfBirthField.Text);
+
+              
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
+
+
+            
         }
         private void AddClientClick(object sender, RoutedEventArgs e)
         {
@@ -60,5 +70,6 @@ namespace Fondok.Views.Windows
 
             AddClientButton.IsEnabled = errorCount == 0;
         }
+
     }
 }

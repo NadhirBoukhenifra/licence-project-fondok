@@ -36,6 +36,9 @@ namespace Fondok.ViewModels
         {
             EditClient = Client;
 
+            nFirstName = EditClient.ClientFirstName;
+            nLastName = EditClient.ClientLastName;
+            //nFirstName = EditClient.ClientDateOfBirth;
             IsValidProperty = false;
         }
         public string Error
@@ -74,10 +77,12 @@ namespace Fondok.ViewModels
             {
                 if (_nLastName != value)
                 {
-                _nLastName = value;
-                    
+                     _nLastName = value;
+
                     EditClient.ClientLastName = _nLastName;
+
                     NotifyPropertyChanged("_nLastName");
+                    
                 }
             }
         }
@@ -110,7 +115,9 @@ namespace Fondok.ViewModels
             }
             set
             {
-                _editClient = value;
+                
+               _editClient = value;
+                
                 NotifyPropertyChanged("EditClient");
             }
         }
@@ -161,7 +168,7 @@ namespace Fondok.ViewModels
         public void UpdateClient(int ClientID, string ClientFirstName, int ClientLastName, string ClientDateOfBirth)
         {
             Client Client = GetClient(ClientID);
-            Client.ClientFirstName = ClientFirstName;
+            Client.ClientFirstName = Client.ClientFirstName;
             Client.ClientLastName = ClientLastName;
             Client.ClientDateOfBirth = ClientDateOfBirth;
 
