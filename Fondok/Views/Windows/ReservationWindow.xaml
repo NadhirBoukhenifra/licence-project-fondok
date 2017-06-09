@@ -22,84 +22,83 @@
   WindowStyle="ToolWindow"
   mc:Ignorable="d">
 
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
-    <Grid
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
       Grid.Row="0"
       HorizontalAlignment="Center"
       VerticalAlignment="Center">
-      <TextBlock Text="Reservation Settings" />
-    </Grid>
-    <Grid Grid.Row="1">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+            <TextBlock Text="Reservation Settings" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationFromField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=ArrivalDateField, Path=BorderBrush}"
         Kind="CalendarToday" />
-      <TextBox
-        x:Name="ReservationFromField"
-        Grid.Row="2"
+            <TextBox
+        x:Name="ArrivalDateField"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation From"
-        Text="{Binding EditReservation.ReservationFrom}" />
-    </Grid>
-    <Grid Grid.Row="2">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        materialDesign:HintAssist.Hint="Arrival Date"
+        Text="{Binding EditReservation.ArrivalDate}" Margin="0,14,0,10" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationToField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=DepartureDateField, Path=BorderBrush}"
         Kind="CalendarCheck" />
-      <TextBox
-        x:Name="ReservationToField"
+            <TextBox
+        x:Name="DepartureDateField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation To"
-        Text="{Binding EditReservation.ReservationTo}" />
-    </Grid>
+        materialDesign:HintAssist.Hint="Departure Date"
+        Text="{Binding EditReservation.DepartureDate}" />
+        </Grid>
 
-    <Grid Grid.Row="3">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -108,7 +107,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ReservationStatusField, Path=BorderBrush}"
         Kind="CalendarMultiple" />
-      <TextBox
+            <TextBox
         x:Name="ReservationStatusField"
         Grid.Row="2"
         Grid.Column="1"
@@ -118,90 +117,90 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Reservation Status"
         Text="{Binding EditReservation.ReservationStatus}" />
-    </Grid>
+        </Grid>
 
 
-    <Grid Grid.Row="4">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationByField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=ReservedByField, Path=BorderBrush}"
         Kind="Account" />
-      <TextBox
-        x:Name="ReservationByField"
+            <TextBox
+        x:Name="ReservedByField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation By"
-        Text="{Binding EditReservation.ReservationBy}" />
-    </Grid>
+        materialDesign:HintAssist.Hint="Reserved By"
+        Text="{Binding EditReservation.ReservedBy}" />
+        </Grid>
 
-    <Grid Grid.Row="5">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationForField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=ClientIDField, Path=BorderBrush}"
         Kind="Face" />
-      <TextBox
-        x:Name="ReservationForField"
+            <TextBox
+        x:Name="ClientIDField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation For"
-        Text="{Binding EditReservation.ReservationFor}" />
-    </Grid>
+        materialDesign:HintAssist.Hint="Client ID"
+        Text="{Binding EditReservation.ClientID}" />
+        </Grid>
 
-    <Grid Grid.Row="6">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationInField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=RoomNumberField, Path=BorderBrush}"
         Kind="Hotel" />
-      <!--<TextBox
-        x:Name="ReservationInField"
+            <!--<TextBox
+        x:Name="RoomNumberField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation In"
-        Text="{Binding EditReservation.ReservationIn}" />-->
-      <ComboBox
-        x:Name="ReservationInField"
+        materialDesign:HintAssist.Hint="Room Number"
+        Text="{Binding EditReservation.RoomNumber}" />-->
+            <ComboBox
+        x:Name="RoomNumberField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
@@ -211,49 +210,49 @@
         materialDesign:HintAssist.Hint="Rooms available"
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomAva}"
-        SelectedItem="{Binding EditReservation.ReservationIn}" />
-    </Grid>
+        SelectedItem="{Binding EditReservation.RoomNumber}" />
+        </Grid>
 
-    <Grid Grid.Row="7">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationServiceField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=ReservationFormField, Path=BorderBrush}"
         Kind="ChemicalWeapon" />
-      <TextBox
-        x:Name="ReservationServiceField"
+            <TextBox
+        x:Name="ReservationFormField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation Service"
-        Text="{Binding EditReservation.ReservationService}" />
-    </Grid>
+        materialDesign:HintAssist.Hint="Reservation Form"
+        Text="{Binding EditReservation.ReservationForm}" />
+        </Grid>
 
-    <Grid Grid.Row="8">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Button
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
         x:Name="AddReservationButton"
         Grid.Row="4"
         Grid.Column="1"
         Click="AddReservationClick"
         Content="Confirm Reservation"
         Foreground="#DDFFFFFF" />
+        </Grid>
     </Grid>
-  </Grid>
 </Window>

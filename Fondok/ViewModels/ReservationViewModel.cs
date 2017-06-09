@@ -78,24 +78,24 @@ namespace Fondok.ViewModels
         {
             return db.Reservations.Where(b => b.ReservationID.Equals(id)).First();
         }
-        public void UpdateReservation(int ReservationID, string ReservationFrom, string ReservationTo, string ReservationStatus
-            , string ReservationBy, string ReservationFor, string ReservationIn, string ReservationService)
+        public void UpdateReservation(int ReservationID, DateTime ArrivalDate, DateTime DepartureDate, string ReservationStatus
+            , string ReservedBy, int ClientID, int RoomNumber, string ReservationForm)
         {
             Reservation Reservation = GetReservation(ReservationID);
-            Reservation.ReservationFrom = ReservationFrom;
-            Reservation.ReservationTo = ReservationTo;
+            Reservation.ArrivalDate = ArrivalDate;
+            Reservation.DepartureDate = DepartureDate;
             Reservation.ReservationStatus = ReservationStatus;
-            Reservation.ReservationBy = ReservationBy;
-            Reservation.ReservationFor = ReservationFor;
-            Reservation.ReservationIn = ReservationIn;
-            Reservation.ReservationService = ReservationService;
+            Reservation.ReservedBy = ReservedBy;
+            Reservation.ClientID = ClientID;
+            Reservation.RoomNumber = RoomNumber;
+            Reservation.ReservationForm = ReservationForm;
 
             db.SaveChanges();
         }
         public void UpdateReservation(Reservation b)
         {
-            UpdateReservation(b.ReservationID, b.ReservationFrom, b.ReservationTo, b.ReservationStatus
-                , b.ReservationBy, b.ReservationFor, b.ReservationIn, b.ReservationService);
+            UpdateReservation(b.ReservationID, b.ArrivalDate, b.DepartureDate, b.ReservationStatus
+                , b.ReservedBy, b.ClientID, b.RoomNumber, b.ReservationForm);
         }
         public void DeleteReservation(int id)
         {

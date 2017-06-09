@@ -154,7 +154,6 @@ namespace Fondok.ViewModels
         public bool Run()
         {
             ClientWindow sw = new ClientWindow();
-
             sw.DataContext = this;
 
             if (sw.ShowDialog() == true)
@@ -209,7 +208,6 @@ namespace Fondok.ViewModels
             Client.ClientFirstName = Client.ClientFirstName;
             Client.ClientLastName = ClientLastName;
             Client.ClientDateOfBirth = ClientDateOfBirth;
-
             db.SaveChanges();
         }
         public void UpdateClient(Client b)

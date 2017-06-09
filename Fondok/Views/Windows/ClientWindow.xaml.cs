@@ -20,23 +20,23 @@ namespace Fondok.Views.Windows
     public partial class ClientWindow : Window
     {
         private int errorCount;
+        
         public ClientWindow()
         {
            
 
             InitializeComponent();
-
-             
+            ClientDateOfBirthField.DisplayDateStart = DateTime.Now.AddYears(-100);
+            ClientDateOfBirthField.DisplayDateEnd = DateTime.Now.AddYears(-10);
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
-
-            ClientDateOfBirthField.SelectedDate = DateTime.Now;
-
+            
 
         }
         private void AddClientClick(object sender, RoutedEventArgs e)
         {
+            
             DialogResult = true;
-
+            
         }
 
         private void OnErrorEvent(object sender, RoutedEventArgs e)
@@ -71,17 +71,20 @@ namespace Fondok.Views.Windows
 
         public void TextBoxPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            
             ClientDateOfBirthField.IsDropDownOpen = true;
         }
 
         private void TextBoxPreviewTouchDown(object sender, TouchEventArgs e)
         {
+        
             ClientDateOfBirthField.IsDropDownOpen = true;
         }
 
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             ClientDateOfBirthField.IsDropDownOpen = false;
+           
         }
 
     }

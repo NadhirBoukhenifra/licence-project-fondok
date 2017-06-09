@@ -26,9 +26,9 @@ namespace Fondok.Views.Windows
 
             var context = new DatabaseContext();
 
-            var RoomAva = (from s in context.Rooms where(s.RoomNumber == 1) select s.RoomNumber).ToArray();
+            var RoomAva = (from s in context.Rooms where (s.RoomNumber == 1) select s.RoomNumber).ToArray();
 
-            ReservationInField.ItemsSource = RoomAva;
+            RoomNumberField.ItemsSource = RoomAva;
         }
 
         private void AddReservationClick(object sender, RoutedEventArgs e)

@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
+
     [Table(Name = "Reservations")]
     public class Reservation
     {
@@ -9,26 +11,26 @@ namespace Fondok.Models
         [Key]
         public int ReservationID { get; set; }
 
-        [Column(Name = "ReservationFrom", DbType = "VARCHAR")]
-        public string ReservationFrom { get; set; }
+        [Column(Name = "ArrivalDate", DbType = "DATE")]
+        public DateTime ArrivalDate { get; set; }
 
-        [Column(Name = "ReservationTo", DbType = "VARCHAR")]
-        public string ReservationTo { get; set; }
+        [Column(Name = "DepartureDate", DbType = "DATE")]
+        public DateTime DepartureDate { get; set; }
 
         [Column(Name = "ReservationStatus", DbType = "VARCHAR")]
         public string ReservationStatus { get; set; }
 
-        [Column(Name = "ReservationBy", DbType = "VARCHAR")]
-        public string ReservationBy { get; set; }
+        [Column(Name = "ReservedBy", DbType = "VARCHAR")]
+        public string ReservedBy { get; set; }
 
-        [Column(Name = "ReservationFor", DbType = "VARCHAR")]
-        public string ReservationFor { get; set; }
+        [Column(Name = "ClientID", DbType = "INTEGER")]
+        public int ClientID { get; set; }
 
-        [Column(Name = "ReservationIn", DbType = "VARCHAR")]
-        public string ReservationIn { get; set; }
+        [Column(Name = "RoomNumber", DbType = "INTEGER")]
+        public int RoomNumber { get; set; }
 
-        [Column(Name = "ReservationService", DbType = "VARCHAR")]
-        public string ReservationService { get; set; }
+        [Column(Name = "ReservationForm", DbType = "VARCHAR")]
+        public string ReservationForm { get; set; }
 
     }
 }
