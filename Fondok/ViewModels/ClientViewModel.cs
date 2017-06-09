@@ -40,6 +40,7 @@ namespace Fondok.ViewModels
             nLastName = EditClient.ClientLastName;
             //nFirstName = EditClient.ClientDateOfBirth;
             IsValidProperty = false;
+
         }
         public string Error
         {
@@ -119,17 +120,24 @@ namespace Fondok.ViewModels
                _editClient = value;
                 
                 NotifyPropertyChanged("EditClient");
+
             }
         }
         public bool Run()
         {
             ClientWindow sw = new ClientWindow();
+
             sw.DataContext = this;
+
             if (sw.ShowDialog() == true)
             {
                 return true;
+                
+
             }
             return false;
+
+            
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -160,6 +168,8 @@ namespace Fondok.ViewModels
             db.Clients.Add(Client);
 
             db.SaveChanges();
+
+            
         }
         public Client GetClient(int id)
         {
@@ -274,6 +284,7 @@ namespace Fondok.ViewModels
             if (bwvm.Run())
             {
                 rep.UpdateClient(SelectedClient);
+                Clients.ResetBindings();
             }
         }
         private DelegateCommand createCommand;
@@ -288,9 +299,10 @@ namespace Fondok.ViewModels
         {
             Client bk = new Client();
             ClientViewModel bwvm = new ClientViewModel(bk);
-            if (bwvm.Run()/* && bk.Duration > 0 && bk.Price > 0*/)
+            if (bwvm.Run())
             {
                 rep.AddClient(bk);
+                
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

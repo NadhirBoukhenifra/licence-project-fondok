@@ -26,11 +26,7 @@ namespace Fondok.Views.Windows
 
             InitializeComponent();
 
-            //MessageBox.Show(ClientFirstNameField.Text);
-            //MessageBox.Show(ClientLastNameField.Text);
-            //MessageBox.Show(ClientDateOfBirthField.Text);
-
-              
+             
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
 

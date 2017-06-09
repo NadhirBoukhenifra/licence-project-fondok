@@ -28,7 +28,9 @@ namespace Fondok.Views
         {
             ClientsGrid.UpdateLayout();
             ClientsGrid.Items.Refresh();
+            
         }
+
 
     }
 }
