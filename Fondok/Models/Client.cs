@@ -13,8 +13,8 @@ namespace Fondok.Models
         [Column(Name = "ClientFirstName", DbType = "VARCHAR")]
         public string ClientFirstName { get; set; }
 
-        [Column(Name = "ClientLastName", DbType = "INTEGER")]
-        public int ClientLastName { get; set; }
+        [Column(Name = "ClientLastName", DbType = "VARCHAR")]
+        public string ClientLastName { get; set; }
 
         [Column(Name = "ClientDateOfBirth", DbType = "DATE")]
         public DateTime ClientDateOfBirth { get; set; }

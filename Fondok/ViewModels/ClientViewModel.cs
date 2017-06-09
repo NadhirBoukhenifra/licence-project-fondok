@@ -69,8 +69,8 @@ namespace Fondok.ViewModels
             }
         }
 
-        private int _nLastName;
-        public int nLastName
+        private string _nLastName;
+        public string nLastName
         {
             get
             {
@@ -122,7 +122,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "nLastName":
-                        if (nLastName <= 0) return FillRequired;
+                        if (nLastName == null || nLastName == "") return FillRequired;
 
                         break;
                     case "nClientDateOfBirth":
@@ -203,7 +203,7 @@ namespace Fondok.ViewModels
         {
             return db.Clients.Where(b => b.ClientID.Equals(id)).First();
         }
-        public void UpdateClient(int ClientID, string ClientFirstName, int ClientLastName, DateTime ClientDateOfBirth)
+        public void UpdateClient(int ClientID, string ClientFirstName, string ClientLastName, DateTime ClientDateOfBirth)
         {
             Client Client = GetClient(ClientID);
             Client.ClientFirstName = Client.ClientFirstName;
