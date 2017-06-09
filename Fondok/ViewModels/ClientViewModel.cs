@@ -126,8 +126,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "nClientDateOfBirth":
-                        if (nClientDateOfBirth >= DateTime.Now.AddYears(-10) && nClientDateOfBirth <= DateTime.Now.AddYears(-100)
-                            || nClientDateOfBirth >= DateTime.Now.AddYears(-100))
+                        if (nClientDateOfBirth > DateTime.Now.AddYears(-10)  || nClientDateOfBirth < DateTime.Now.AddYears(-100))
 
                             return "Date Range: " + DateTime.Now.AddYears(-10) +
                                 " & " + DateTime.Now.AddYears(-100);
