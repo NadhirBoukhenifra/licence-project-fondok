@@ -131,7 +131,7 @@ namespace Fondok.ViewModels
                 {
                     _editRoom = value;
 
-                    EditRoom.RoomNumber = nRoomNumber;
+                    //EditRoom.RoomNumber = nRoomNumber;
 
                     NotifyPropertyChanged("EditRoom");
                 }

@@ -87,9 +87,9 @@ namespace Fondok.Views.Windows
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = new RoomViewModel();
-            RoomViewModel an = new RoomViewModel();
-            an.nRoomNumber = 111;
+            //this.DataContext = new RoomViewModel();
+            //RoomViewModel an = new RoomViewModel();
+            //an.nRoomNumber = 111;
             //RoomNumberField.Text = "999";
             //RoomNumberField.Focus();
 

@@ -23,6 +23,7 @@ namespace Fondok.Views.Windows
         public ClientWindow()
         {
             InitializeComponent();
+
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
         }
         private void AddClientClick(object sender, RoutedEventArgs e)

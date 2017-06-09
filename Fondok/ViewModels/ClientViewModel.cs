@@ -35,6 +35,7 @@ namespace Fondok.ViewModels
         public ClientViewModel(Client Client)
         {
             EditClient = Client;
+
             IsValidProperty = false;
         }
         public string Error
@@ -53,17 +54,17 @@ namespace Fondok.ViewModels
             }
             set
             {
-                //if (_nRoomNumber != value)
-                //{
+                if (_nFirstName != value)
+                {
                 _nFirstName = value;
-                EditClient.ClientFirstName = _nFirstName;
-                NotifyPropertyChanged("nFirstName");
-                //}
+                    EditClient.ClientFirstName = _nFirstName;
+                    NotifyPropertyChanged("_nFirstName");
+                }
             }
         }
 
-        private string _nLastName;
-        public string nLastName
+        private int _nLastName;
+        public int nLastName
         {
             get
             {
@@ -71,12 +72,13 @@ namespace Fondok.ViewModels
             }
             set
             {
-                //if (_nRoomNumber != value)
-                //{
+                if (_nLastName != value)
+                {
                 _nLastName = value;
-                EditClient.ClientLastName = _nLastName;
-                NotifyPropertyChanged("nLastName");
-                //}
+                    
+                    EditClient.ClientLastName = _nLastName;
+                    NotifyPropertyChanged("_nLastName");
+                }
             }
         }
 
@@ -88,10 +90,11 @@ namespace Fondok.ViewModels
                 switch (columnName)
                 {
                     case "nFirstName":
-                        if (nFirstName == null) return FillRequired;
+                        if (nFirstName == null || nFirstName == "") return FillRequired;
+
                         break;
                     case "nLastName":
-                        if (nLastName == null) return FillRequired;
+                        if (nLastName <= 0) return FillRequired;
                         break;
 
                 }
@@ -155,7 +158,7 @@ namespace Fondok.ViewModels
         {
             return db.Clients.Where(b => b.ClientID.Equals(id)).First();
         }
-        public void UpdateClient(int ClientID, string ClientFirstName, string ClientLastName, string ClientDateOfBirth)
+        public void UpdateClient(int ClientID, string ClientFirstName, int ClientLastName, string ClientDateOfBirth)
         {
             Client Client = GetClient(ClientID);
             Client.ClientFirstName = ClientFirstName;

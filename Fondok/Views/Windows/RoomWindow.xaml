@@ -65,7 +65,8 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EditRoom.RoomNumber}">
+        Text="{Binding nRoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}">
             </TextBox>
 
 
