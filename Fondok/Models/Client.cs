@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
@@ -15,8 +16,8 @@ namespace Fondok.Models
         [Column(Name = "ClientLastName", DbType = "INTEGER")]
         public int ClientLastName { get; set; }
 
-        [Column(Name = "ClientDateOfBirth", DbType = "VARCHAR")]
-        public string ClientDateOfBirth { get; set; }
+        [Column(Name = "ClientDateOfBirth", DbType = "DATE")]
+        public DateTime ClientDateOfBirth { get; set; }
 
     }
 }

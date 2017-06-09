@@ -98,7 +98,7 @@
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+      <!--<materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -116,8 +116,44 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Date Of Birth"
-        Text="{Binding EditClient.ClientDateOfBirth}" />
-    </Grid>
+        Text="{Binding EditClient.ClientDateOfBirth}" />-->
+            <materialDesign:PackIcon
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        Margin="0,11,0,17"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Panel.ZIndex="2"
+        Background="White"
+        Foreground="{Binding ElementName=ClientDateOfBirthField, Path=BorderBrush}"
+        Kind="Calendar" />
+
+            <DatePicker
+        x:Name="ClientDateOfBirthField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        Panel.ZIndex="0"
+        materialDesign:HintAssist.Hint="Employee Date Of Birth"
+        PreviewMouseDown="TextBoxPreviewMouseDown"
+        PreviewTouchDown="TextBoxPreviewTouchDown"
+        SelectedDateChanged="DatePickerSelectedDateChanged"
+        SelectedDateFormat="Short"
+        Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <DatePicker.SelectedDate>
+                    <Binding Path="nClientDateOfBirth"
+                             UpdateSourceTrigger="PropertyChanged"
+                             ValidatesOnDataErrors="True"
+                             NotifyOnValidationError="True"
+                             Mode="TwoWay">
+                        
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+        </Grid>
     <Grid Grid.Row="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />

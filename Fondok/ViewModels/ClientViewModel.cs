@@ -10,6 +10,7 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System.Windows;
+using System;
 
 namespace Fondok.ViewModels
 {
@@ -38,7 +39,8 @@ namespace Fondok.ViewModels
 
             nFirstName = EditClient.ClientFirstName;
             nLastName = EditClient.ClientLastName;
-            //nFirstName = EditClient.ClientDateOfBirth;
+            nClientDateOfBirth = EditClient.ClientDateOfBirth;
+            //nClientDateOfBirth = EditClient.ClientDateOfBirth;
             IsValidProperty = false;
 
         }
@@ -88,6 +90,26 @@ namespace Fondok.ViewModels
             }
         }
 
+        private DateTime _nClientDateOfBirth;
+        public DateTime nClientDateOfBirth
+        {
+            get
+            {
+                return _nClientDateOfBirth;
+            }
+            set
+            {
+                if (_nClientDateOfBirth != value)
+                {
+                    _nClientDateOfBirth = value;
+
+                    EditClient.ClientDateOfBirth = _nClientDateOfBirth;
+
+                    NotifyPropertyChanged("_nClientDateOfBirth");
+
+                }
+            }
+        }
         public string this[string columnName]
         {
             get
@@ -101,8 +123,15 @@ namespace Fondok.ViewModels
                         break;
                     case "nLastName":
                         if (nLastName <= 0) return FillRequired;
-                        break;
 
+                        break;
+                    case "nClientDateOfBirth":
+                        if (nClientDateOfBirth >= DateTime.Now.AddYears(-10) && nClientDateOfBirth <= DateTime.Now.AddYears(-100)
+                            || nClientDateOfBirth >= DateTime.Now.AddYears(-100))
+
+                            return "Date Range: " + DateTime.Now.AddYears(-10) +
+                                " & " + DateTime.Now.AddYears(-100);
+                        break;
                 }
                 return string.Empty;
             }
@@ -175,7 +204,7 @@ namespace Fondok.ViewModels
         {
             return db.Clients.Where(b => b.ClientID.Equals(id)).First();
         }
-        public void UpdateClient(int ClientID, string ClientFirstName, int ClientLastName, string ClientDateOfBirth)
+        public void UpdateClient(int ClientID, string ClientFirstName, int ClientLastName, DateTime ClientDateOfBirth)
         {
             Client Client = GetClient(ClientID);
             Client.ClientFirstName = Client.ClientFirstName;
@@ -265,6 +294,7 @@ namespace Fondok.ViewModels
                 return;
             }
             rep.DeleteClient(SelectedClient.ClientID);
+            Clients.ResetBindings();
         }
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
@@ -302,7 +332,8 @@ namespace Fondok.ViewModels
             if (bwvm.Run())
             {
                 rep.AddClient(bk);
-                
+                Clients.ResetBindings();
+
             }
         }
         public event PropertyChangedEventHandler PropertyChanged;

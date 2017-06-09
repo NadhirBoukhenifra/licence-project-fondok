@@ -29,8 +29,9 @@ namespace Fondok.Views.Windows
              
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
+            ClientDateOfBirthField.SelectedDate = DateTime.Now;
 
-            
+
         }
         private void AddClientClick(object sender, RoutedEventArgs e)
         {
@@ -65,6 +66,22 @@ namespace Fondok.Views.Windows
             }
 
             AddClientButton.IsEnabled = errorCount == 0;
+        }
+
+
+        public void TextBoxPreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ClientDateOfBirthField.IsDropDownOpen = true;
+        }
+
+        private void TextBoxPreviewTouchDown(object sender, TouchEventArgs e)
+        {
+            ClientDateOfBirthField.IsDropDownOpen = true;
+        }
+
+        private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ClientDateOfBirthField.IsDropDownOpen = false;
         }
 
     }
