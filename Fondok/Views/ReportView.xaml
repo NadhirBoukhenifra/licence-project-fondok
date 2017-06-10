@@ -23,29 +23,54 @@
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
 
-            <lvc:PieChart LegendLocation="Bottom"
-                          Grid.Column="1"
-                          DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}">
-                <lvc:PieChart.Series>
-                    <lvc:PieSeries Title="Maria" Values="3" DataLabels="True"
-                               LabelPoint="{Binding PointLabel}"/>
-                    <lvc:PieSeries Title="Charles" Values="4" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                    <lvc:PieSeries Title="Frida" Values="6" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                    <lvc:PieSeries Title="Frederic" Values="2" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                </lvc:PieChart.Series>
-            </lvc:PieChart>
 
 
-        </Grid>
-    <Grid Grid.Row="1">
 
-        
+      <lvc:PieChart
+        x:Name="RoomsStatsCircle"
+        Grid.Column="1"
+        DataClick="PieChartOnDataClick"
+        DataTooltip="{x:Null}"
+        Hoverable="False"
+        LegendLocation="Bottom">
+        <lvc:PieChart.Series>
+          <lvc:PieSeries
+            Title="Maria"
+            DataLabels="True"
+            LabelPoint="{Binding PointLabel}"
+            Values="3" />
+          <lvc:PieSeries
+            Title="Charles"
+            DataLabels="True"
+            LabelPoint="{Binding PointLabel}"
+            Values="4" />
+          <lvc:PieSeries
+            Title="Frida"
+            DataLabels="True"
+            LabelPoint="{Binding PointLabel}"
+            Values="6" />
+          <lvc:PieSeries
+            Title="Frederic"
+            DataLabels="True"
+            LabelPoint="{Binding PointLabel}"
+            Values="2" />
+        </lvc:PieChart.Series>
+      </lvc:PieChart>
 
-        </Grid>
 
+    </Grid>
+    <Grid Grid.Row="1" />
+    <lvc:CartesianChart
+      Grid.Row="1"
+      LegendLocation="Bottom"
+      Series="{Binding IncomesSeriesCollection}">
+      <lvc:CartesianChart.AxisY>
+        <lvc:Axis Title="Incomes" LabelFormatter="{Binding IncomesYFormatter}" />
+      </lvc:CartesianChart.AxisY>
+      <lvc:CartesianChart.AxisX>
+        <lvc:Axis Title="Month" Labels="{Binding IncomesLabels}" />
+      </lvc:CartesianChart.AxisX>
+    </lvc:CartesianChart>
 
   </Grid>
 </UserControl>
