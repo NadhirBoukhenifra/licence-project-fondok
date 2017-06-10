@@ -12,6 +12,7 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Data;
+using System.Globalization;
 
 namespace Fondok.ViewModels
 {
@@ -33,7 +34,7 @@ namespace Fondok.ViewModels
             //Make Properties With Fields Values
             ClientFirstName = EditClient.ClientFirstName;
             ClientLastName = EditClient.ClientLastName;
-            ClientDateOfBirth = EditClient.ClientDateOfBirth.Date;
+            ClientDateOfBirth =EditClient.ClientDateOfBirth.Date;
             ClientGender = EditClient.ClientGender;
             ClientIDType = EditClient.ClientIDType;
             ClientIDNumber = EditClient.ClientIDNumber;
@@ -42,7 +43,7 @@ namespace Fondok.ViewModels
             // ClientDateOfBirth Get 01/01/0001 First Time?? 
             if (ClientDateOfBirth == DateTime.MinValue)
             {
-                ClientDateOfBirth = DateTime.Now;
+                ClientDateOfBirth = DateTime.Now.AddYears(-10);
             }
             
         }
