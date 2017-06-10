@@ -236,7 +236,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client ID Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding ClientIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientIDNumberField_PreviewKeyDown" />
     </Grid>
 
     <Grid Grid.Row="7">

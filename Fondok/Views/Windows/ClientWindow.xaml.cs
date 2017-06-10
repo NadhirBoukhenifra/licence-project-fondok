@@ -21,7 +21,7 @@ namespace Fondok.Views.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
-        Commands.Verifications Vchar = new Commands.Verifications();
+        
         private int errorCount;
         public ClientWindow()
         {
@@ -105,14 +105,20 @@ namespace Fondok.Views.Windows
         private void ClientFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
 
-           Vchar.JustChar(sender,e); 
+           Verif.JustChar(sender,e); 
 
         }
 
         private void ClientLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Vchar.JustChar(sender, e);
+            Verif.JustChar(sender, e);
         }
+
+        private void ClientIDNumberField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+           Verif.JustNum(sender, e);
+        }
+        Commands.Verifications Verif = new Commands.Verifications();
     }
   
 }
