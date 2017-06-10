@@ -132,7 +132,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Phone"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EmployeePhone, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding EmployeePhone, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="EmployeePhoneField_PreviewKeyDown" />
     </Grid>
 
     <Grid Grid.Row="4">

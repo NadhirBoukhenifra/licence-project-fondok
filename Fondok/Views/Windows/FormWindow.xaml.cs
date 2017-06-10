@@ -70,8 +70,8 @@ namespace Fondok.Views.Windows
 
         private void FormTitleField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            Vchar.JustChar(sender, e);
+            Verif.JustChar(sender, e);
         }
-        Commands.Verifications Vchar = new Commands.Verifications();
+        Commands.Verifications Verif = new Commands.Verifications();
     }
 }
