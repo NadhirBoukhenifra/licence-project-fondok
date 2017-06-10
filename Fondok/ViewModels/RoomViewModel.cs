@@ -1,48 +1,23 @@
-﻿
-using Fondok.Models;
+﻿using Fondok.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Fondok.Views;
 using Fondok.Views.Windows;
 using Fondok.Context;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
-using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Data;
-
+using System.ComponentModel.DataAnnotations;
+using MvvmValidation;
+using System;
+using System.Windows.Controls;
 namespace Fondok.ViewModels
 {
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // RoomViewModel Class
     class RoomViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
 
-        //Constructor Null FirstTime
-        public RoomViewModel() : this(null) { }
-        // Constructor With Param Of The Model
-        public RoomViewModel(Room Room)
-        {
-            // Add Room To Edit
-            EditRoom = Room;
-
-            //Validate Property
-            IsValidProperty = false;
-
-            //Make Properties With Fields Values
-            RoomNumber = EditRoom.RoomNumber;
-            RoomFloor = EditRoom.RoomFloor;
-            RoomType = EditRoom.RoomType;
-            RoomCapacity = EditRoom.RoomCapacity;
-            RoomStatus = EditRoom.RoomStatus;
-            RoomPrice = EditRoom.RoomPrice;
-
-        }
-
-
-        //IsValidProperty For Validation
         private bool _IsValidProperty;
         public bool IsValidProperty
         {
@@ -59,8 +34,19 @@ namespace Fondok.ViewModels
                 }
             }
         }
+        public RoomViewModel() : this(null) { }
+        public RoomViewModel(Room Room)
+        {
+            EditRoom = Room;
+            //EditRoom.RoomNumber = nRoomNumber;
+            //EditRoom.RoomNumber = nRoomNumber.Value;
+            //EditRoom.RoomNumber = nRoomNumber.Value;
 
-        // Implementation Of IDataErrorInfo For Validation
+            IsValidProperty = false;
+
+
+        }
+
         public string Error
         {
             get
@@ -68,134 +54,29 @@ namespace Fondok.ViewModels
                 return string.Empty;
             }
         }
-
-        // RoomNumber Property
-        private int _RoomNumber;
-        public int RoomNumber
+        //public int? nRoomFloor { get; set; }
+        public string nRoomType { get; set; }
+        //public int? nRoomCapacity { get; set; }
+        //public string nRoomStatus { get; set; }
+        //public double? nRoomPrice { get; set; }
+        //public int? nRoomNumber { get; set; }
+        private int? _nRoomNumber;
+        public int? nRoomNumber
         {
             get
             {
-                return _RoomNumber;
+                return _nRoomNumber;
             }
             set
             {
-                if (_RoomNumber != value)
-                {
-                    _RoomNumber = value;
-                    EditRoom.RoomNumber = _RoomNumber;
-                    NotifyPropertyChanged("RoomNumber");
-                }
+                //if (_nRoomNumber != value)
+                //{
+                    _nRoomNumber = value;
+                
+                    NotifyPropertyChanged("_nRoomNumber");
+                //}
             }
         }
-
-        // RoomFloor Property
-        private int _RoomFloor;
-        public int RoomFloor
-        {
-            get
-            {
-                return _RoomFloor;
-            }
-            set
-            {
-                if (_RoomFloor != value)
-                {
-                    _RoomFloor = value;
-
-                    EditRoom.RoomFloor = _RoomFloor;
-
-                    NotifyPropertyChanged("RoomFloor");
-
-                }
-            }
-        }
-
-        // RoomType Property
-        private string _RoomType;
-        public string RoomType
-        {
-            get
-            {
-                return _RoomType;
-            }
-            set
-            {
-                if (_RoomType != value)
-                {
-                    _RoomType = value;
-
-                    EditRoom.RoomType = _RoomType;
-
-                    NotifyPropertyChanged("RoomType");
-                }
-            }
-        }
-
-        // RoomCapacity Property
-        private int _RoomCapacity;
-        public int RoomCapacity
-        {
-            get
-            {
-                return _RoomCapacity;
-            }
-            set
-            {
-                if (_RoomCapacity != value)
-                {
-                    _RoomCapacity = value;
-
-                    EditRoom.RoomCapacity = _RoomCapacity;
-
-                    NotifyPropertyChanged("RoomCapacity");
-
-                }
-            }
-        }
-
-        // RoomStatus Property
-        private string _RoomStatus;
-        public string RoomStatus
-        {
-            get
-            {
-                return _RoomStatus;
-            }
-            set
-            {
-                if (_RoomStatus != value)
-                {
-                    _RoomStatus = value;
-
-                    EditRoom.RoomStatus = _RoomStatus;
-
-                    NotifyPropertyChanged("RoomStatus");
-                }
-            }
-        }
-
-        // RoomPrice Property
-        private double _RoomPrice;
-        public double RoomPrice
-        {
-            get
-            {
-                return _RoomPrice;
-            }
-            set
-            {
-                if (_RoomPrice != value)
-                {
-                    _RoomPrice = value;
-
-                    EditRoom.RoomPrice = _RoomPrice;
-
-                    NotifyPropertyChanged("RoomPrice");
-                }
-            }
-        }
-
-        // Add Conditions & Error Messages
         public string this[string columnName]
         {
             get
@@ -203,25 +84,41 @@ namespace Fondok.ViewModels
                 string FillRequired = "Please Fill The Field";
                 switch (columnName)
                 {
-                    case "RoomNumber":
-                        if (RoomNumber <= 0 || RoomNumber > 9999) return FillRequired;
+                    case "nRoomNumber":
+                        if (nRoomNumber == null) return FillRequired;
+                        else if (nRoomNumber < 1 || nRoomNumber > 10000)
+                            return "Room Number Must Be Between 1 & 10000";
                         break;
-                    case "RoomFloor":
-                        if (RoomFloor <= 0 || RoomFloor > 99) return FillRequired;
+
+                    //case "nRoomFloor":
+                    //    if (this.nRoomFloor == null) return FillRequired;
+                    //    else if(this.nRoomFloor < 0 || this.nRoomFloor > 99)
+                    //        return "Room Floor Must Be Between 0 & 99";
+
+                    //    break;
+
+                    case "nRoomType":
+                        if (this.nRoomType == null) return FillRequired;
                         break;
-                    case "RoomCapacity":
-                        if (RoomCapacity <= 0 || RoomCapacity > 11) return FillRequired;
-                        break;
-                    case "RoomPrice":
-                        if (RoomPrice <= 0 || RoomPrice > 999999) return FillRequired;
-                        break;
+
+                        //case "nRoomCapacity":
+                        //    if (this.nRoomCapacity == null) return FillRequired;
+                        //    break;
+                        //case "nRoomStatus":
+                        //    if (this.nRoomStatus == null) return FillRequired;
+                        //    break;
+
+                        //case "nRoomPrice":
+                        //    if (this.nRoomPrice == null) return FillRequired;
+                        //    break;
 
                 }
                 return string.Empty;
             }
         }
 
-        // Edit Room Property
+
+
         private Room _editRoom;
         public Room EditRoom
         {
@@ -231,119 +128,92 @@ namespace Fondok.ViewModels
             }
             set
             {
-                _editRoom = value;
+                if (_editRoom != value)
+                {
+                    _editRoom = value;
 
-                NotifyPropertyChanged("EditRoom");
+                    //EditRoom.RoomNumber = nRoomNumber;
+
+                    NotifyPropertyChanged("EditRoom");
+                }
             }
         }
-
-        // RoomWindow Run() Method
         public bool Run()
         {
-            RoomWindow window = new RoomWindow();
+            RoomWindow sw = new RoomWindow();
+            sw.DataContext = this;
+       
 
-            window.DataContext = this;
-
-            if (window.ShowDialog() == true) { return true; }
+            if (sw.ShowDialog() == true)
+            {
+                return true;
+            }
             return false;
-        }
 
-        // MVVM NotifyPropertyChanged Implementation
+
+        }
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            
         }
     }
-
-
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // RoomDataInteraction Class Create, Read, Update, Delete
-    class RoomDataInteraction
+    class RoomRepository
     {
-        // Loading Data From DB 
         DatabaseContext db = new DatabaseContext();
-
-        // RoomDataInteraction Constructor
-        public RoomDataInteraction(DatabaseContext _db)
+        public RoomRepository(DatabaseContext _db)
         {
             db = _db;
             db.Rooms.Load();
-            
         }
-        // Insert Data From To BindingList
         public System.ComponentModel.BindingList<Room> GetAllRooms()
         {
             return db.Rooms.Local.ToBindingList();
         }
-
-        // Adding Method
         public void AddRoom(Room Room)
         {
+
             db.Rooms.Add(Room);
+            //Room.RoomFloor = 2;
+            //Room.RoomType = "hhhh";
+            //Room.RoomStatus = "gggg";
+            //Room.RoomCapacity = 4;
+            //Room.RoomPrice = 222;
+            MessageBox.Show(Room.RoomNumber.ToString());
             db.SaveChanges();
         }
-
-        // Get Room Method
         public Room GetRoom(int id)
         {
-            return db.Rooms.Where(get => get.RoomID.Equals(id)).First();
+            return db.Rooms.Where(b => b.RoomID.Equals(id)).First();
         }
-
-        // Update Room Method FirstTime
-        public void UpdateRoom(
-            int RoomID,
-            int RoomNumber,
-            int RoomFloor,
-            string RoomType,
-            int RoomCapacity,
-            string RoomStatus,
-            double RoomPrice
-            )
+        public void UpdateRoom(int RoomID, int? RoomNumber, int? RoomFloor, string RoomType, int? RoomCapacity, string RoomStatus, double? RoomPrice)
         {
             Room Room = GetRoom(RoomID);
+            
             Room.RoomNumber = RoomNumber;
             Room.RoomFloor = RoomFloor;
             Room.RoomType = RoomType;
             Room.RoomCapacity = RoomCapacity;
             Room.RoomStatus = RoomStatus;
             Room.RoomPrice = RoomPrice;
-
             db.SaveChanges();
         }
-
-        // Update Room Method After Insert
-        public void UpdateRoom(Room update)
+        public void UpdateRoom(Room b)
         {
-            UpdateRoom(
-                update.RoomID,
-                update.RoomNumber,
-                update.RoomFloor,
-                update.RoomType,
-                update.RoomCapacity,
-                update.RoomStatus,
-                update.RoomPrice
-                );
+            UpdateRoom(b.RoomID, b.RoomNumber, b.RoomFloor, b.RoomType, b.RoomCapacity, b.RoomStatus, b.RoomPrice);
         }
-
-        // Delete Room Method
         public void DeleteRoom(int id)
         {
             db.Rooms.Remove(GetRoom(id));
             db.SaveChanges();
         }
     }
-
-
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // RoomBox Class
-    class RoomBox : INotifyPropertyChanged
+    class RoomLibraryViewModel : INotifyPropertyChanged
     {
-        private RoomDataInteraction box;
+        private RoomRepository rep;
         private DatabaseContext db;
         private BindingList<Room> _Rooms;
-
-        // Rooms BindingList Property
         public BindingList<Room> Rooms
         {
             get
@@ -356,8 +226,6 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("Rooms");
             }
         }
-
-        // SelectedRoom Property
         private Room _selectedRoom;
         public Room SelectedRoom
         {
@@ -371,25 +239,19 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("SelectedRoom");
             }
         }
-
-        // RoomBox Constructor
-        public RoomBox()
+        public RoomLibraryViewModel()
         {
             db = new DatabaseContext();
-            box = new RoomDataInteraction(db);
-            Rooms = box.GetAllRooms();
+            rep = new RoomRepository(db);
+            Rooms = rep.GetAllRooms();
             deleteCommand = new DelegateCommand(DeleteRoom);
             updateCommand = new DelegateCommand(UpdateRoom);
             createCommand = new DelegateCommand(CreateRoom);
         }
-
-        // Check if Room Selected?
         public bool IsSelected()
         {
             return SelectedRoom != null;
         }
-
-        // Implementation Of DeleteCommand Property
         private ICommand deleteCommand;
         public ICommand DeleteCommand
         {
@@ -398,19 +260,14 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
-
-        // Delete the Selected Room Method & Refresh Rooms Binding :)
         public void DeleteRoom()
         {
             if (!IsSelected())
             {
                 return;
             }
-            box.DeleteRoom(SelectedRoom.RoomID);
-            Rooms.ResetBindings();
+            rep.DeleteRoom(SelectedRoom.RoomID);
         }
-
-        // Implementation Of UpdateCommand Property
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
         {
@@ -419,28 +276,18 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
-
-        // Update the Selected Room Method & Refresh Rooms Binding :)
         public void UpdateRoom()
         {
-            // Check If Selected?
             if (!IsSelected())
             {
                 return;
             }
-
-            // Create View Model With Selected Room To Edit
-            RoomViewModel vm = new RoomViewModel(SelectedRoom);
-
-            // Run The Room Window And Add Selected Room To Edit & Refresh Binding
-            if (vm.Run())
+            RoomViewModel bwvm = new RoomViewModel(SelectedRoom);
+            if (bwvm.Run())
             {
-                box.UpdateRoom(SelectedRoom);
-                Rooms.ResetBindings();
+                rep.UpdateRoom(SelectedRoom);
             }
         }
-
-        // Implementation Of CreateCommand Property
         private DelegateCommand createCommand;
         public ICommand CreateCommand
         {
@@ -449,24 +296,19 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
-
-        //  Create Room Method & Refresh Rooms Binding :)
         public void CreateRoom()
         {
-            Room create = new Room();
-
-            RoomViewModel vm = new RoomViewModel(create);
-
-            // Run The Room Window To Create Room & Refresh Binding
-            if (vm.Run())
+            Room bk = new Room();
+            RoomViewModel bwvm = new RoomViewModel(bk);
+            //bk.RoomNumber = 1000;
+            //bk.RoomNumber = null;
+            if (bwvm.Run())
             {
-                box.AddRoom(create);
+                //MessageBox.Show(bk.RoomNumber.ToString());
 
-                Rooms.ResetBindings();
+                rep.AddRoom(bk);
             }
         }
-
-        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {

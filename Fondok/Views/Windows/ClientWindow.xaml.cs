@@ -1,6 +1,4 @@
-﻿using Fondok.Context;
-using Fondok.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,32 +19,18 @@ namespace Fondok.Views.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
-        Commands.Verifications Vchar = new Commands.Verifications();
         private int errorCount;
         public ClientWindow()
         {
            
 
             InitializeComponent();
-            DataContext = this;
 
-
+             
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
-            string[] ClientGenderSource = new string[] { "Male", "Female", "Other" };
+            ClientDateOfBirthField.SelectedDate = DateTime.Now;
 
-            ClientGenderField.ItemsSource = ClientGenderSource;
-
-            string[] ClientIDTypeSource = new string[] { "ID card", "Passport", "Driver License", "Birth Document" };
-
-            ClientIDTypeField.ItemsSource = ClientIDTypeSource;
-
-            //DataContext = this;
-            var context = new DatabaseContext();
-
-            var ClientParentSource = (from s in context.Clients select s.ClientID).ToArray();
-
-            ClientParentField.ItemsSource = ClientParentSource;
 
         }
         private void AddClientClick(object sender, RoutedEventArgs e)
@@ -93,28 +77,12 @@ namespace Fondok.Views.Windows
         private void TextBoxPreviewTouchDown(object sender, TouchEventArgs e)
         {
             ClientDateOfBirthField.IsDropDownOpen = true;
-           
         }
 
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             ClientDateOfBirthField.IsDropDownOpen = false;
         }
-        
-        private void ClientFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
 
-           Vchar.JustChar(sender,e); 
-
-        }
-
-        private void ClientLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            Vchar.JustChar(sender, e);
-        }
     }
-  
 }
-
-
-

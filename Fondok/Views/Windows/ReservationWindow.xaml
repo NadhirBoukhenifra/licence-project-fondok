@@ -13,7 +13,7 @@
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
-  TextElement.FontSize="18"
+  TextElement.FontSize="16"
   TextElement.FontWeight="Regular"
   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
   TextOptions.TextFormattingMode="Ideal"
@@ -34,170 +34,64 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Grid Grid.Row="0" VerticalAlignment="Center">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:Card
-        Grid.Row="0"
-        Grid.Column="1"
-        Padding="0,12,0,12"
-        VerticalAlignment="Center"
-        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-        <TextBlock
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          FontWeight="Black"
-          Foreground="{StaticResource SecondaryAccentBrush}"
-          Text="Reservation Settings:" />
-      </materialDesign:Card>
-
+    <Grid
+      Grid.Row="0"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center">
+      <TextBlock Text="Reservation Settings" />
     </Grid>
-    <!--<Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationFirstNameField, Path=BorderBrush}"
-        Kind="Face" />
-            <TextBox
-        x:Name="ReservationFirstNameField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation First Name"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ReservationFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-        </Grid>-->
-    <!--<Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationLastNameField, Path=BorderBrush}"
-        Kind="Account" />
-            <TextBox
-        x:Name="ReservationLastNameField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation Last Name"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ReservationLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-        </Grid>-->
-
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <DatePicker
-        x:Name="CheckInDateField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        Height="{Binding ActualHeight, ElementName=ReservationStatusField, Mode=OneWay}"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        HorizontalContentAlignment="Stretch"
-        VerticalContentAlignment="Center"
-        Panel.ZIndex="1"
-        materialDesign:HintAssist.Hint="Reservation Check In Date"
-        PreviewMouseDown="TextBoxPreviewMouseDown"
-        PreviewTouchDown="TextBoxPreviewTouchDown"
-        SelectedDateChanged="DatePickerSelectedDateChanged"
-        SelectedDateFormat="Short"
-        Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
-        <DatePicker.SelectedDate>
-          <Binding
-            Mode="TwoWay"
-            NotifyOnValidationError="True"
-            Path="CheckInDate"
-            UpdateSourceTrigger="PropertyChanged"
-            ValidatesOnDataErrors="True" />
-        </DatePicker.SelectedDate>
-      </DatePicker>
-
       <materialDesign:PackIcon
+        Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Panel.ZIndex="2"
-        Background="White"
-        Foreground="{Binding BorderBrush, ElementName=CheckInDateField}"
-        Kind="Calendar" />
+        Foreground="{Binding ElementName=ReservationFromField, Path=BorderBrush}"
+        Kind="CalendarToday" />
+      <TextBox
+        x:Name="ReservationFromField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Reservation From"
+        Text="{Binding EditReservation.ReservationFrom}" />
     </Grid>
-
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <DatePicker
-        x:Name="CheckOutDateField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        Height="{Binding ActualHeight, ElementName=ReservationStatusField, Mode=OneWay}"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        HorizontalContentAlignment="Stretch"
-        VerticalContentAlignment="Center"
-        Panel.ZIndex="1"
-        materialDesign:HintAssist.Hint="Reservation Check Out Date"
-        PreviewMouseDown="TextBoxPreviewMouseDownTwo"
-        PreviewTouchDown="TextBoxPreviewTouchDownTwo"
-        SelectedDateChanged="DatePickerSelectedDateChangedTwo"
-        SelectedDateFormat="Short"
-        Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
-        <DatePicker.SelectedDate>
-          <Binding
-            Mode="TwoWay"
-            NotifyOnValidationError="True"
-            Path="CheckOutDate"
-            UpdateSourceTrigger="PropertyChanged"
-            ValidatesOnDataErrors="True" />
-        </DatePicker.SelectedDate>
-      </DatePicker>
-
       <materialDesign:PackIcon
+        Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Panel.ZIndex="2"
-        Background="White"
-        Foreground="{Binding BorderBrush, ElementName=CheckOutDateField}"
-        Kind="CalendarClock" />
+        Foreground="{Binding ElementName=ReservationToField, Path=BorderBrush}"
+        Kind="CalendarCheck" />
+      <TextBox
+        x:Name="ReservationToField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Reservation To"
+        Text="{Binding EditReservation.ReservationTo}" />
     </Grid>
-
 
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
@@ -213,19 +107,17 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ReservationStatusField, Path=BorderBrush}"
-        Kind="CalendarMultipleCheck" />
-      <ComboBox
+        Kind="CalendarMultiple" />
+      <TextBox
         x:Name="ReservationStatusField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Reservation Status"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding ReservationStatus, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditReservation.ReservationStatus}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        Text="{Binding EditReservation.ReservationStatus}" />
     </Grid>
 
 
@@ -242,48 +134,20 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservedByField, Path=BorderBrush}"
-        Kind="AccountCardDetails" />
-      <ComboBox
-        x:Name="ReservedByField"
+        Foreground="{Binding ElementName=ReservationByField, Path=BorderBrush}"
+        Kind="Account" />
+      <TextBox
+        x:Name="ReservationByField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reserved By"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding ReservedBy, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditReservation.ReservedBy}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        materialDesign:HintAssist.Hint="Reservation By"
+        Text="{Binding EditReservation.ReservationBy}" />
     </Grid>
 
-    <!--<Grid Grid.Row="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationIDNumberField, Path=BorderBrush}"
-        Kind="Numeric" />
-            <TextBox
-        x:Name="ReservationIDNumberField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation ID Number"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ReservationIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-        </Grid>-->
     <Grid Grid.Row="5">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -297,20 +161,18 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservedForField, Path=BorderBrush}"
-        Kind="Account" />
-      <ComboBox
-        x:Name="ReservedForField"
+        Foreground="{Binding ElementName=ReservationForField, Path=BorderBrush}"
+        Kind="Face" />
+      <TextBox
+        x:Name="ReservationForField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reserved For"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding ReservedFor, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditReservation.ReservedFor}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        materialDesign:HintAssist.Hint="Reservation For"
+        Text="{Binding EditReservation.ReservationFor}" />
     </Grid>
 
     <Grid Grid.Row="6">
@@ -326,21 +188,32 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=RoomNumberField, Path=BorderBrush}"
+        Foreground="{Binding ElementName=ReservationInField, Path=BorderBrush}"
         Kind="Hotel" />
-      <ComboBox
-        x:Name="RoomNumberField"
+      <!--<TextBox
+        x:Name="ReservationInField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Room Number"
+        materialDesign:HintAssist.Hint="Reservation In"
+        Text="{Binding EditReservation.ReservationIn}" />-->
+      <ComboBox
+        x:Name="ReservationInField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="Auto"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Rooms available"
         IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding RoomNumber, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditReservation.RoomNumber}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        ItemsSource="{Binding RoomAva}"
+        SelectedItem="{Binding EditReservation.ReservationIn}" />
     </Grid>
+
     <Grid Grid.Row="7">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -354,21 +227,20 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationFormField, Path=BorderBrush}"
-        Kind="Food" />
-      <ComboBox
-        x:Name="ReservationFormField"
+        Foreground="{Binding ElementName=ReservationServiceField, Path=BorderBrush}"
+        Kind="ChemicalWeapon" />
+      <TextBox
+        x:Name="ReservationServiceField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation Form"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding ReservationForm, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditReservation.ReservationForm}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        materialDesign:HintAssist.Hint="Reservation Service"
+        Text="{Binding EditReservation.ReservationService}" />
     </Grid>
+
     <Grid Grid.Row="8">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -377,15 +249,11 @@
       </Grid.ColumnDefinitions>
       <Button
         x:Name="AddReservationButton"
+        Grid.Row="4"
         Grid.Column="1"
-        Height="48"
-        VerticalAlignment="Center"
         Click="AddReservationClick"
         Content="Confirm Reservation"
-        FontSize="18"
-        FontWeight="Bold"
-        Foreground="#DDFFFFFF"
-        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        Foreground="#DDFFFFFF" />
     </Grid>
   </Grid>
 </Window>

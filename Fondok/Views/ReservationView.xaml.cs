@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fondok.Views
@@ -23,11 +24,11 @@ namespace Fondok.Views
         {
             InitializeComponent();
         }
+
         void ReservationViewLoaded(object sender, RoutedEventArgs e)
         {
             ReservationsGrid.UpdateLayout();
             ReservationsGrid.Items.Refresh();
-
         }
     }
 }

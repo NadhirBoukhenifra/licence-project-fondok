@@ -2,53 +2,20 @@
 using Fondok.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Fondok.Views;
 using Fondok.Views.Windows;
 using Fondok.Context;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
-using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Data;
+using System;
 
 namespace Fondok.ViewModels
 {
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ClientViewModel Class
     class ClientViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
-        //Constructor Null FirstTime
-        public ClientViewModel() : this(null) { }
-        // Constructor With Param Of The Model
-        public ClientViewModel(Client Client)
-        {
-            // Add Client To Edit
-            EditClient = Client;
-
-            //Validate Property
-            IsValidProperty = false;
-
-            //Make Properties With Fields Values
-            ClientFirstName = EditClient.ClientFirstName;
-            ClientLastName = EditClient.ClientLastName;
-            ClientDateOfBirth = EditClient.ClientDateOfBirth.Date;
-            ClientGender = EditClient.ClientGender;
-            ClientIDType = EditClient.ClientIDType;
-            ClientIDNumber = EditClient.ClientIDNumber;
-            ClientParent = EditClient.ClientParent;
-
-            // ClientDateOfBirth Get 01/01/0001 First Time?? 
-            if (ClientDateOfBirth == DateTime.MinValue)
-            {
-                ClientDateOfBirth = DateTime.Now;
-            }
-            
-        }
-
-
-        //IsValidProperty For Validation
         private bool _IsValidProperty;
         public bool IsValidProperty
         {
@@ -65,8 +32,18 @@ namespace Fondok.ViewModels
                 }
             }
         }
+        public ClientViewModel() : this(null) { }
+        public ClientViewModel(Client Client)
+        {
+            EditClient = Client;
 
-        // Implementation Of IDataErrorInfo For Validation
+            nFirstName = EditClient.ClientFirstName;
+            nLastName = EditClient.ClientLastName;
+            nClientDateOfBirth = EditClient.ClientDateOfBirth;
+            //nClientDateOfBirth = EditClient.ClientDateOfBirth;
+            IsValidProperty = false;
+
+        }
         public string Error
         {
             get
@@ -74,155 +51,65 @@ namespace Fondok.ViewModels
                 return string.Empty;
             }
         }
-
-        // ClientFirstName Property
-        private string _ClientFirstName;
-        public string ClientFirstName
+        private string _nFirstName;
+        public string nFirstName
         {
             get
             {
-                return _ClientFirstName;
+                return _nFirstName;
             }
             set
             {
-                if (_ClientFirstName != value)
+                if (_nFirstName != value)
                 {
-                    _ClientFirstName = value;
-                    EditClient.ClientFirstName = _ClientFirstName;
-                    NotifyPropertyChanged("ClientFirstName");
+                _nFirstName = value;
+                    EditClient.ClientFirstName = _nFirstName;
+                    NotifyPropertyChanged("_nFirstName");
                 }
             }
         }
 
-        // ClientLastName Property
-        private string _ClientLastName;
-        public string ClientLastName
+        private string _nLastName;
+        public string nLastName
         {
             get
             {
-                return _ClientLastName;
+                return _nLastName;
             }
             set
             {
-                if (_ClientLastName != value)
+                if (_nLastName != value)
                 {
-                    _ClientLastName = value;
+                     _nLastName = value;
 
-                    EditClient.ClientLastName = _ClientLastName;
+                    EditClient.ClientLastName = _nLastName;
 
-                    NotifyPropertyChanged("ClientLastName");
+                    NotifyPropertyChanged("_nLastName");
                     
                 }
             }
         }
 
-        // ClientDateOfBirth Property
-        private DateTime _ClientDateOfBirth;
-        public DateTime ClientDateOfBirth
+        private DateTime _nClientDateOfBirth;
+        public DateTime nClientDateOfBirth
         {
             get
             {
-                return _ClientDateOfBirth;
+                return _nClientDateOfBirth;
             }
             set
             {
-                if (_ClientDateOfBirth != value)
+                if (_nClientDateOfBirth != value)
                 {
-                    _ClientDateOfBirth = value;
+                    _nClientDateOfBirth = value;
 
-                    EditClient.ClientDateOfBirth = _ClientDateOfBirth.Date;
+                    EditClient.ClientDateOfBirth = _nClientDateOfBirth;
 
-                    NotifyPropertyChanged("ClientDateOfBirth");
-                }
-            }
-        }
-
-        // ClientGender Property
-        private string _ClientGender;
-        public string ClientGender
-        {
-            get
-            {
-                return _ClientGender;
-            }
-            set
-            {
-                if (_ClientGender != value)
-                {
-                    _ClientGender = value;
-
-                    EditClient.ClientGender = _ClientGender;
-
-                    NotifyPropertyChanged("ClientGender");
+                    NotifyPropertyChanged("_nClientDateOfBirth");
 
                 }
             }
         }
-
-        // ClientIDType Property
-        private string _ClientIDType;
-        public string ClientIDType
-        {
-            get
-            {
-                return _ClientIDType;
-            }
-            set
-            {
-                if (_ClientIDType != value)
-                {
-                    _ClientIDType = value;
-
-                    EditClient.ClientIDType = _ClientIDType;
-
-                    NotifyPropertyChanged("ClientIDType");
-                }
-            }
-        }
-
-        // ClientIDType Property
-        private int _ClientIDNumber;
-        public int ClientIDNumber
-        {
-            get
-            {
-                return _ClientIDNumber;
-            }
-            set
-            {
-                if (_ClientIDNumber != value)
-                {
-                    _ClientIDNumber = value;
-
-                    EditClient.ClientIDNumber = _ClientIDNumber;
-
-                    NotifyPropertyChanged("ClientIDNumber");
-                }
-            }
-        }
-
-        // ClientIDType Property
-        private string _ClientParent;
-        public string ClientParent
-        {
-            get
-            {
-                return _ClientParent;
-            }
-            set
-            {
-                if (_ClientParent != value)
-                {
-                    _ClientParent = value;
-
-                    EditClient.ClientParent = _ClientParent;
-
-                    NotifyPropertyChanged("ClientParent");
-                }
-            }
-        }
-
-        // Add Conditions & Error Messages
         public string this[string columnName]
         {
             get
@@ -230,41 +117,24 @@ namespace Fondok.ViewModels
                 string FillRequired = "Please Fill The Field";
                 switch (columnName)
                 {
-                    case "ClientFirstName":
-                        if (ClientFirstName == null || ClientFirstName == "") return FillRequired;
+                    case "nFirstName":
+                        if (nFirstName == null || nFirstName == "") return FillRequired;
 
                         break;
-                    case "ClientLastName":
-                        if (ClientLastName == null || ClientLastName == "") return FillRequired;
+                    case "nLastName":
+                        if (nLastName == null || nLastName == "") return FillRequired;
 
                         break;
-                    case "ClientDateOfBirth":
-                        if (ClientDateOfBirth > DateTime.Now.AddYears(-10) || ClientDateOfBirth < DateTime.Now.AddYears(-100))
-                            return "Date Range: " + DateTime.Now.AddYears(-100).Date + " & " + DateTime.Now.AddYears(-10).Date;
+                    case "nClientDateOfBirth":
+                        if (nClientDateOfBirth > DateTime.Now.AddYears(-10)  || nClientDateOfBirth < DateTime.Now.AddYears(-100))
 
-                        break;
-                    case "ClientGender":
-                        if (ClientGender == null) return FillRequired;
-
-                        break;
-                    case "ClientIDType":
-                        if (ClientIDType == null) return FillRequired;
-
-                        break;
-                    case "ClientIDNumber":
-                        if (string.IsNullOrWhiteSpace(ClientIDNumber.ToString()) || string.IsNullOrEmpty(ClientIDNumber.ToString()) || ClientIDNumber <= 0) return FillRequired;
-
-                        break;
-                    case "ClientParent":
-                        if (ClientParent == null) return FillRequired;
-
+                            return "Date Range: " + DateTime.Now.AddYears(-10) +
+                                " & " + DateTime.Now.AddYears(-100);
                         break;
                 }
                 return string.Empty;
             }
         }
-
-        // Edit Client Property
         private Client _editClient;
         public Client EditClient
         {
@@ -274,23 +144,29 @@ namespace Fondok.ViewModels
             }
             set
             {
+                
                _editClient = value;
                 
                 NotifyPropertyChanged("EditClient");
+
             }
         }
-
-        // ClientWindow Run() Method
         public bool Run()
         {
-            ClientWindow window = new ClientWindow();
+            ClientWindow sw = new ClientWindow();
 
-            window.DataContext = this;
+            sw.DataContext = this;
 
-            if (window.ShowDialog() == true) { return true; } return false;
+            if (sw.ShowDialog() == true)
+            {
+                return true;
+                
+
+            }
+            return false;
+
+            
         }
-
-        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -299,78 +175,47 @@ namespace Fondok.ViewModels
     }
 
 
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ClientDataInteraction Class Create, Read, Update, Delete
-    class ClientDataInteraction
-    {
-        // Loading Data From DB 
-        DatabaseContext db = new DatabaseContext();
 
-        // ClientDataInteraction Constructor
-        public ClientDataInteraction(DatabaseContext _db)
+
+
+    class ClientRepository
+    {
+
+        DatabaseContext db = new DatabaseContext();
+        public ClientRepository(DatabaseContext _db)
         {
             db = _db;
             db.Clients.Load();
         }
-        // Insert Data From To BindingList
         public System.ComponentModel.BindingList<Client> GetAllClients()
         {
             return db.Clients.Local.ToBindingList();
         }
-
-        // Adding Method
         public void AddClient(Client Client)
         {
             db.Clients.Add(Client);
-            db.SaveChanges();
-        }
 
-        // Get Client Method
+            db.SaveChanges();
+
+            
+        }
         public Client GetClient(int id)
         {
-            return db.Clients.Where(get => get.ClientID.Equals(id)).First();
+            return db.Clients.Where(b => b.ClientID.Equals(id)).First();
         }
-
-        // Update Client Method FirstTime
-        public void UpdateClient(
-            int ClientID,
-            string ClientFirstName,
-            string ClientLastName,
-            DateTime ClientDateOfBirth, 
-            string ClientGender,
-            string ClientIDType,
-            int ClientIDNumber,
-            string ClientParent
-            )
+        public void UpdateClient(int ClientID, string ClientFirstName, string ClientLastName, DateTime ClientDateOfBirth)
         {
             Client Client = GetClient(ClientID);
-            Client.ClientFirstName = ClientFirstName;
+            Client.ClientFirstName = Client.ClientFirstName;
             Client.ClientLastName = ClientLastName;
             Client.ClientDateOfBirth = ClientDateOfBirth;
-            Client.ClientGender = ClientGender;
-            Client.ClientIDType = ClientIDType;
-            Client.ClientIDNumber = ClientIDNumber;
-            Client.ClientParent = ClientParent;
 
             db.SaveChanges();
         }
-
-        // Update Client Method After Insert
-        public void UpdateClient(Client update)
+        public void UpdateClient(Client b)
         {
-            UpdateClient(
-                update.ClientID,
-                update.ClientFirstName,
-                update.ClientLastName,
-                update.ClientDateOfBirth,
-                update.ClientGender,
-                update.ClientIDType,
-                update.ClientIDNumber,
-                update.ClientParent
-                );
+            UpdateClient(b.ClientID, b.ClientFirstName, b.ClientLastName, b.ClientDateOfBirth);
         }
-
-        // Delete Client Method
         public void DeleteClient(int id)
         {
             db.Clients.Remove(GetClient(id));
@@ -379,15 +224,22 @@ namespace Fondok.ViewModels
     }
 
 
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ClientBox Class
-    class ClientBox : INotifyPropertyChanged
+
+
+
+
+
+
+
+
+
+
+
+    class ClientLibraryViewModel : INotifyPropertyChanged
     {
-        private ClientDataInteraction box;
+        private ClientRepository rep;
         private DatabaseContext db;
         private BindingList<Client> _Clients;
-
-        // Clients BindingList Property
         public BindingList<Client> Clients
         {
             get
@@ -400,8 +252,6 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("Clients");
             }
         }
-
-        // SelectedClient Property
         private Client _selectedClient;
         public Client SelectedClient
         {
@@ -415,25 +265,19 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("SelectedClient");
             }
         }
-
-        // ClientBox Constructor
-        public ClientBox()
+        public ClientLibraryViewModel()
         {
             db = new DatabaseContext();
-            box = new ClientDataInteraction(db);
-            Clients = box.GetAllClients();
+            rep = new ClientRepository(db);
+            Clients = rep.GetAllClients();
             deleteCommand = new DelegateCommand(DeleteClient);
             updateCommand = new DelegateCommand(UpdateClient);
             createCommand = new DelegateCommand(CreateClient);
         }
-        
-        // Check if Client Selected?
         public bool IsSelected()
         {
             return SelectedClient != null;
         }
-
-        // Implementation Of DeleteCommand Property
         private ICommand deleteCommand;
         public ICommand DeleteCommand
         {
@@ -442,19 +286,15 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
-
-        // Delete the Selected Client Method & Refresh Clients Binding :)
         public void DeleteClient()
         {
             if (!IsSelected())
             {
                 return;
             }
-            box.DeleteClient(SelectedClient.ClientID);
+            rep.DeleteClient(SelectedClient.ClientID);
             Clients.ResetBindings();
         }
-
-        // Implementation Of UpdateCommand Property
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
         {
@@ -463,28 +303,19 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
-
-        // Update the Selected Client Method & Refresh Clients Binding :)
         public void UpdateClient()
         {
-            // Check If Selected?
             if (!IsSelected())
             {
                 return;
             }
-
-            // Create View Model With Selected Client To Edit
-            ClientViewModel vm = new ClientViewModel(SelectedClient);
-
-            // Run The Client Window And Add Selected Client To Edit & Refresh Binding
-            if (vm.Run())
+            ClientViewModel bwvm = new ClientViewModel(SelectedClient);
+            if (bwvm.Run())
             {
-                box.UpdateClient(SelectedClient);
+                rep.UpdateClient(SelectedClient);
                 Clients.ResetBindings();
             }
         }
-
-        // Implementation Of CreateCommand Property
         private DelegateCommand createCommand;
         public ICommand CreateCommand
         {
@@ -493,24 +324,17 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
-
-        //  Create Client Method & Refresh Clients Binding :)
         public void CreateClient()
         {
-            Client create = new Client();
-
-            ClientViewModel vm = new ClientViewModel(create);
-
-            // Run The Client Window To Create Client & Refresh Binding
-            if (vm.Run())
+            Client bk = new Client();
+            ClientViewModel bwvm = new ClientViewModel(bk);
+            if (bwvm.Run())
             {
-                box.AddClient(create);
-
+                rep.AddClient(bk);
                 Clients.ResetBindings();
+
             }
         }
-
-        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {

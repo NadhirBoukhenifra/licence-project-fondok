@@ -10,25 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fondok.Views
 {
     /// <summary>
-    /// Interaction logic for FormView.xaml
+    /// Interaction logic for ServiceView.xaml
     /// </summary>
-    public partial class FormView : UserControl
+    public partial class ServiceView : UserControl
     {
-        public FormView()
+        public ServiceView()
         {
             InitializeComponent();
         }
-
-        void FormViewLoaded(object sender, RoutedEventArgs e)
+        void ServiceViewLoaded(object sender, RoutedEventArgs e)
         {
-            FormsGrid.UpdateLayout();
-            FormsGrid.Items.Refresh();
-
+            ServicesGrid.UpdateLayout();
+            ServicesGrid.Items.Refresh();
         }
+        
     }
 }

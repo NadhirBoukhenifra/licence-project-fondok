@@ -1,26 +1,18 @@
 ﻿<UserControl
-  x:Class="Fondok.Views.FormView"
+  x:Class="Fondok.Views.ServiceView"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
-  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  Background="{DynamicResource MaterialDesignPaper}"
-  FontFamily="{DynamicResource MaterialDesignFont}"
-  Loaded="FormViewLoaded"
-  TextElement.FontSize="18"
-  TextElement.FontWeight="Regular"
-  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-  TextOptions.TextFormattingMode="Ideal"
-  TextOptions.TextRenderingMode="Auto"
+  Loaded="ServiceViewLoaded"
   mc:Ignorable="d">
 
   <UserControl.DataContext>
-    <vm:FormBox />
+    <vm:ServiceLibraryViewModel />
   </UserControl.DataContext>
 
   <Grid>
@@ -38,7 +30,7 @@
     </Grid>
     <Grid Grid.Row="0">
       <DataGrid
-        x:Name="FormsGrid"
+        x:Name="ServicesGrid"
         Grid.Row="0"
         AutoGenerateColumns="True"
         Background="{Binding MaterialDesignBackground}"
@@ -48,8 +40,8 @@
         ColumnWidth="*"
         FontSize="16"
         IsReadOnly="True"
-        ItemsSource="{Binding Forms, IsAsync=True, Mode=TwoWay}"
-        SelectedItem="{Binding SelectedForm}"
+        ItemsSource="{Binding Services, IsAsync=True, Mode=TwoWay}"
+        SelectedItem="{Binding SelectedService}"
         SelectionMode="Single">
         <DataGrid.CellStyle>
           <Style TargetType="DataGridCell">
@@ -90,36 +82,27 @@
       <Button
         Grid.Row="2"
         Grid.Column="0"
-        Height="36"
-        Margin="16,0,8,0"
+        Margin="8,0,8,0"
         Command="{Binding UpdateCommand}"
-        Content="Edit Form"
-        FontSize="18"
-        FontWeight="Bold"
+        Content="Edit Service"
         Foreground="White"
-        IsEnabled="{Binding ElementName=FormsGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=ServicesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="1"
-        Height="36"
         Margin="8"
         Command="{Binding DeleteCommand}"
-        Content="Remove Form"
-        FontSize="18"
-        FontWeight="Bold"
+        Content="Remove Service"
         Foreground="White"
-        IsEnabled="{Binding ElementName=FormsGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=ServicesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="2"
-        Height="36"
-        Margin="8,0,16,0"
+        Margin="8,0,8,0"
         Command="{Binding CreateCommand}"
-        Content="Add Form"
-        FontSize="18"
-        FontWeight="Bold"
+        Content="Add Service"
         Foreground="White"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
     </Grid>
