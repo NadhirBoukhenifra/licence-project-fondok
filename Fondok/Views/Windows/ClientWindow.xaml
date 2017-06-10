@@ -107,7 +107,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Last Name"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientLastNameField_PreviewKeyDown" />
     </Grid>
 
     <Grid Grid.Row="3">

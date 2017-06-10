@@ -68,5 +68,12 @@ namespace Fondok.Views.Windows
             AddFormButton.IsEnabled = errorCount == 0;
         }
 
+        private void FormTitleField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

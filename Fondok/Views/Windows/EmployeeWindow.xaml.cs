@@ -88,5 +88,20 @@ namespace Fondok.Views.Windows
             EmployeeDateOfBirthField.IsDropDownOpen = false;
         }
 
+        private void EmployeeFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void EmployeeLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
