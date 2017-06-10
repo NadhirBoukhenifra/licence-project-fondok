@@ -191,7 +191,7 @@
             <RowDefinition Height="*" />
           </Grid.RowDefinitions>
           <materialDesign:PackIcon
-            x:Name="ServiceIcon"
+            x:Name="FormIcon"
             Grid.Row="0"
             Width="28"
             Height="28"
@@ -200,15 +200,15 @@
             Foreground="{DynamicResource PrimaryHueMidBrush}"
             Kind="Silverware" />
           <Button
-            x:Name="ServiceButton"
+            x:Name="FormButton"
             Grid.Row="2"
             Margin="8,0,8,0"
             Click="ServiceClick"
             Command="{Binding NavigateCommand}"
-            CommandParameter="ServiceView"
+            CommandParameter="FormView"
             Style="{StaticResource MaterialDesignFlatButton}"
-            ToolTip="Services Page">
-            Services
+            ToolTip="Form Page">
+            Forms
           </Button>
         </Grid>
 

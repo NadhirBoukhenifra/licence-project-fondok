@@ -9,23 +9,262 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System;
-using System.Windows.Controls;
-using System.Globalization;
 using System.Windows;
+using System.Collections.Generic;
+using System.Windows.Data;
 
 namespace Fondok.ViewModels
 {
-    class EmployeeViewModel : INotifyPropertyChanged 
+    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
+    // EmployeeViewModel Class
+    class EmployeeViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
-
+        //Constructor Null FirstTime
         public EmployeeViewModel() : this(null) { }
-        private DateTime? _futureValidatingDate;
+        // Constructor With Param Of The Model
         public EmployeeViewModel(Employee Employee)
         {
+            // Add Employee To Edit
             EditEmployee = Employee;
 
-            Employee.EmployeeDateOfBirth = DateTime.Now.Date;
+            //Validate Property
+            IsValidProperty = false;
+
+            //Make Properties With Fields Values
+            EmployeeUserName = EditEmployee.EmployeeUserName;
+            EmployeePassWord = EditEmployee.EmployeePassWord;
+            EmployeePhone = EditEmployee.EmployeePhone;
+            EmployeeJob = EditEmployee.EmployeeJob;
+            EmployeeFirstName = EditEmployee.EmployeeFirstName;
+            EmployeeLastName = EditEmployee.EmployeeLastName;
+            EmployeeDateOfBirth = EditEmployee.EmployeeDateOfBirth;
+
+            // EmployeeDateOfBirth Get 01/01/0001 First Time?? 
+            if (EmployeeDateOfBirth == DateTime.MinValue)
+            {
+                EmployeeDateOfBirth = DateTime.Now;
+            }
         }
+
+
+        //IsValidProperty For Validation
+        private bool _IsValidProperty;
+        public bool IsValidProperty
+        {
+            get
+            {
+                return _IsValidProperty;
+            }
+            set
+            {
+                if (_IsValidProperty != value)
+                {
+                    _IsValidProperty = value;
+                    NotifyPropertyChanged("IsValidProperty");
+                }
+            }
+        }
+
+        // Implementation Of IDataErrorInfo For Validation
+        public string Error
+        {
+            get
+            {
+                return string.Empty;
+            }
+        }
+
+        // EmployeeUserName Property
+        private string _EmployeeUserName;
+        public string EmployeeUserName
+        {
+            get
+            {
+                return _EmployeeUserName;
+            }
+            set
+            {
+                if (_EmployeeUserName != value)
+                {
+                    _EmployeeUserName = value;
+                    EditEmployee.EmployeeUserName = _EmployeeUserName;
+                    NotifyPropertyChanged("EmployeeUserName");
+                }
+            }
+        }
+
+        // EmployeePassWord Property
+        private string _EmployeePassWord;
+        public string EmployeePassWord
+        {
+            get
+            {
+                return _EmployeePassWord;
+            }
+            set
+            {
+                if (_EmployeePassWord != value)
+                {
+                    _EmployeePassWord = value;
+
+                    EditEmployee.EmployeePassWord = _EmployeePassWord;
+
+                    NotifyPropertyChanged("EmployeePassWord");
+
+                }
+            }
+        }
+
+        // EmployeePhone Property
+        private int _EmployeePhone;
+        public int EmployeePhone
+        {
+            get
+            {
+                return _EmployeePhone;
+            }
+            set
+            {
+                if (_EmployeePhone != value)
+                {
+                    _EmployeePhone = value;
+
+                    EditEmployee.EmployeePhone = _EmployeePhone;
+
+                    NotifyPropertyChanged("EmployeePhone");
+                }
+            }
+        }
+
+        // EmployeeJob Property
+        private string _EmployeeJob;
+        public string EmployeeJob
+        {
+            get
+            {
+                return _EmployeeJob;
+            }
+            set
+            {
+                if (_EmployeeJob != value)
+                {
+                    _EmployeeJob = value;
+
+                    EditEmployee.EmployeeJob = _EmployeeJob;
+
+                    NotifyPropertyChanged("EmployeeJob");
+
+                }
+            }
+        }
+
+        // EmployeeFirstName Property
+        private string _EmployeeFirstName;
+        public string EmployeeFirstName
+        {
+            get
+            {
+                return _EmployeeFirstName;
+            }
+            set
+            {
+                if (_EmployeeFirstName != value)
+                {
+                    _EmployeeFirstName = value;
+
+                    EditEmployee.EmployeeFirstName = _EmployeeFirstName;
+
+                    NotifyPropertyChanged("EmployeeFirstName");
+                }
+            }
+        }
+
+        // EmployeeLastName Property
+        private string _EmployeeLastName;
+        public string EmployeeLastName
+        {
+            get
+            {
+                return _EmployeeLastName;
+            }
+            set
+            {
+                if (_EmployeeLastName != value)
+                {
+                    _EmployeeLastName = value;
+
+                    EditEmployee.EmployeeLastName = _EmployeeLastName;
+
+                    NotifyPropertyChanged("EmployeeLastName");
+                }
+            }
+        }
+
+        // EmployeeDateOfBirth Property
+        private DateTime _EmployeeDateOfBirth;
+        public DateTime EmployeeDateOfBirth
+        {
+            get
+            {
+                return _EmployeeDateOfBirth;
+            }
+            set
+            {
+                if (_EmployeeDateOfBirth != value)
+                {
+                    _EmployeeDateOfBirth = value;
+
+                    EditEmployee.EmployeeDateOfBirth = _EmployeeDateOfBirth;
+
+                    NotifyPropertyChanged("EmployeeDateOfBirth");
+                }
+            }
+        }
+
+        // Add Conditions & Error Messages
+        public string this[string columnName]
+        {
+            get
+            {
+                string FillRequired = "Please Fill The Field";
+                switch (columnName)
+                {
+                    case "EmployeeUserName":
+                        if (EmployeeUserName == null || EmployeeUserName == "") return FillRequired;
+
+                        break;
+                    case "EmployeePassWord":
+                        if (EmployeePassWord == null || EmployeePassWord == "") return FillRequired;
+
+                        break;
+                    case "EmployeePhone":
+                        if (EmployeePhone <= 0) return FillRequired;
+
+                        break;
+                    case "EmployeeJob":
+                        if (EmployeeJob == null) return FillRequired;
+
+                        break;
+                    case "EmployeeFirstName":
+                        if (EmployeeFirstName == null) return FillRequired;
+
+                        break;
+                    case "EmployeeLastName":
+                        if (EmployeeLastName == null) return FillRequired;
+
+                        break;
+
+                    case "EmployeeDateOfBirth":
+                        if (EmployeeDateOfBirth > DateTime.Now.AddYears(-10) || EmployeeDateOfBirth < DateTime.Now.AddYears(-100))
+                            return "Date Range: " + DateTime.Now.AddYears(-100).Date + " & " + DateTime.Now.AddYears(-10).Date;
+
+                        break;
+                }
+                return string.Empty;
+            }
+        }
+
+        // Edit Employee Property
         private Employee _editEmployee;
         public Employee EditEmployee
         {
@@ -36,45 +275,23 @@ namespace Fondok.ViewModels
             set
             {
                 _editEmployee = value;
+
                 NotifyPropertyChanged("EditEmployee");
             }
         }
 
-         private int _EmployeeUserName;
-       public int EmployeeUserName
-        {
-          get
-          {
-             return _EmployeeUserName;
-           }
-           set
-           {
-                _EmployeeUserName = value;
-                NotifyPropertyChanged("EmployeeUserName");
-          }
-       }
-
-        public DateTime? FutureValidatingDate
-        {
-            get { return _futureValidatingDate; }
-            set
-            {
-                _futureValidatingDate = EditEmployee.EmployeeDateOfBirth;
-                NotifyPropertyChanged("FutureValidatingDate");
-            }
-        }
-
-
+        // EmployeeWindow Run() Method
         public bool Run()
         {
-            EmployeeWindow sw = new EmployeeWindow();
-            sw.DataContext = this;
-            if (sw.ShowDialog() == true)
-            {
-                return true;
-            }
+            EmployeeWindow window = new EmployeeWindow();
+
+            window.DataContext = this;
+
+            if (window.ShowDialog() == true) { return true; }
             return false;
         }
+
+        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -83,52 +300,78 @@ namespace Fondok.ViewModels
     }
 
 
-
-
-
-    class EmployeeRepository
+    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
+    // EmployeeDataInteraction Class Create, Read, Update, Delete
+    class EmployeeDataInteraction
     {
-
+        // Loading Data From DB 
         DatabaseContext db = new DatabaseContext();
-        public EmployeeRepository(DatabaseContext _db)
+
+        // EmployeeDataInteraction Constructor
+        public EmployeeDataInteraction(DatabaseContext _db)
         {
             db = _db;
             db.Employees.Load();
         }
+        // Insert Data From To BindingList
         public System.ComponentModel.BindingList<Employee> GetAllEmployees()
         {
             return db.Employees.Local.ToBindingList();
         }
+
+        // Adding Method
         public void AddEmployee(Employee Employee)
         {
             db.Employees.Add(Employee);
             db.SaveChanges();
         }
+
+        // Get Employee Method
         public Employee GetEmployee(int id)
         {
-            return db.Employees.Where(b => b.EmployeeID.Equals(id)).First();
+            return db.Employees.Where(get => get.EmployeeID.Equals(id)).First();
         }
-        public void UpdateEmployee(int EmployeeID, string EmployeeUserName, string EmployeePassWord, string EmployeeEMail
-            , string EmployeeJob, string EmployeeFirstName, string EmployeeLastName, DateTime EmployeeDateOfBirth)
+
+        // Update Employee Method FirstTime
+        public void UpdateEmployee(
+            int EmployeeID,
+            string EmployeeUserName,
+            string EmployeePassWord,
+            int EmployeePhone,
+            string EmployeeJob,
+            string EmployeeFirstName,
+            string EmployeeLastName,
+            DateTime EmployeeDateOfBirth
+            )
         {
             Employee Employee = GetEmployee(EmployeeID);
-            
-
             Employee.EmployeeUserName = EmployeeUserName;
             Employee.EmployeePassWord = EmployeePassWord;
-            Employee.EmployeeEMail = EmployeeEMail;
+            Employee.EmployeePhone = EmployeePhone;
             Employee.EmployeeJob = EmployeeJob;
             Employee.EmployeeFirstName = EmployeeFirstName;
             Employee.EmployeeLastName = EmployeeLastName;
-            Employee.EmployeeDateOfBirth = EmployeeDateOfBirth.Date;
+            Employee.EmployeeDateOfBirth = EmployeeDateOfBirth;
 
             db.SaveChanges();
         }
-        public void UpdateEmployee(Employee b)
+
+        // Update Employee Method After Insert
+        public void UpdateEmployee(Employee update)
         {
-            UpdateEmployee(b.EmployeeID, b.EmployeeUserName, b.EmployeePassWord, b.EmployeeEMail
-                , b.EmployeeJob, b.EmployeeFirstName, b.EmployeeLastName, b.EmployeeDateOfBirth);
+            UpdateEmployee(
+                update.EmployeeID,
+                update.EmployeeUserName,
+                update.EmployeePassWord,
+                update.EmployeePhone,
+                update.EmployeeJob,
+                update.EmployeeFirstName,
+                update.EmployeeLastName,
+                update.EmployeeDateOfBirth
+                );
         }
+
+        // Delete Employee Method
         public void DeleteEmployee(int id)
         {
             db.Employees.Remove(GetEmployee(id));
@@ -137,22 +380,15 @@ namespace Fondok.ViewModels
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-    class EmployeeLibraryViewModel : INotifyPropertyChanged
+    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
+    // EmployeeBox Class
+    class EmployeeBox : INotifyPropertyChanged
     {
-        private EmployeeRepository rep;
+        private EmployeeDataInteraction box;
         private DatabaseContext db;
         private BindingList<Employee> _Employees;
+
+        // Employees BindingList Property
         public BindingList<Employee> Employees
         {
             get
@@ -165,6 +401,8 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("Employees");
             }
         }
+
+        // SelectedEmployee Property
         private Employee _selectedEmployee;
         public Employee SelectedEmployee
         {
@@ -178,19 +416,25 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("SelectedEmployee");
             }
         }
-        public EmployeeLibraryViewModel()
+
+        // EmployeeBox Constructor
+        public EmployeeBox()
         {
             db = new DatabaseContext();
-            rep = new EmployeeRepository(db);
-            Employees = rep.GetAllEmployees();
+            box = new EmployeeDataInteraction(db);
+            Employees = box.GetAllEmployees();
             deleteCommand = new DelegateCommand(DeleteEmployee);
             updateCommand = new DelegateCommand(UpdateEmployee);
             createCommand = new DelegateCommand(CreateEmployee);
         }
+
+        // Check if Employee Selected?
         public bool IsSelected()
         {
             return SelectedEmployee != null;
         }
+
+        // Implementation Of DeleteCommand Property
         private ICommand deleteCommand;
         public ICommand DeleteCommand
         {
@@ -199,14 +443,19 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
+
+        // Delete the Selected Employee Method & Refresh Employees Binding :)
         public void DeleteEmployee()
         {
             if (!IsSelected())
             {
                 return;
             }
-            rep.DeleteEmployee(SelectedEmployee.EmployeeID);
+            box.DeleteEmployee(SelectedEmployee.EmployeeID);
+            Employees.ResetBindings();
         }
+
+        // Implementation Of UpdateCommand Property
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
         {
@@ -215,18 +464,28 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
+
+        // Update the Selected Employee Method & Refresh Employees Binding :)
         public void UpdateEmployee()
         {
+            // Check If Selected?
             if (!IsSelected())
             {
                 return;
             }
-            EmployeeViewModel bwvm = new EmployeeViewModel(SelectedEmployee);
-            if (bwvm.Run())
+
+            // Create View Model With Selected Employee To Edit
+            EmployeeViewModel vm = new EmployeeViewModel(SelectedEmployee);
+
+            // Run The Employee Window And Add Selected Employee To Edit & Refresh Binding
+            if (vm.Run())
             {
-                rep.UpdateEmployee(SelectedEmployee);
+                box.UpdateEmployee(SelectedEmployee);
+                Employees.ResetBindings();
             }
         }
+
+        // Implementation Of CreateCommand Property
         private DelegateCommand createCommand;
         public ICommand CreateCommand
         {
@@ -235,26 +494,24 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
+
+        //  Create Employee Method & Refresh Employees Binding :)
         public void CreateEmployee()
         {
-            Employee bk = new Employee();
+            Employee create = new Employee();
 
-            EmployeeViewModel bwvm = new EmployeeViewModel(bk);
-        
-            if (bwvm.Run() && bk.EmployeeDateOfBirth < DateTime.Now && bk.EmployeeFirstName != null && bk.EmployeeLastName != null && bk.EmployeeUserName != null
-                && bk.EmployeePassWord != null && bk.EmployeeJob != null && bk.EmployeeEMail != null)
+            EmployeeViewModel vm = new EmployeeViewModel(create);
+
+            // Run The Employee Window To Create Employee & Refresh Binding
+            if (vm.Run())
             {
-                //if (bk.EmployeeFirsName == null)
-                //{
-                //    MessageBox.Show("gggggggggggggggggg");
-                //}
-                rep.AddEmployee(bk);
-            }
-            else
-            {
-                MessageBox.Show("Hello");
+                box.AddEmployee(create);
+
+                Employees.ResetBindings();
             }
         }
+
+        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {

@@ -15,19 +15,19 @@ using System.Windows.Shapes;
 namespace Fondok.Views
 {
     /// <summary>
-    /// Interaction logic for EmployeeView.xaml
+    /// Interaction logic for FormView.xaml
     /// </summary>
-    public partial class EmployeeView : UserControl
+    public partial class FormView : UserControl
     {
-        public EmployeeView()
+        public FormView()
         {
             InitializeComponent();
         }
 
-        void EmployeeViewLoaded(object sender, RoutedEventArgs e)
+        void FormViewLoaded(object sender, RoutedEventArgs e)
         {
-            EmployeesGrid.UpdateLayout();
-            EmployeesGrid.Items.Refresh();
+            FormsGrid.UpdateLayout();
+            FormsGrid.Items.Refresh();
 
         }
     }

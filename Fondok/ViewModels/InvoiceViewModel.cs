@@ -42,6 +42,7 @@ namespace Fondok.ViewModels
                 InvoiceDateTime = DateTime.Now;
             }
 
+
         }
 
 

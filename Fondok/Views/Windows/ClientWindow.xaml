@@ -13,7 +13,7 @@
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
-  TextElement.FontSize="16"
+  TextElement.FontSize="18"
   TextElement.FontWeight="Regular"
   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
   TextOptions.TextFormattingMode="Ideal"
@@ -29,12 +29,31 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Grid
-      Grid.Row="0"
-      HorizontalAlignment="Center"
-      VerticalAlignment="Center">
-      <TextBlock Text="Client Settings" />
+    <Grid Grid.Row="0" VerticalAlignment="Center">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:Card
+        Grid.Row="0"
+        Grid.Column="1"
+        Padding="0,12,0,12"
+        VerticalAlignment="Center"
+        materialDesign:ShadowAssist.ShadowDepth="Depth1">
+        <TextBlock
+          HorizontalAlignment="Center"
+          VerticalAlignment="Center"
+          FontWeight="Black"
+          Foreground="{StaticResource SecondaryAccentBrush}"
+          Text="Client  Settings:" />
+      </materialDesign:Card>
+
     </Grid>
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
@@ -51,17 +70,18 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ClientFirstNameField, Path=BorderBrush}"
         Kind="Face" />
+        
       <TextBox
         x:Name="ClientFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
         HorizontalAlignment="Left"
+          
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client First Name"
-         Text="{Binding nFirstName, Mode=TwoWay, ValidatesOnDataErrors=True,
-          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"/>
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientFirstNameField_PreviewKeyDown" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -83,13 +103,11 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Last Name"
-          Text="{Binding nLastName, Mode=TwoWay, ValidatesOnDataErrors=True,
-          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
- />
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientLastNameField_PreviewKeyDown" />
     </Grid>
 
     <Grid Grid.Row="3">
@@ -98,63 +116,158 @@
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <!--<materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ClientDateOfBirthField, Path=BorderBrush}"
-        Kind="Calendar" />
-      <TextBox
+      <DatePicker
         x:Name="ClientDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
-        Height="32"
+        Height="{Binding ActualHeight, ElementName=ClientLastNameField, Mode=OneWay}"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
+        HorizontalContentAlignment="Stretch"
+        VerticalContentAlignment="Center"
+        Panel.ZIndex="1"
         materialDesign:HintAssist.Hint="Client Date Of Birth"
-        Text="{Binding EditClient.ClientDateOfBirth}" />-->
-            <materialDesign:PackIcon
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        Margin="0,11,0,17"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Panel.ZIndex="2"
-        Background="White"
-        Foreground="{Binding ElementName=ClientDateOfBirthField, Path=BorderBrush}"
-        Kind="Calendar" />
-
-            <DatePicker
-        x:Name="ClientDateOfBirthField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        Panel.ZIndex="0"
-        materialDesign:HintAssist.Hint="Employee Date Of Birth"
         PreviewMouseDown="TextBoxPreviewMouseDown"
         PreviewTouchDown="TextBoxPreviewTouchDown"
         SelectedDateChanged="DatePickerSelectedDateChanged"
         SelectedDateFormat="Short"
         Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
-                <DatePicker.SelectedDate>
-                    <Binding Path="nClientDateOfBirth"
-                             UpdateSourceTrigger="PropertyChanged"
-                             ValidatesOnDataErrors="True"
-                             NotifyOnValidationError="True"
-                             Mode="TwoWay">
-                        
-                    </Binding>
-                </DatePicker.SelectedDate>
-            </DatePicker>
-        </Grid>
+        <DatePicker.SelectedDate>
+          <Binding
+            Mode="TwoWay"
+            NotifyOnValidationError="True"
+            Path="ClientDateOfBirth"
+            UpdateSourceTrigger="PropertyChanged"
+            ValidatesOnDataErrors="True" />
+        </DatePicker.SelectedDate>
+      </DatePicker>
+
+      <materialDesign:PackIcon
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Panel.ZIndex="2"
+        Background="White"
+        Foreground="{Binding BorderBrush, ElementName=ClientDateOfBirthField}"
+        Kind="Calendar" />
+    </Grid>
+
     <Grid Grid.Row="4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=ClientGenderField, Path=BorderBrush}"
+        Kind="AccountMultiple" />
+      <ComboBox
+        x:Name="ClientGenderField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Client Gender"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding ClientGender, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        SelectedItem="{Binding EditClient.ClientGender}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+    </Grid>
+    <Grid Grid.Row="5">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=ClientIDTypeField, Path=BorderBrush}"
+        Kind="AccountCardDetails" />
+      <ComboBox
+        x:Name="ClientIDTypeField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Client ID Type"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding ClientIDType, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        SelectedItem="{Binding EditClient.ClientIDType}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+    </Grid>
+
+    <Grid Grid.Row="6">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=ClientIDNumberField, Path=BorderBrush}"
+        Kind="Numeric" />
+      <TextBox
+        x:Name="ClientIDNumberField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Client ID Number"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        Text="{Binding ClientIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+    </Grid>
+
+    <Grid Grid.Row="7">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=ClientParentField, Path=BorderBrush}"
+        Kind="AccountSwitch" />
+      <ComboBox
+        x:Name="ClientParentField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Client Parent"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding ClientParent, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        SelectedItem="{Binding EditClient.ClientParent}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+    </Grid>
+    <Grid Grid.Row="8">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
@@ -162,11 +275,15 @@
       </Grid.ColumnDefinitions>
       <Button
         x:Name="AddClientButton"
-        Grid.Row="4"
         Grid.Column="1"
+        Height="48"
+        VerticalAlignment="Center"
         Click="AddClientClick"
         Content="Confirm Client"
-        Foreground="#DDFFFFFF" />
+        FontSize="18"
+        FontWeight="Bold"
+        Foreground="#DDFFFFFF"
+        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
     </Grid>
   </Grid>
 </Window>
