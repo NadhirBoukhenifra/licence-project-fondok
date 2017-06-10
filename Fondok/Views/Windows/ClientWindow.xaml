@@ -51,7 +51,7 @@
           VerticalAlignment="Center"
           FontWeight="Black"
           Foreground="{StaticResource SecondaryAccentBrush}"
-          Text="Client Settings:" />
+          Text="Client  Settings:" />
       </materialDesign:Card>
 
     </Grid>
