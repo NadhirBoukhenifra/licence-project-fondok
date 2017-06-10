@@ -148,7 +148,9 @@ namespace Fondok.Views
 
 
 
-
+            TotalRooms.Text = "Total Rooms: " + (from s in context.Rooms select s.RoomID).ToArray().Count().ToString();
+            TotalClients.Text = "Total Clients: " + (from s in context.Clients select s.ClientID).ToArray().Count().ToString();
+            TotalEmployees.Text = "Total Employees: " + (from s in context.Employees select s.EmployeeID).ToArray().Count().ToString();
 
         }
     }

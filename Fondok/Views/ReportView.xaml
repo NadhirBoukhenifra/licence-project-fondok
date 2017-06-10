@@ -37,17 +37,23 @@
                     Grid.Row="0"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1" 
                                      Padding="16">
-                    <TextBlock Text="{Binding TotalRooms}"></TextBlock>
+                    <TextBlock x:Name="TotalRooms"></TextBlock>
                 </materialDesign:Card>
                 <materialDesign:Card 
                     Grid.Row="1"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                                     Padding="16"></materialDesign:Card>
+                                     Padding="16">
+                    <TextBlock x:Name="TotalClients"></TextBlock>
+
+                </materialDesign:Card>
 
                 <materialDesign:Card 
                     Grid.Row="2"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1" 
-                                     Padding="16"></materialDesign:Card>
+                                     Padding="16">
+                    <TextBlock x:Name="TotalEmployees"></TextBlock>
+
+                </materialDesign:Card>
             </Grid>
             <lvc:PieChart
         x:Name="RoomsStatsCircle"

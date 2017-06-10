@@ -43,13 +43,14 @@ namespace Fondok.Views.Windows
             ReservedByField.ItemsSource = ReservedBySource;
 
             //var a = (from s in context.Reservations select s.ReservedFor).ToArray();
-
-            var ReservedForSource = (
-                                     from s in context.Clients
-                                     from r in context.Reservations
-                                     where (s.ClientID >= r.ReservedFor)
-                                     select s.ClientID
-                                     ).ToArray();
+            var clnt = (from s in context.Clients select (s.ClientID)).ToList();
+            var rsrv = (from s in context.Reservations select (s.ReservedFor)).ToList();
+            var ReservedForSource = clnt.Except(rsrv).ToArray();
+            //var ReservedForSource = (
+            //                         from s in context.Clients
+            //                         join x in context.Reservations on (s.ClientID) equals x.ReservationID
+            //                         select (s.ClientID)
+            //                         ).ToArray();
 
             ReservedForField.ItemsSource = ReservedForSource;
 

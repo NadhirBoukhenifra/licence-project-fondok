@@ -326,6 +326,7 @@ namespace Fondok.ViewModels
         public void AddReservation(Reservation Reservation)
         {
             db.Reservations.Add(Reservation);
+
             db.SaveChanges();
         }
 
