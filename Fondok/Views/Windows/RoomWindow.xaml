@@ -12,8 +12,9 @@
   MaxWidth="512"
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
+  Loaded="Window_Loaded"
   ResizeMode="NoResize"
-  TextElement.FontSize="18"
+  TextElement.FontSize="16"
   TextElement.FontWeight="Regular"
   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
   TextOptions.TextFormattingMode="Ideal"
@@ -23,6 +24,7 @@
   mc:Ignorable="d">
 
   <Grid>
+
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
@@ -32,28 +34,12 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
-
     </Grid.RowDefinitions>
-    <Grid Grid.Row="0" VerticalAlignment="Center">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:Card
-        Grid.Row="0"
-        Grid.Column="1"
-        Padding="0,12,0,12"
-        VerticalAlignment="Center"
-        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-        <TextBlock
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          FontWeight="Black"
-          Foreground="{StaticResource SecondaryAccentBrush}"
-          Text="Room Settings:" />
-      </materialDesign:Card>
-
+    <Grid
+      Grid.Row="0"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center">
+      <TextBlock Text="Room Settings" />
     </Grid>
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
@@ -69,8 +55,8 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomNumberField, Path=BorderBrush}"
-        Kind="Numeric" />
-      <TextBox
+        Kind="Counter" />
+            <TextBox
         x:Name="RoomNumberField"
         Grid.Row="2"
         Grid.Column="1"
@@ -79,8 +65,12 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-    </Grid>
+        Text="{Binding nRoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}">
+            </TextBox>
+
+
+        </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -105,7 +95,9 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding EditRoom.RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"/>
+        
     </Grid>
 
     <Grid Grid.Row="3">
@@ -122,7 +114,17 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomTypeField, Path=BorderBrush}"
-        Kind="AccountMultiple" />
+        Kind="Hotel" />
+      <!--<TextBox
+        x:Name="RoomTypeField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Room Type"
+        Text="{Binding EditRoom.RoomType}" />-->
       <ComboBox
         x:Name="RoomTypeField"
         Grid.Row="2"
@@ -132,9 +134,11 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Type"
         IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding RoomType, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditRoom.RoomType}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        ItemsSource="{Binding Path=RoomTypeList}"
+        SelectedItem="{Binding Path=EditRoom.RoomType, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+        />
     </Grid>
 
     <Grid Grid.Row="4">
@@ -151,7 +155,7 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomCapacityField, Path=BorderBrush}"
-        Kind="Counter" />
+        Kind="AccountPlus" />
       <TextBox
         x:Name="RoomCapacityField"
         Grid.Row="2"
@@ -161,8 +165,10 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Capacity"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding EditRoom.RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
+
     <Grid Grid.Row="5">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -177,7 +183,17 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomStatusField, Path=BorderBrush}"
-        Kind="Hotel" />
+        Kind="CheckboxMarkedOutline" />
+      <!--<TextBox
+        x:Name="RoomStatusField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Room Status"
+        Text="{Binding EditRoom.RoomStatus}" />-->
       <ComboBox
         x:Name="RoomStatusField"
         Grid.Row="2"
@@ -187,8 +203,9 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Status"
         IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding RoomStatus, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditRoom.RoomStatus}"
+        ItemsSource="{Binding RoomStatusList}"
+        SelectedItem="{Binding EditRoom.RoomStatus, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
     </Grid>
 
@@ -206,7 +223,7 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomPriceField, Path=BorderBrush}"
-        Kind="Numeric" />
+        Kind="Coin" />
       <TextBox
         x:Name="RoomPriceField"
         Grid.Row="2"
@@ -214,9 +231,10 @@
         Width="320"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Room Price"
+        materialDesign:HintAssist.Hint="Room Price For One Night"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding EditRoom.RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True,
+          UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
 
@@ -228,15 +246,11 @@
       </Grid.ColumnDefinitions>
       <Button
         x:Name="AddRoomButton"
+        Grid.Row="4"
         Grid.Column="1"
-        Height="48"
-        VerticalAlignment="Center"
         Click="AddRoomClick"
         Content="Confirm Room"
-        FontSize="18"
-        FontWeight="Bold"
-        Foreground="#DDFFFFFF"
-        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        Foreground="#DDFFFFFF" />
     </Grid>
   </Grid>
 </Window>

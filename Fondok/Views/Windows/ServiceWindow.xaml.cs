@@ -1,4 +1,6 @@
 ﻿using Fondok.Context;
+using Fondok.Models;
+using Fondok.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,25 +18,25 @@ using System.Windows.Shapes;
 namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for ReservationWindow.xaml
+    /// Interaction logic for ServiceWindow.xaml
     /// </summary>
-    public partial class ReservationWindow : Window
+    public partial class ServiceWindow : Window
     {
-        public ReservationWindow()
+        public ServiceWindow()
         {
             InitializeComponent();
 
             var context = new DatabaseContext();
 
-            var RoomAva = (from s in context.Rooms where(s.RoomNumber == 1) select s.RoomNumber).ToArray();
-
-            ReservationInField.ItemsSource = RoomAva;
+            var ResponsibleList = (from s in context.Employees select s.EmployeeUserName).ToArray();
+                     
+            ResponsibleField.ItemsSource = ResponsibleList;
+            
         }
-
-        private void AddReservationClick(object sender, RoutedEventArgs e)
+    private void AddServiceClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
-
+            
         }
     }
 }

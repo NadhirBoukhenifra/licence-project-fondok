@@ -1,55 +1,44 @@
 ﻿<Window
-  x:Class="Fondok.Views.Windows.FormWindow"
+  x:Class="Fondok.Views.Windows.ServiceWindow"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
   xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-  Title="Form Settings"
+  xmlns:prism="http://prismlibrary.com/"
+  xmlns:vm="clr-namespace:Fondok.ViewModels"
+  Title="Service Settings"
   Width="512"
   MinWidth="512"
   MaxWidth="512"
+  prism:ViewModelLocator.AutoWireViewModel="True"
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
-  TextElement.FontSize="18"
+  TextElement.FontSize="16"
   TextElement.FontWeight="Regular"
   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
   TextOptions.TextFormattingMode="Ideal"
   TextOptions.TextRenderingMode="Auto"
   WindowStartupLocation="CenterScreen"
-  WindowStyle="ToolWindow"
-  mc:Ignorable="d">
-
+  WindowStyle="ToolWindow">
+  <Window.DataContext>
+    <vm:ServiceLibraryViewModel />
+  </Window.DataContext>
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
-
+      <RowDefinition Height="*" />
     </Grid.RowDefinitions>
-    <Grid Grid.Row="0" VerticalAlignment="Center">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:Card
-        Grid.Row="0"
-        Grid.Column="1"
-        Padding="0,12,0,12"
-        VerticalAlignment="Center"
-        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-        <TextBlock
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          FontWeight="Black"
-          Foreground="{StaticResource SecondaryAccentBrush}"
-          Text="Form Settings:" />
-      </materialDesign:Card>
-
+    <Grid
+      Grid.Row="0"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center">
+      <TextBlock Text="Service Settings" />
     </Grid>
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
@@ -64,18 +53,18 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=FormTitleField, Path=BorderBrush}"
-        Kind="Food" />
+        Foreground="{Binding ElementName=TitleField, Path=BorderBrush}"
+        Kind="ChemicalWeapon" />
       <TextBox
-        x:Name="FormTitleField"
+        x:Name="TitleField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Form Title"
+        materialDesign:HintAssist.Hint="Service Title"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding FormTitle, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="FormTitleField_PreviewKeyDown" />
+        Text="{Binding EditService.ServiceTitle}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -90,27 +79,22 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=FormPriceField, Path=BorderBrush}"
-        Kind="Coin" />
-      <TextBox
-        x:Name="FormPriceField"
+        Foreground="{Binding ElementName=ResponsibleField, Path=BorderBrush}"
+        Kind="Worker" />
+
+      <ComboBox
+        x:Name="ResponsibleField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Form Price"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding FormPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        materialDesign:HintAssist.Hint="Service Responsible"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding ResponsibleList}"
+        SelectedItem="{Binding EditService.ServiceResponsible}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
     </Grid>
-
-
-
-
-
-
-
-
 
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
@@ -118,17 +102,43 @@
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <Button
-        x:Name="AddFormButton"
+      <materialDesign:PackIcon
+        Grid.Row="2"
         Grid.Column="1"
-        Height="48"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Click="AddFormClick"
-        Content="Confirm Form"
-        FontSize="18"
-        FontWeight="Bold"
-        Foreground="#DDFFFFFF"
-        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        Foreground="{Binding ElementName=PriceField, Path=BorderBrush}"
+        Kind="Coin" />
+      <TextBox
+        x:Name="PriceField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Service Price"
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+        Text="{Binding EditService.ServicePrice}" />
     </Grid>
+    <Grid Grid.Row="4">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="320" />
+        <ColumnDefinition Width="*" />
+      </Grid.ColumnDefinitions>
+      <Button
+        x:Name="AddServiceButton"
+        Grid.Row="4"
+        Grid.Column="1"
+        Click="AddServiceClick"
+        Content="Confirm Service"
+        Foreground="#DDFFFFFF" />
+    </Grid>
+    <TextBlock
+      x:Name="TestBoucle"
+      Grid.Row="5"
+      Text="{Binding ResList}" />
   </Grid>
 </Window>

@@ -4,23 +4,15 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
-  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
-  Background="{DynamicResource MaterialDesignPaper}"
-  FontFamily="{DynamicResource MaterialDesignFont}"
   Loaded="EmployeeViewLoaded"
-  TextElement.FontSize="18"
-  TextElement.FontWeight="Regular"
-  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-  TextOptions.TextFormattingMode="Ideal"
-  TextOptions.TextRenderingMode="Auto"
   mc:Ignorable="d">
 
   <UserControl.DataContext>
-    <vm:EmployeeBox />
+    <vm:EmployeeLibraryViewModel />
   </UserControl.DataContext>
 
   <Grid>
@@ -90,40 +82,29 @@
       <Button
         Grid.Row="2"
         Grid.Column="0"
-        Height="36"
-        Margin="16,0,8,0"
+        Margin="8,0,8,0"
         Command="{Binding UpdateCommand}"
         Content="Edit Employee"
-        FontSize="18"
-        FontWeight="Bold"
         Foreground="White"
         IsEnabled="{Binding ElementName=EmployeesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="1"
-        Height="36"
         Margin="8"
         Command="{Binding DeleteCommand}"
         Content="Remove Employee"
-        FontSize="18"
-        FontWeight="Bold"
         Foreground="White"
         IsEnabled="{Binding ElementName=EmployeesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="2"
-        Height="36"
-        Margin="8,0,16,0"
+        Margin="8,0,8,0"
         Command="{Binding CreateCommand}"
         Content="Add Employee"
-        FontSize="18"
-        FontWeight="Bold"
         Foreground="White"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
-
-
     </Grid>
   </Grid>
 </UserControl>

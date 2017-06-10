@@ -13,7 +13,7 @@
   Background="{DynamicResource MaterialDesignPaper}"
   FontFamily="{DynamicResource MaterialDesignFont}"
   ResizeMode="NoResize"
-  TextElement.FontSize="18"
+  TextElement.FontSize="16"
   TextElement.FontWeight="Regular"
   TextElement.Foreground="{DynamicResource MaterialDesignBody}"
   TextOptions.TextFormattingMode="Ideal"
@@ -29,57 +29,13 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-
     </Grid.RowDefinitions>
-    <Grid Grid.Row="0" VerticalAlignment="Center">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:Card
-        Grid.Row="0"
-        Grid.Column="1"
-        Padding="0,12,0,12"
-        VerticalAlignment="Center"
-        materialDesign:ShadowAssist.ShadowDepth="Depth1">
-        <TextBlock
-          HorizontalAlignment="Center"
-          VerticalAlignment="Center"
-          FontWeight="Black"
-          Foreground="{StaticResource SecondaryAccentBrush}"
-          Text="Invoice Settings:" />
-      </materialDesign:Card>
-
+    <Grid
+      Grid.Row="0"
+      HorizontalAlignment="Center"
+      VerticalAlignment="Center">
+      <TextBlock Text="Invoice Settings" />
     </Grid>
-    <!--<Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="320" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationIDField, Path=BorderBrush}"
-        Kind="Numeric" />
-            <TextBox
-        x:Name="ReservationIDField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation ID"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ReservationID, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-        </Grid>-->
-
     <Grid Grid.Row="1">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -93,67 +49,45 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=ReservationIDField, Path=BorderBrush}"
-        Kind="Numeric" />
-      <ComboBox
-        x:Name="ReservationIDField"
+        Foreground="{Binding ElementName=InvoiceFirstNameField, Path=BorderBrush}"
+        Kind="Face" />
+      <TextBox
+        x:Name="InvoiceFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Reservation ID"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding ReservationID, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditInvoice.ReservationID}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        materialDesign:HintAssist.Hint="Invoice First Name"
+        Text="{Binding EditInvoice.InvoiceFirstName}" />
     </Grid>
-
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
         <ColumnDefinition Width="*" />
       </Grid.ColumnDefinitions>
-      <DatePicker
-        x:Name="InvoiceDateTimeField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        Height="{Binding ActualHeight, ElementName=ReservationIDField, Mode=OneWay}"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        HorizontalContentAlignment="Stretch"
-        VerticalContentAlignment="Center"
-        Panel.ZIndex="1"
-        materialDesign:HintAssist.Hint="Invoice Date"
-        PreviewMouseDown="TextBoxPreviewMouseDown"
-        PreviewTouchDown="TextBoxPreviewTouchDown"
-        SelectedDateChanged="DatePickerSelectedDateChanged"
-        SelectedDateFormat="Short"
-        Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
-        <DatePicker.SelectedDate>
-          <Binding
-            Mode="TwoWay"
-            NotifyOnValidationError="True"
-            Path="InvoiceDateTime"
-            UpdateSourceTrigger="PropertyChanged"
-            ValidatesOnDataErrors="True" />
-        </DatePicker.SelectedDate>
-      </DatePicker>
-
       <materialDesign:PackIcon
+        Grid.Row="2"
         Grid.Column="1"
         Width="28"
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Panel.ZIndex="2"
-        Background="White"
-        Foreground="{Binding BorderBrush, ElementName=InvoiceDateTimeField}"
-        Kind="Calendar" />
+        Foreground="{Binding ElementName=InvoiceLastNameField, Path=BorderBrush}"
+        Kind="Account" />
+      <TextBox
+        x:Name="InvoiceLastNameField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        Height="32"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Invoice Last Name"
+        Text="{Binding EditInvoice.InvoiceLastName}" />
     </Grid>
-
 
     <Grid Grid.Row="3">
       <Grid.ColumnDefinitions>
@@ -168,52 +102,20 @@
         Height="28"
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
-        Foreground="{Binding ElementName=InvoiceTypePaymentField, Path=BorderBrush}"
-        Kind="Cards" />
-      <ComboBox
-        x:Name="InvoiceTypePaymentField"
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
-        VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Invoice Payment Type"
-        IsSynchronizedWithCurrentItem="True"
-        ItemsSource="{Binding InvoiceTypePayment, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
-        SelectedItem="{Binding EditInvoice.InvoiceTypePayment}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
-    </Grid>
-
-
-    <Grid Grid.Row="4">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
-        Grid.Row="2"
-        Grid.Column="1"
-        Width="28"
-        Height="28"
-        HorizontalAlignment="Right"
-        VerticalAlignment="Center"
-        Foreground="{Binding ElementName=InvoiceTotalField, Path=BorderBrush}"
-        Kind="Coin" />
+        Foreground="{Binding ElementName=InvoiceDateOfBirthField, Path=BorderBrush}"
+        Kind="Calendar" />
       <TextBox
-        x:Name="InvoiceTotalField"
+        x:Name="InvoiceDateOfBirthField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+        Height="32"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-        materialDesign:HintAssist.Hint="Invoice Total"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding InvoiceTotal, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        materialDesign:HintAssist.Hint="Invoice Date Of Birth"
+        Text="{Binding EditInvoice.InvoiceDateOfBirth}" />
     </Grid>
-
-
-    <Grid Grid.Row="5">
+    <Grid Grid.Row="4">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
@@ -221,15 +123,11 @@
       </Grid.ColumnDefinitions>
       <Button
         x:Name="AddInvoiceButton"
+        Grid.Row="4"
         Grid.Column="1"
-        Height="48"
-        VerticalAlignment="Center"
         Click="AddInvoiceClick"
         Content="Confirm Invoice"
-        FontSize="18"
-        FontWeight="Bold"
-        Foreground="#DDFFFFFF"
-        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        Foreground="#DDFFFFFF" />
     </Grid>
   </Grid>
 </Window>

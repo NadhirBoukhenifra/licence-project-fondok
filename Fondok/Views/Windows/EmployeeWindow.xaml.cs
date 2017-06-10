@@ -1,7 +1,7 @@
 ﻿using Fondok.Context;
-using Fondok.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,57 +21,27 @@ namespace Fondok.Views.Windows
     /// </summary>
     public partial class EmployeeWindow : Window
     {
-        private int errorCount;
         public EmployeeWindow()
         {
-
-
             InitializeComponent();
-            DataContext = this;
 
+            string[] EmployeeJobList = new string[] { "Admin", "Receptionist"};
 
-            this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
-
-            string[] EmployeeJobSource = new string[] { "Admin", "Receptionist" };
-
-            EmployeeJobField.ItemsSource = EmployeeJobSource;
+            EmployeeJobField.ItemsSource = EmployeeJobList;
 
         }
+
         private void AddEmployeeClick(object sender, RoutedEventArgs e)
         {
+            if (EmployeeUserNameField.Text == "")
+            {
+                MessageBox.Show("Edit Content");
+            }
+
+           
             DialogResult = true;
 
         }
-
-        private void OnErrorEvent(object sender, RoutedEventArgs e)
-        {
-            var validationEventArgs = e as ValidationErrorEventArgs;
-            if (validationEventArgs == null)
-            {
-
-                throw new Exception("Unexpected event args");
-            }
-            switch (validationEventArgs.Action)
-            {
-                case ValidationErrorEventAction.Added:
-                    {
-                        errorCount++;
-                        break;
-                    }
-                case ValidationErrorEventAction.Removed:
-                    {
-                        errorCount--;
-                        break;
-                    }
-                default:
-                    {
-                        throw new Exception("Unknown action");
-                    }
-            }
-
-            AddEmployeeButton.IsEnabled = errorCount == 0;
-        }
-
 
         public void TextBoxPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -86,18 +56,9 @@ namespace Fondok.Views.Windows
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             EmployeeDateOfBirthField.IsDropDownOpen = false;
+          //  EmployeeDateOfBirthField.SelectedDate = EmployeeDateOfBirthField.SelectedDate.Value.Date;
         }
 
-        private void EmployeeFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            Vchar.JustChar(sender, e);
-        }
-
-        private void EmployeeLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            Vchar.JustChar(sender, e);
-        }
-        Commands.Verifications Vchar = new Commands.Verifications();
     }
-    
+
 }

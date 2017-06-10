@@ -2,275 +2,26 @@
 using Fondok.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Fondok.Views;
 using Fondok.Views.Windows;
 using Fondok.Context;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
-using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Data;
+using System;
 
 namespace Fondok.ViewModels
 {
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ReservationViewModel Class
-    class ReservationViewModel : INotifyPropertyChanged, IDataErrorInfo
+    class ReservationViewModel : INotifyPropertyChanged
     {
-        //Constructor Null FirstTime
+
         public ReservationViewModel() : this(null) { }
-        // Constructor With Param Of The Model
         public ReservationViewModel(Reservation Reservation)
         {
-            // Add Reservation To Edit
             EditReservation = Reservation;
-
-            //Validate Property
-            IsValidProperty = false;
-
-            //Make Properties With Fields Values
-            CheckInDate = EditReservation.CheckInDate.Date;
-            CheckOutDate = EditReservation.CheckOutDate.Date;
-            ReservationStatus = EditReservation.ReservationStatus;
-            ReservedBy = EditReservation.ReservedBy;
-            ReservedFor = EditReservation.ReservedFor;
-            RoomNumber = EditReservation.RoomNumber;
-            ReservationForm = EditReservation.ReservationForm;
-
-            // ReservationDateOfBirth Get 01/01/0001 First Time?? 
-            if (CheckInDate == DateTime.MinValue)
-            {
-                CheckInDate = DateTime.Now;
-            }
-            if (CheckOutDate == DateTime.MinValue)
-            {
-                CheckOutDate = DateTime.Now;
-            }
-
         }
-
-
-        //IsValidProperty For Validation
-        private bool _IsValidProperty;
-        public bool IsValidProperty
-        {
-            get
-            {
-                return _IsValidProperty;
-            }
-            set
-            {
-                if (_IsValidProperty != value)
-                {
-                    _IsValidProperty = value;
-                    NotifyPropertyChanged("IsValidProperty");
-                }
-            }
-        }
-
-        // Implementation Of IDataErrorInfo For Validation
-        public string Error
-        {
-            get
-            {
-                return string.Empty;
-            }
-        }
-
-        // CheckInDate Property
-        private DateTime _CheckInDate;
-        public DateTime CheckInDate
-        {
-            get
-            {
-                return _CheckInDate;
-            }
-            set
-            {
-                if (_CheckInDate != value)
-                {
-                    _CheckInDate = value;
-                    EditReservation.CheckInDate = _CheckInDate.Date;
-                    NotifyPropertyChanged("CheckInDate");
-                }
-            }
-        }
-
-        // CheckOutDate Property
-        private DateTime _CheckOutDate;
-        public DateTime CheckOutDate
-        {
-            get
-            {
-                return _CheckOutDate;
-            }
-            set
-            {
-                if (_CheckOutDate != value)
-                {
-                    _CheckOutDate = value;
-
-                    EditReservation.CheckOutDate = _CheckOutDate.Date;
-
-                    NotifyPropertyChanged("CheckOutDate");
-
-                }
-            }
-        }
-
-        // ReservationDateOfBirth Property
-        private string _ReservationStatus;
-        public string ReservationStatus
-        {
-            get
-            {
-                return _ReservationStatus;
-            }
-            set
-            {
-                if (_ReservationStatus != value)
-                {
-                    _ReservationStatus = value;
-
-                    EditReservation.ReservationStatus = _ReservationStatus;
-
-                    NotifyPropertyChanged("ReservationStatus");
-                }
-            }
-        }
-
-        // ReservedBy Property
-        private string _ReservedBy;
-        public string ReservedBy
-        {
-            get
-            {
-                return _ReservedBy;
-            }
-            set
-            {
-                if (_ReservedBy != value)
-                {
-                    _ReservedBy = value;
-
-                    EditReservation.ReservedBy = _ReservedBy;
-
-                    NotifyPropertyChanged("ReservedBy");
-
-                }
-            }
-        }
-
-        // ReservedFor Property
-        private string _ReservedFor;
-        public string ReservedFor
-        {
-            get
-            {
-                return _ReservedFor;
-            }
-            set
-            {
-                if (_ReservedFor != value)
-                {
-                    _ReservedFor = value;
-
-                    EditReservation.ReservedFor = _ReservedFor;
-
-                    NotifyPropertyChanged("ReservedFor");
-                }
-            }
-        }
-
-        // RoomNumber Property
-        private int _RoomNumber;
-        public int RoomNumber
-        {
-            get
-            {
-                return _RoomNumber;
-            }
-            set
-            {
-                if (_RoomNumber != value)
-                {
-                    _RoomNumber = value;
-
-                    EditReservation.RoomNumber = _RoomNumber;
-
-                    NotifyPropertyChanged("RoomNumber");
-                }
-            }
-        }
-
-        // ReservationForm Property
-        private string _ReservationForm;
-        public string ReservationForm
-        {
-            get
-            {
-                return _ReservationForm;
-            }
-            set
-            {
-                if (_ReservationForm != value)
-                {
-                    _ReservationForm = value;
-
-                    EditReservation.ReservationForm = _ReservationForm;
-
-                    NotifyPropertyChanged("ReservationForm");
-                }
-            }
-        }
-
-        // Add Conditions & Error Messages
-        public string this[string columnName]
-        {
-            get
-            {
-                string FillRequired = "Please Fill The Field";
-                switch (columnName)
-                {
-                    case "CheckInDate":
-                        if (CheckInDate > DateTime.Now )
-                            return "Date <: " + DateTime.Now;
-                        break;
-                    case "CheckOutDate":
-                        if (CheckOutDate < DateTime.Now)
-                            return "Date >: " + DateTime.Now;
-                        break;
-                    case "ReservationStatus":
-                        if (ReservationStatus == null) return FillRequired;
-
-                        break;
-                    case "ReservedBy":
-                        if (ReservedBy == null) return FillRequired;
-
-                        if (ReservedBy == "Nadhir") return "Nta Nadhir <3";
-
-
-                        break;
-                    case "ReservedFor":
-                        if (ReservedFor == null) return FillRequired;
-
-                        break;
-                    case "RoomNumber":
-                        if (RoomNumber > 0) return FillRequired;
-
-                        break;
-                    case "ReservationForm":
-                        if (ReservationForm == null) return FillRequired;
-
-                        break;
-                }
-                return string.Empty;
-            }
-        }
-
-        // Edit Reservation Property
         private Reservation _editReservation;
         public Reservation EditReservation
         {
@@ -281,23 +32,19 @@ namespace Fondok.ViewModels
             set
             {
                 _editReservation = value;
-
                 NotifyPropertyChanged("EditReservation");
             }
         }
-
-        // ReservationWindow Run() Method
         public bool Run()
         {
-            ReservationWindow window = new ReservationWindow();
-
-            window.DataContext = this;
-
-            if (window.ShowDialog() == true) { return true; }
+            ReservationWindow sw = new ReservationWindow();
+            sw.DataContext = this;
+            if (sw.ShowDialog() == true)
+            {
+                return true;
+            }
             return false;
         }
-
-        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
@@ -306,78 +53,50 @@ namespace Fondok.ViewModels
     }
 
 
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ReservationDataInteraction Class Create, Read, Update, Delete
-    class ReservationDataInteraction
-    {
-        // Loading Data From DB 
-        DatabaseContext db = new DatabaseContext();
 
-        // ReservationDataInteraction Constructor
-        public ReservationDataInteraction(DatabaseContext _db)
+
+
+    class ReservationRepository
+    {
+
+        DatabaseContext db = new DatabaseContext();
+        public ReservationRepository(DatabaseContext _db)
         {
             db = _db;
             db.Reservations.Load();
         }
-        // Insert Data From To BindingList
         public System.ComponentModel.BindingList<Reservation> GetAllReservations()
         {
             return db.Reservations.Local.ToBindingList();
         }
-
-        // Adding Method
         public void AddReservation(Reservation Reservation)
         {
             db.Reservations.Add(Reservation);
             db.SaveChanges();
         }
-
-        // Get Reservation Method
         public Reservation GetReservation(int id)
         {
-            return db.Reservations.Where(get => get.ReservationID.Equals(id)).First();
+            return db.Reservations.Where(b => b.ReservationID.Equals(id)).First();
         }
-
-        // Update Reservation Method FirstTime
-        public void UpdateReservation(
-            int ReservationID,
-            DateTime CheckInDate,
-            DateTime CheckOutDate,
-            string ReservationStatus,
-            string ReservedBy,
-            string ReservedFor,
-            int RoomNumber,
-            string ReservationForm
-            )
+        public void UpdateReservation(int ReservationID, string ReservationFrom, string ReservationTo, string ReservationStatus
+            , string ReservationBy, string ReservationFor, string ReservationIn, string ReservationService)
         {
             Reservation Reservation = GetReservation(ReservationID);
-            Reservation.CheckInDate = CheckInDate;
-            Reservation.CheckOutDate = CheckOutDate;
+            Reservation.ReservationFrom = ReservationFrom;
+            Reservation.ReservationTo = ReservationTo;
             Reservation.ReservationStatus = ReservationStatus;
-            Reservation.ReservedBy = ReservedBy;
-            Reservation.ReservedFor = ReservedFor;
-            Reservation.RoomNumber = RoomNumber;
-            Reservation.ReservationForm = ReservationForm;
+            Reservation.ReservationBy = ReservationBy;
+            Reservation.ReservationFor = ReservationFor;
+            Reservation.ReservationIn = ReservationIn;
+            Reservation.ReservationService = ReservationService;
 
             db.SaveChanges();
         }
-
-        // Update Reservation Method After Insert
-        public void UpdateReservation(Reservation update)
+        public void UpdateReservation(Reservation b)
         {
-            UpdateReservation(
-                update.ReservationID,
-                update.CheckInDate,
-                update.CheckOutDate,
-                update.ReservationStatus,
-                update.ReservedBy,
-                update.ReservedFor,
-                update.RoomNumber,
-                update.ReservationForm
-                );
+            UpdateReservation(b.ReservationID, b.ReservationFrom, b.ReservationTo, b.ReservationStatus
+                , b.ReservationBy, b.ReservationFor, b.ReservationIn, b.ReservationService);
         }
-
-        // Delete Reservation Method
         public void DeleteReservation(int id)
         {
             db.Reservations.Remove(GetReservation(id));
@@ -386,15 +105,22 @@ namespace Fondok.ViewModels
     }
 
 
-    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
-    // ReservationBox Class
-    class ReservationBox : INotifyPropertyChanged
+
+
+
+
+
+
+
+
+
+
+
+    class ReservationLibraryViewModel : INotifyPropertyChanged
     {
-        private ReservationDataInteraction box;
+        private ReservationRepository rep;
         private DatabaseContext db;
         private BindingList<Reservation> _Reservations;
-
-        // Reservations BindingList Property
         public BindingList<Reservation> Reservations
         {
             get
@@ -407,8 +133,6 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("Reservations");
             }
         }
-
-        // SelectedReservation Property
         private Reservation _selectedReservation;
         public Reservation SelectedReservation
         {
@@ -422,25 +146,19 @@ namespace Fondok.ViewModels
                 NotifyPropertyChanged("SelectedReservation");
             }
         }
-
-        // ReservationBox Constructor
-        public ReservationBox()
+        public ReservationLibraryViewModel()
         {
             db = new DatabaseContext();
-            box = new ReservationDataInteraction(db);
-            Reservations = box.GetAllReservations();
+            rep = new ReservationRepository(db);
+            Reservations = rep.GetAllReservations();
             deleteCommand = new DelegateCommand(DeleteReservation);
             updateCommand = new DelegateCommand(UpdateReservation);
             createCommand = new DelegateCommand(CreateReservation);
         }
-
-        // Check if Reservation Selected?
         public bool IsSelected()
         {
             return SelectedReservation != null;
         }
-
-        // Implementation Of DeleteCommand Property
         private ICommand deleteCommand;
         public ICommand DeleteCommand
         {
@@ -449,19 +167,14 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
-
-        // Delete the Selected Reservation Method & Refresh Reservations Binding :)
         public void DeleteReservation()
         {
             if (!IsSelected())
             {
                 return;
             }
-            box.DeleteReservation(SelectedReservation.ReservationID);
-            Reservations.ResetBindings();
+            rep.DeleteReservation(SelectedReservation.ReservationID);
         }
-
-        // Implementation Of UpdateCommand Property
         private DelegateCommand updateCommand;
         public ICommand UpdateCommand
         {
@@ -470,28 +183,18 @@ namespace Fondok.ViewModels
                 return updateCommand;
             }
         }
-
-        // Update the Selected Reservation Method & Refresh Reservations Binding :)
         public void UpdateReservation()
         {
-            // Check If Selected?
             if (!IsSelected())
             {
                 return;
             }
-
-            // Create View Model With Selected Reservation To Edit
-            ReservationViewModel vm = new ReservationViewModel(SelectedReservation);
-
-            // Run The Reservation Window And Add Selected Reservation To Edit & Refresh Binding
-            if (vm.Run())
+            ReservationViewModel bwvm = new ReservationViewModel(SelectedReservation);
+            if (bwvm.Run())
             {
-                box.UpdateReservation(SelectedReservation);
-                Reservations.ResetBindings();
+                rep.UpdateReservation(SelectedReservation);
             }
         }
-
-        // Implementation Of CreateCommand Property
         private DelegateCommand createCommand;
         public ICommand CreateCommand
         {
@@ -500,24 +203,15 @@ namespace Fondok.ViewModels
                 return createCommand;
             }
         }
-
-        //  Create Reservation Method & Refresh Reservations Binding :)
         public void CreateReservation()
         {
-            Reservation create = new Reservation();
-
-            ReservationViewModel vm = new ReservationViewModel(create);
-
-            // Run The Reservation Window To Create Reservation & Refresh Binding
-            if (vm.Run())
+            Reservation bk = new Reservation();
+            ReservationViewModel bwvm = new ReservationViewModel(bk);
+            if (bwvm.Run())
             {
-                box.AddReservation(create);
-
-                Reservations.ResetBindings();
+                rep.AddReservation(bk);
             }
         }
-
-        // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged(string propertyName)
         {
