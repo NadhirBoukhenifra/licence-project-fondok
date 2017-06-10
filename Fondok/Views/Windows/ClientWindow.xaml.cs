@@ -99,14 +99,8 @@ namespace Fondok.Views.Windows
             ClientDateOfBirthField.IsDropDownOpen = false;
         }
 
-        private void ClientFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (Char.IsLetter((char)e.Key)) e.Handled = true;
-        }
+        
 
-        private void ClientLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (Char.IsLetter((char)e.Key)) e.Handled = true;
-        }
+
     }
 }

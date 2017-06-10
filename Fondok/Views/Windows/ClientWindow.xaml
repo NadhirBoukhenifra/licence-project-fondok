@@ -79,7 +79,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client First Name"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientFirstNameField_PreviewKeyDown" />
+        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -105,7 +105,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Last Name"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientLastNameField_PreviewKeyDown" />
+        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="3">
