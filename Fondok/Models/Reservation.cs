@@ -27,8 +27,8 @@ namespace Fondok.Models
         [Column(Name = "ReservedBy", DbType = "VARCHAR")]
         public string ReservedBy { get; set; }
 
-        [Column(Name = "ReservedFor", DbType = "VARCHAR")]
-        public string ReservedFor { get; set; }
+        [Column(Name = "ReservedFor", DbType = "INTEGER")]
+        public int ReservedFor { get; set; }
 
         [Column(Name = "RoomNumber", DbType = "INTEGER")]
         public int RoomNumber { get; set; }

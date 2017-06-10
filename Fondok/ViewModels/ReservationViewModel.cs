@@ -164,8 +164,8 @@ namespace Fondok.ViewModels
         }
 
         // ReservedFor Property
-        private string _ReservedFor;
-        public string ReservedFor
+        private int _ReservedFor;
+        public int ReservedFor
         {
             get
             {
@@ -254,7 +254,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "ReservedFor":
-                        if (ReservedFor == null) return FillRequired;
+                        if (ReservedFor > 0) return FillRequired;
 
                         break;
                     case "RoomNumber":
@@ -345,7 +345,7 @@ namespace Fondok.ViewModels
             DateTime CheckOutDate,
             string ReservationStatus,
             string ReservedBy,
-            string ReservedFor,
+            int ReservedFor,
             int RoomNumber,
             string ReservationForm
             )
@@ -391,6 +391,7 @@ namespace Fondok.ViewModels
     class ReservationBox : INotifyPropertyChanged
     {
         private ReservationDataInteraction box;
+
         private DatabaseContext db;
         private BindingList<Reservation> _Reservations;
 
@@ -428,6 +429,7 @@ namespace Fondok.ViewModels
         {
             db = new DatabaseContext();
             box = new ReservationDataInteraction(db);
+
             Reservations = box.GetAllReservations();
             deleteCommand = new DelegateCommand(DeleteReservation);
             updateCommand = new DelegateCommand(UpdateReservation);
@@ -459,6 +461,7 @@ namespace Fondok.ViewModels
             }
             box.DeleteReservation(SelectedReservation.ReservationID);
             Reservations.ResetBindings();
+
         }
 
         // Implementation Of UpdateCommand Property
@@ -512,7 +515,6 @@ namespace Fondok.ViewModels
             if (vm.Run())
             {
                 box.AddReservation(create);
-
                 Reservations.ResetBindings();
             }
         }

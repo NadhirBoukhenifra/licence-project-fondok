@@ -47,6 +47,8 @@ namespace Fondok.Views.Windows
 
             ReservationIDField.ItemsSource = ReservationIDSource;
 
+
+            InvoiceTotalField.Text = "550";
         }
         private void AddInvoiceClick(object sender, RoutedEventArgs e)
         {

@@ -180,7 +180,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "InvoiceTotal":
-                        if (InvoiceTotal >= 0) return FillRequired;
+                        if (InvoiceTotal <= 0) return FillRequired;
 
                         break;
                 }

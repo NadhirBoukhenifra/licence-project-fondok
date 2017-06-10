@@ -209,7 +209,13 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Invoice Total"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding InvoiceTotal, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding InvoiceTotal, Mode=TwoWay, 
+          ValidatesOnDataErrors=True, 
+          UpdateSourceTrigger=PropertyChanged, 
+          NotifyOnValidationError=true}" 
+          
+          />
+   
     </Grid>
 
 
