@@ -21,6 +21,7 @@ namespace Fondok.Views.Windows
     /// </summary>
     public partial class ClientWindow : Window
     {
+        Commands.Verifications Vchar = new Commands.Verifications();
         private int errorCount;
         public ClientWindow()
         {
@@ -99,31 +100,21 @@ namespace Fondok.Views.Windows
         {
             ClientDateOfBirthField.IsDropDownOpen = false;
         }
-
+        
         private void ClientFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
 
-            //if (e.Key >= Key.A && e.Key <= Key.Z)
-            //{
-            //}
-            //else
-            //{
-            //    e.Handled = true;
-            //}
-
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
-            {
-                e.Handled = true;
-            } //hola hola! xD 
+           Vchar.JustChar(sender,e); 
 
         }
 
         private void ClientLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
-            {
-                e.Handled = true;
-            }
+            Vchar.JustChar(sender, e);
         }
     }
+  
 }
+
+
+

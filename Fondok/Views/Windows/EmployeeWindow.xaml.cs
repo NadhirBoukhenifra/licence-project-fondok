@@ -90,18 +90,14 @@ namespace Fondok.Views.Windows
 
         private void EmployeeFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
-            {
-                e.Handled = true;
-            }
+            Vchar.JustChar(sender, e);
         }
 
         private void EmployeeLastNameField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if ((e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key >= Key.D0 && e.Key <= Key.D9))
-            {
-                e.Handled = true;
-            }
+            Vchar.JustChar(sender, e);
         }
+        Commands.Verifications Vchar = new Commands.Verifications();
     }
+    
 }
