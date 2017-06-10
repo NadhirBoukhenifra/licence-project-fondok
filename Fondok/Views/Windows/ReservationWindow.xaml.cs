@@ -46,7 +46,7 @@ namespace Fondok.Views.Windows
             //var rsrv = (from s in context.Reservations select (s.ReservedFor)).ToList();
             //var ReservedForSource = clnt.Except(rsrv).ToArray();
 
-            var ReservedForSource = (from s in context.Clients select (s.ClientID)).ToList();
+            var ReservedForSource = (from s in context.Clients select s.ClientID).ToArray();
 
             ReservedForField.ItemsSource = ReservedForSource;
 
@@ -60,8 +60,9 @@ namespace Fondok.Views.Windows
             var ReservationFormSource = (from s in context.Forms select s.FormTitle).ToArray();
 
             ReservationFormField.ItemsSource = ReservationFormSource;
-
-
+            ReservedForField.SelectedIndex = -1;
+            ReservationFormField.SelectedIndex = -1;
+            RoomNumberField.SelectedIndex = -1;
         }
         private void AddReservationClick(object sender, RoutedEventArgs e)
         {

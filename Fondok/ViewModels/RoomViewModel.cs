@@ -321,6 +321,7 @@ namespace Fondok.ViewModels
             Room.RoomStatus = RoomStatus;
 
             db.SaveChanges();
+            
         }
         // Update Room Method After Insert
         public void UpdateRoom(Room update)
