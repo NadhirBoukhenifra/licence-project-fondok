@@ -17,12 +17,12 @@ using System.Windows.Shapes;
 namespace Fondok.Views.Windows
 {
     /// <summary>
-    /// Interaction logic for RoomWindow.xaml
+    /// Interaction logic for FormWindow.xaml
     /// </summary>
-    public partial class RoomWindow : Window
+    public partial class FormWindow : Window
     {
         private int errorCount;
-        public RoomWindow()
+        public FormWindow()
         {
 
 
@@ -32,16 +32,8 @@ namespace Fondok.Views.Windows
 
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
-            string[] RoomTypeSource = new string[] { "Single", "Double", "Double Double" };
-
-            RoomTypeField.ItemsSource = RoomTypeSource;
-
-            string[] RoomStatusSource = new string[] { "Reserved", "Not Reserved", "Out Service" };
-
-            RoomStatusField.ItemsSource = RoomStatusSource;
-
         }
-        private void AddRoomClick(object sender, RoutedEventArgs e)
+        private void AddFormClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
 
@@ -73,7 +65,7 @@ namespace Fondok.Views.Windows
                     }
             }
 
-            AddRoomButton.IsEnabled = errorCount == 0;
+            AddFormButton.IsEnabled = errorCount == 0;
         }
 
     }

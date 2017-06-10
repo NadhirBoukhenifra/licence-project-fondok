@@ -4,32 +4,40 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
+  Background="{DynamicResource MaterialDesignPaper}"
+  FontFamily="{DynamicResource MaterialDesignFont}"
   Loaded="InvoiceViewLoaded"
+  TextElement.FontSize="18"
+  TextElement.FontWeight="Regular"
+  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+  TextOptions.TextFormattingMode="Ideal"
+  TextOptions.TextRenderingMode="Auto"
   mc:Ignorable="d">
 
-  <UserControl.DataContext>
-    <vm:InvoiceLibraryViewModel />
-  </UserControl.DataContext>
+    <UserControl.DataContext>
+        <vm:InvoiceBox />
+    </UserControl.DataContext>
 
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="64" />
-    </Grid.RowDefinitions>
-    <Grid Grid.Row="0">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="auto" />
-        <ColumnDefinition Width="auto" />
-      </Grid.ColumnDefinitions>
-    </Grid>
-    <Grid Grid.Row="0">
-      <DataGrid
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="64" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+        </Grid>
+        <Grid Grid.Row="0">
+            <DataGrid
         x:Name="InvoicesGrid"
         Grid.Row="0"
         AutoGenerateColumns="True"
@@ -43,68 +51,77 @@
         ItemsSource="{Binding Invoices, IsAsync=True, Mode=TwoWay}"
         SelectedItem="{Binding SelectedInvoice}"
         SelectionMode="Single">
-        <DataGrid.CellStyle>
-          <Style TargetType="DataGridCell">
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-            <Setter Property="Padding" Value="16" />
-            <Setter Property="Template">
-              <Setter.Value>
-                <ControlTemplate TargetType="{x:Type DataGridCell}">
-                  <Border
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Setter Property="Padding" Value="16" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Border
                     Padding="{TemplateBinding Padding}"
                     Background="{TemplateBinding Background}"
                     BorderBrush="{TemplateBinding BorderBrush}"
                     BorderThickness="{TemplateBinding BorderThickness}"
                     SnapsToDevicePixels="True">
-                    <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                  </Border>
-                </ControlTemplate>
-              </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-              <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
-                <Setter Property="Foreground" Value="White" />
-              </Trigger>
-            </Style.Triggers>
-          </Style>
-        </DataGrid.CellStyle>
+                                        <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource PrimaryHueLightBrush}" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
 
-      </DataGrid>
-    </Grid>
-    <Grid Grid.Row="2">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Button
+            </DataGrid>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
         Grid.Row="2"
         Grid.Column="0"
-        Margin="8,0,8,0"
+        Height="36"
+        Margin="16,0,8,0"
         Command="{Binding UpdateCommand}"
         Content="Edit Invoice"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
         IsEnabled="{Binding ElementName=InvoicesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
-      <Button
+            <Button
         Grid.Row="2"
         Grid.Column="1"
+        Height="36"
         Margin="8"
         Command="{Binding DeleteCommand}"
         Content="Remove Invoice"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
         IsEnabled="{Binding ElementName=InvoicesGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
-      <Button
+            <Button
         Grid.Row="2"
         Grid.Column="2"
-        Margin="8,0,8,0"
+        Height="36"
+        Margin="8,0,16,0"
         Command="{Binding CreateCommand}"
         Content="Add Invoice"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        </Grid>
     </Grid>
-  </Grid>
 </UserControl>

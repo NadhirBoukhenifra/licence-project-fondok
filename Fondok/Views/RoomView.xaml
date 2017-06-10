@@ -4,15 +4,23 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
   xmlns:local="clr-namespace:Fondok.Views"
+  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:prism="http://prismlibrary.com/"
   xmlns:vm="clr-namespace:Fondok.ViewModels"
   prism:ViewModelLocator.AutoWireViewModel="True"
+  Background="{DynamicResource MaterialDesignPaper}"
+  FontFamily="{DynamicResource MaterialDesignFont}"
   Loaded="RoomViewLoaded"
+  TextElement.FontSize="18"
+  TextElement.FontWeight="Regular"
+  TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+  TextOptions.TextFormattingMode="Ideal"
+  TextOptions.TextRenderingMode="Auto"
   mc:Ignorable="d">
 
   <UserControl.DataContext>
-    <vm:RoomLibraryViewModel />
+    <vm:RoomBox />
   </UserControl.DataContext>
 
   <Grid>
@@ -30,7 +38,7 @@
     </Grid>
     <Grid Grid.Row="0">
       <DataGrid
-        x:Name="RoomGrid"
+        x:Name="RoomsGrid"
         Grid.Row="0"
         AutoGenerateColumns="True"
         Background="{Binding MaterialDesignBackground}"
@@ -82,29 +90,40 @@
       <Button
         Grid.Row="2"
         Grid.Column="0"
-        Margin="8,0,8,0"
+        Height="36"
+        Margin="16,0,8,0"
         Command="{Binding UpdateCommand}"
         Content="Edit Room"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
-        IsEnabled="{Binding ElementName=RoomGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=RoomsGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="1"
+        Height="36"
         Margin="8"
         Command="{Binding DeleteCommand}"
         Content="Remove Room"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
-        IsEnabled="{Binding ElementName=RoomGrid, Path=SelectedItems.Count}"
+        IsEnabled="{Binding ElementName=RoomsGrid, Path=SelectedItems.Count}"
         Style="{StaticResource MaterialDesignRaisedButton}" />
       <Button
         Grid.Row="2"
         Grid.Column="2"
-        Margin="8,0,8,0"
+        Height="36"
+        Margin="8,0,16,0"
         Command="{Binding CreateCommand}"
         Content="Add Room"
+        FontSize="18"
+        FontWeight="Bold"
         Foreground="White"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+
+
     </Grid>
   </Grid>
 </UserControl>

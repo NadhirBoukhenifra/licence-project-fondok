@@ -1,13 +1,16 @@
 ﻿using System;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
+    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
+
+    // Employees Table
     [Table(Name = "Employees")]
+
+    // Employee Class With Table Columns & Types
     public class Employee
     {
-        
         [Column(Name = "EmployeeID", IsDbGenerated = true, IsPrimaryKey = true, DbType = "INTEGER")]
         [Key]
         public int EmployeeID { get; set; }
@@ -18,8 +21,8 @@ namespace Fondok.Models
         [Column(Name = "EmployeePassWord", DbType = "VARCHAR")]
         public string EmployeePassWord { get; set; }
 
-        [Column(Name = "EmployeeEMail", DbType = "VARCHAR")]
-        public string EmployeeEMail { get; set; }
+        [Column(Name = "EmployeePhone", DbType = "INTEGER")]
+        public int EmployeePhone { get; set; }
 
         [Column(Name = "EmployeeJob", DbType = "VARCHAR")]
         public string EmployeeJob { get; set; }
@@ -30,10 +33,7 @@ namespace Fondok.Models
         [Column(Name = "EmployeeLastName", DbType = "VARCHAR")]
         public string EmployeeLastName { get; set; }
 
-
-        
         [Column(Name = "EmployeeDateOfBirth", DbType = "DATE")]
-        public DateTime EmployeeDateOfBirth  { get; set; }
-
+        public DateTime EmployeeDateOfBirth { get; set; }
     }
 }

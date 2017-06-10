@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fondok.Context;
+using Fondok.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +27,25 @@ namespace Fondok.Views.Windows
            
 
             InitializeComponent();
+            DataContext = this;
 
-             
+
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
-            ClientDateOfBirthField.SelectedDate = DateTime.Now;
+            string[] ClientGenderSource = new string[] { "Male", "Female", "Other" };
 
+            ClientGenderField.ItemsSource = ClientGenderSource;
+
+            string[] ClientIDTypeSource = new string[] { "ID card", "Passport", "Driver License", "Birth Document" };
+
+            ClientIDTypeField.ItemsSource = ClientIDTypeSource;
+
+            //DataContext = this;
+            var context = new DatabaseContext();
+
+            var ClientParentSource = (from s in context.Clients select s.ClientID).ToArray();
+
+            ClientParentField.ItemsSource = ClientParentSource;
 
         }
         private void AddClientClick(object sender, RoutedEventArgs e)

@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fondok.Views
@@ -24,10 +23,12 @@ namespace Fondok.Views
         {
             InitializeComponent();
         }
-         void EmployeeViewLoaded(object sender, RoutedEventArgs e)
+
+        void EmployeeViewLoaded(object sender, RoutedEventArgs e)
         {
             EmployeesGrid.UpdateLayout();
             EmployeesGrid.Items.Refresh();
+
         }
     }
 }

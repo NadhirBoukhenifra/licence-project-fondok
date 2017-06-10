@@ -17,7 +17,7 @@ namespace Fondok
             _regionManager = regionManager;
             _container = container;
 
-            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(ReportView));
+            _regionManager.RegisterViewWithRegion("ContentRegion", typeof(ReservationView));
 
 
 			
@@ -26,13 +26,13 @@ namespace Fondok
 
         public void Initialize()
         {
-            _container.RegisterTypeForNavigation<ReservationView>();
             _container.RegisterTypeForNavigation<RoomView>();
             _container.RegisterTypeForNavigation<ClientView>();
-            _container.RegisterTypeForNavigation<ServiceView>();
+            _container.RegisterTypeForNavigation<EmployeeView>();
+            _container.RegisterTypeForNavigation<FormView>();
+            _container.RegisterTypeForNavigation<ReservationView>();
             _container.RegisterTypeForNavigation<InvoiceView>();
             _container.RegisterTypeForNavigation<ReportView>();
-            _container.RegisterTypeForNavigation<EmployeeView>();
 
             //_container.RegisterTypeForNavigation<BookView>();
         }

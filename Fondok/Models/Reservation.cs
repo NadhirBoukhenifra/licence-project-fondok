@@ -1,34 +1,39 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Linq.Mapping;
 namespace Fondok.Models
 {
+    // ISIL 2016/2017 NADHIR BOUKHENIFRA, BOUALI MOHAMMED AMIN, HIRECHE ISLEM -------------------------------------------
+
+    // Reservations Table
     [Table(Name = "Reservations")]
+
+    // Reservation Class With Table Columns & Types
     public class Reservation
     {
         [Column(Name = "ReservationID", IsDbGenerated = true, IsPrimaryKey = true, DbType = "INTEGER")]
         [Key]
         public int ReservationID { get; set; }
 
-        [Column(Name = "ReservationFrom", DbType = "VARCHAR")]
-        public string ReservationFrom { get; set; }
+        [Column(Name = "CheckInDate", DbType = "DATE")]
+        public DateTime CheckInDate { get; set; }
 
-        [Column(Name = "ReservationTo", DbType = "VARCHAR")]
-        public string ReservationTo { get; set; }
+        [Column(Name = "CheckOutDate", DbType = "DATE")]
+        public DateTime CheckOutDate { get; set; }
 
         [Column(Name = "ReservationStatus", DbType = "VARCHAR")]
         public string ReservationStatus { get; set; }
 
-        [Column(Name = "ReservationBy", DbType = "VARCHAR")]
-        public string ReservationBy { get; set; }
+        [Column(Name = "ReservedBy", DbType = "VARCHAR")]
+        public string ReservedBy { get; set; }
 
-        [Column(Name = "ReservationFor", DbType = "VARCHAR")]
-        public string ReservationFor { get; set; }
+        [Column(Name = "ReservedFor", DbType = "VARCHAR")]
+        public string ReservedFor { get; set; }
 
-        [Column(Name = "ReservationIn", DbType = "VARCHAR")]
-        public string ReservationIn { get; set; }
+        [Column(Name = "RoomNumber", DbType = "INTEGER")]
+        public int RoomNumber { get; set; }
 
-        [Column(Name = "ReservationService", DbType = "VARCHAR")]
-        public string ReservationService { get; set; }
-
+        [Column(Name = "ReservationForm", DbType = "VARCHAR")]
+        public string ReservationForm { get; set; }
     }
 }
