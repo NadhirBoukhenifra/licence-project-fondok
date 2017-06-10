@@ -208,8 +208,8 @@
             CommandParameter="FormView"
             Style="{StaticResource MaterialDesignFlatButton}"
             ToolTip="Form Page">
-                        Forms
-                    </Button>
+            Forms
+          </Button>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="4">
