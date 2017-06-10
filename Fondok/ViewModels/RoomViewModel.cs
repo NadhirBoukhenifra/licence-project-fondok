@@ -25,6 +25,7 @@ namespace Fondok.ViewModels
         // Constructor With Param Of The Model
         public RoomViewModel(Room Room)
         {
+
             // Add Room To Edit
             EditRoom = Room;
 
@@ -313,16 +314,17 @@ namespace Fondok.ViewModels
         }
         // Update RoomStatus (getReserved) Amine Modification
         public void UpdateRoomStatus(
-    int RoomID,
-    string RoomStatus  )
+        int RoomNumber,
+        string RoomStatus  )
         {
-            Room Room = GetRoom(RoomID);
+            Room Room = GetRoom(RoomNumber);
 
             Room.RoomStatus = RoomStatus;
 
             db.SaveChanges();
             
         }
+
         // Update Room Method After Insert
         public void UpdateRoom(Room update)
         {
@@ -336,6 +338,7 @@ namespace Fondok.ViewModels
                 update.RoomPrice
                 );
         }
+
 
         // Delete Room Method
         public void DeleteRoom(int id)
