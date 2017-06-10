@@ -315,19 +315,29 @@ namespace Fondok.ViewModels
         {
             db = _db;
             db.Reservations.Load();
+            db.Rooms.Load();
         }
         // Insert Data From To BindingList
         public System.ComponentModel.BindingList<Reservation> GetAllReservations()
         {
             return db.Reservations.Local.ToBindingList();
         }
-
+        public System.ComponentModel.BindingList<Room> GetAllRooms()
+        {
+            return db.Rooms.Local.ToBindingList();
+        }
         // Adding Method
         public void AddReservation(Reservation Reservation)
         {
             db.Reservations.Add(Reservation);
+
+            MessageBox.Show(Reservation.RoomNumber.ToString());
+            RoomDataInteraction rvm = new RoomDataInteraction(db);
+            rvm.UpdateRoomStatus(Reservation.RoomNumber, "Reserved");
             
+
             db.SaveChanges();
+            
         }
 
         // Get Reservation Method
@@ -357,10 +367,12 @@ namespace Fondok.ViewModels
             Reservation.RoomNumber = RoomNumber;
             Reservation.ReservationForm = ReservationForm;
             db.SaveChanges();
+
             //Amine Modification
-            RoomDataInteraction rvm = new RoomDataInteraction(db);
-            rvm.UpdateRoomStatus(3, "Reserved");
-            db.SaveChanges();
+            //RoomDataInteraction rvm = new RoomDataInteraction(db);
+            //rvm.UpdateRoomStatus(3, "Reserved");
+
+            //db.SaveChanges();
         }
 
         // Update Reservation Method After Insert
@@ -396,6 +408,8 @@ namespace Fondok.ViewModels
         private DatabaseContext db;
         private BindingList<Reservation> _Reservations;
 
+        private BindingList<Room> _Rooms;
+
         // Reservations BindingList Property
         public BindingList<Reservation> Reservations
         {
@@ -407,6 +421,19 @@ namespace Fondok.ViewModels
             {
                 _Reservations = value;
                 NotifyPropertyChanged("Reservations");
+            }
+        }
+
+        public BindingList<Room> Rooms
+        {
+            get
+            {
+                return _Rooms;
+            }
+            set
+            {
+                _Rooms = value;
+                NotifyPropertyChanged("Rooms");
             }
         }
 
@@ -432,6 +459,8 @@ namespace Fondok.ViewModels
             box = new ReservationDataInteraction(db);
 
             Reservations = box.GetAllReservations();
+            Rooms = box.GetAllRooms();
+
             deleteCommand = new DelegateCommand(DeleteReservation);
             updateCommand = new DelegateCommand(UpdateReservation);
             createCommand = new DelegateCommand(CreateReservation);
@@ -492,6 +521,8 @@ namespace Fondok.ViewModels
             {
                 box.UpdateReservation(SelectedReservation);
                 Reservations.ResetBindings();
+                Rooms.ResetBindings();
+
             }
         }
 
@@ -517,6 +548,7 @@ namespace Fondok.ViewModels
             {
                 box.AddReservation(create);
                 Reservations.ResetBindings();
+                Rooms.ResetBindings();
             }
         }
 
