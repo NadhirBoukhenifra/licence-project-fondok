@@ -100,6 +100,21 @@ namespace Fondok.Views.Windows
             ClientDateOfBirthField.IsDropDownOpen = false;
         }
 
-      
+        private void ClientFirstNameField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+            {
+            }
+            else
+            {
+                e.Handled = true;
+            }
+
+
+
+        }
+
+     
     }
 }

@@ -70,16 +70,18 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ClientFirstNameField, Path=BorderBrush}"
         Kind="Face" />
+        
       <TextBox
         x:Name="ClientFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         HorizontalAlignment="Left"
+          
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client First Name"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientFirstNameField_PreviewKeyDown" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
