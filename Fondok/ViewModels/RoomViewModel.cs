@@ -19,6 +19,7 @@ namespace Fondok.ViewModels
     // RoomViewModel Class
     class RoomViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
+
         //Constructor Null FirstTime
         public RoomViewModel() : this(null) { }
         // Constructor With Param Of The Model
