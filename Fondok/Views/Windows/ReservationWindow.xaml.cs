@@ -42,11 +42,21 @@ namespace Fondok.Views.Windows
 
             ReservedByField.ItemsSource = ReservedBySource;
 
-            var ReservedForSource = (from s in context.Clients select s.ClientID).ToArray();
+            //var a = (from s in context.Reservations select s.ReservedFor).ToArray();
+
+            var ReservedForSource = (
+                                     from s in context.Clients
+                                     from r in context.Reservations
+                                     where (s.ClientID >= r.ReservedFor)
+                                     select s.ClientID
+                                     ).ToArray();
 
             ReservedForField.ItemsSource = ReservedForSource;
 
-            var RoomNumberSource = (from s in context.Rooms select s.RoomNumber).ToArray();
+            var RoomNumberSource = (from s in context.Rooms
+                                    where (s.RoomStatus != "Reserved" && s.RoomStatus != "Out Service")
+                                    select s.RoomNumber
+                                    ).ToArray();
 
             RoomNumberField.ItemsSource = RoomNumberSource;
 

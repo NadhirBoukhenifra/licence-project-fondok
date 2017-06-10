@@ -247,10 +247,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "ReservedBy":
-                        if (ReservedBy == null) return FillRequired;
-
-                        if (ReservedBy == "Nadhir") return "Nta Nadhir <3";
-
+                        if (ReservedBy == null || string.IsNullOrEmpty(ReservedBy) || string.IsNullOrWhiteSpace(ReservedBy)) return FillRequired;
 
                         break;
                     case "ReservedFor":
