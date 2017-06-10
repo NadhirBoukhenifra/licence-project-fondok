@@ -547,6 +547,8 @@ namespace Fondok.ViewModels
             if (vm.Run())
             {
                 box.AddReservation(create);
+               
+
                 Reservations.ResetBindings();
                 Rooms.ResetBindings();
             }
