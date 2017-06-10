@@ -249,6 +249,9 @@ namespace Fondok.ViewModels
                     case "ReservedBy":
                         if (ReservedBy == null) return FillRequired;
 
+                        if (ReservedBy == "Nadhir") return "Nta Nadhir <3";
+
+
                         break;
                     case "ReservedFor":
                         if (ReservedFor == null) return FillRequired;

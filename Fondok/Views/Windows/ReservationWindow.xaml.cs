@@ -38,12 +38,6 @@ namespace Fondok.Views.Windows
 
             ReservationStatusField.ItemsSource = ReservationStatusSource;
 
-            //string[] ReservationIDTypeSource = new string[] { "ID card", "Passport", "Driver License", "Birth Document" };
-
-            //ReservationIDTypeField.ItemsSource = ReservationIDTypeSource;
-
-            //DataContext = this;
-
             var ReservedBySource = (from s in context.Employees select s.EmployeeUserName).ToArray();
 
             ReservedByField.ItemsSource = ReservedBySource;
