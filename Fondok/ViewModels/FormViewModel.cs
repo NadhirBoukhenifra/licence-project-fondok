@@ -122,7 +122,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "FormPrice":
-                        if (FormPrice > 0 ) return FillRequired;
+                        if (FormPrice <= 0 ) return FillRequired;
 
                         break;
                 }
