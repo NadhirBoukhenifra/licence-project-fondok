@@ -311,7 +311,17 @@ namespace Fondok.ViewModels
 
             db.SaveChanges();
         }
+        // Update RoomStatus (getReserved) Amine Modification
+        public void UpdateRoomStatus(
+    int RoomID,
+    string RoomStatus  )
+        {
+            Room Room = GetRoom(RoomID);
 
+            Room.RoomStatus = RoomStatus;
+
+            db.SaveChanges();
+        }
         // Update Room Method After Insert
         public void UpdateRoom(Room update)
         {

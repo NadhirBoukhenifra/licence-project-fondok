@@ -326,7 +326,7 @@ namespace Fondok.ViewModels
         public void AddReservation(Reservation Reservation)
         {
             db.Reservations.Add(Reservation);
-
+            
             db.SaveChanges();
         }
 
@@ -356,7 +356,10 @@ namespace Fondok.ViewModels
             Reservation.ReservedFor = ReservedFor;
             Reservation.RoomNumber = RoomNumber;
             Reservation.ReservationForm = ReservationForm;
-
+            db.SaveChanges();
+            //Amine Modification
+            RoomDataInteraction rvm = new RoomDataInteraction(db);
+            rvm.UpdateRoomStatus(3, "Reserved");
             db.SaveChanges();
         }
 
