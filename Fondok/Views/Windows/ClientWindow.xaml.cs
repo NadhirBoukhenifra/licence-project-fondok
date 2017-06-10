@@ -92,6 +92,7 @@ namespace Fondok.Views.Windows
         private void TextBoxPreviewTouchDown(object sender, TouchEventArgs e)
         {
             ClientDateOfBirthField.IsDropDownOpen = true;
+           
         }
 
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -99,8 +100,6 @@ namespace Fondok.Views.Windows
             ClientDateOfBirthField.IsDropDownOpen = false;
         }
 
-        
-
-
+      
     }
 }
