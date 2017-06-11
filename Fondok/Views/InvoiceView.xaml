@@ -117,11 +117,13 @@
         Height="36"
         Margin="8,0,16,0"
         Command="{Binding CreateCommand}"
-        Content="Add Invoice"
+        Content="Print Invoice"
         FontSize="18"
         FontWeight="Bold"
         Foreground="White"
-        Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        Style="{StaticResource MaterialDesignRaisedAccentButton}"
+        IsEnabled="{Binding ElementName=InvoicesGrid, Path=SelectedItems.Count}"
+/>
     </Grid>
   </Grid>
 </UserControl>
