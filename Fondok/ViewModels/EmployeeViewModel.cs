@@ -42,7 +42,7 @@ namespace Fondok.ViewModels
             // EmployeeDateOfBirth Get 01/01/0001 First Time?? 
             if (EmployeeDateOfBirth == DateTime.MinValue)
             {
-                EmployeeDateOfBirth = DateTime.Now;
+                EmployeeDateOfBirth =new DateTime(1995,08,25);
             }
         }
 

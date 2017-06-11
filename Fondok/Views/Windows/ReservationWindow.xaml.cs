@@ -52,7 +52,7 @@ namespace Fondok.Views.Windows
 
             var RoomNumberSource = (from s in context.Rooms
                                     where (s.RoomStatus != "Reserved" && s.RoomStatus != "Out Service")
-                                    select s.RoomNumber
+                                    select s.RoomID
                                     ).ToArray();
 
             RoomNumberField.ItemsSource = RoomNumberSource;

@@ -334,8 +334,7 @@ namespace Fondok.ViewModels
             MessageBox.Show(Reservation.RoomNumber.ToString());
             RoomDataInteraction rvm = new RoomDataInteraction(db);
             rvm.UpdateRoomStatus(Reservation.RoomNumber, "Reserved");
-            
-
+          
             db.SaveChanges();
             
         }
