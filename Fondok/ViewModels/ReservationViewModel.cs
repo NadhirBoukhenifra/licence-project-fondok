@@ -485,6 +485,9 @@ namespace Fondok.ViewModels
         // Delete Reservation Method
         public void DeleteReservation(int id)
         {
+            Reservation Reservation = GetReservation(id);
+            RoomDataInteraction rdi = new RoomDataInteraction(db);
+            rdi.UpdateRoomStatus(Reservation.RoomNumber, "Not Reserved");
             db.Reservations.Remove(GetReservation(id));
             db.SaveChanges();
         }
