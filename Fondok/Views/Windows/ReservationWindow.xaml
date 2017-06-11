@@ -34,8 +34,9 @@
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
       <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-    </Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
     <Grid Grid.Row="0" VerticalAlignment="Center">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
@@ -342,13 +343,13 @@
         SelectedItem="{Binding EditReservation.RoomNumber}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
     </Grid>
-    <Grid Grid.Row="7">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -357,7 +358,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ReservationFormField, Path=BorderBrush}"
         Kind="Food" />
-      <ComboBox
+            <ComboBox
         x:Name="ReservationFormField"
         Grid.Row="2"
         Grid.Column="1"
@@ -369,8 +370,36 @@
         ItemsSource="{Binding ReservationForm, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditReservation.ReservationForm}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="ReservationFormField_DropDownClosed" />
-    </Grid>
-    <Grid Grid.Row="8">
+        </Grid>
+        <Grid Grid.Row="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="28"
+        Height="28"
+        HorizontalAlignment="Right"
+        VerticalAlignment="Center"
+        Foreground="{Binding ElementName=TypePaymentField, Path=BorderBrush}"
+        Kind="Food" />
+            <ComboBox
+        x:Name="TypePaymentField"
+        Grid.Row="2"
+        Grid.Column="1"
+        Width="320"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        materialDesign:HintAssist.Hint="Type Payment"
+        IsSynchronizedWithCurrentItem="True"
+        ItemsSource="{Binding TypePayment, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
+        SelectedItem="{Binding EditReservation.TypePayment}"
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}"  />
+        </Grid>
+        <Grid Grid.Row="9">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="100" />
@@ -395,7 +424,7 @@
         Text="{Binding TotalPrice}" />
 
     </Grid>
-    <Grid Grid.Row="9">
+    <Grid Grid.Row="10">
       <Grid.ColumnDefinitions>
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="320" />
