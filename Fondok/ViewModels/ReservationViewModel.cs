@@ -376,7 +376,6 @@ namespace Fondok.ViewModels
         {
             db.Reservations.Add(Reservation);
 
-            MessageBox.Show(Reservation.RoomNumber.ToString());
             RoomDataInteraction rvm = new RoomDataInteraction(db);
             FormDataInteraction fvm = new FormDataInteraction(db);
             Room rm = new Room();

@@ -178,8 +178,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\DelegateCommand.cs" />
-    <Compile Include="Commands\FutureDateValidationRule.cs" />
-    <Compile Include="Commands\NotEmptyValidationRule.cs" />
     <Compile Include="Commands\Verifications.cs" />
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Models\Client.cs" />
