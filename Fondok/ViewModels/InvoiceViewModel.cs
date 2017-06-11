@@ -257,6 +257,10 @@ namespace Fondok.ViewModels
         {
             return db.Invoices.Where(get => get.InvoiceID.Equals(id)).First();
         }
+        public Reservation GetInvoiceReservation(int id)
+        {
+            return db.Reservations.Where(get => get.ReservationID.Equals(id)).First();
+        }
 
         // Update Invoice Method FirstTime
         public void UpdateInvoice(
@@ -441,16 +445,41 @@ namespace Fondok.ViewModels
 
 
             gfx.DrawString("Invoice ID: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID.ToString(), info, XBrushes.Black,
-             new XRect(512, 172, page.Width, page.Height),
+             new XRect(396, 172, page.Width, page.Height),
              XStringFormats.TopLeft);
 
             gfx.DrawString("Reservation ID: " + box.GetInvoice(SelectedInvoice.InvoiceID).ReservationID.ToString(), info, XBrushes.Black,
-             new XRect(512, 184, page.Width, page.Height),
+             new XRect(396, 184, page.Width, page.Height),
              XStringFormats.TopLeft);
 
             gfx.DrawString("Invoice Type Payment: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTypePayment.ToString(), info, XBrushes.Black,
-             new XRect(512, 196, page.Width, page.Height),
+             new XRect(396, 196, page.Width, page.Height),
              XStringFormats.TopLeft);
+
+            gfx.DrawString("Invoice Date Time: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceDateTime.ToString(), info, XBrushes.Black,
+           new XRect(396, 208, page.Width, page.Height),
+           XStringFormats.TopLeft);
+
+
+
+            gfx.DrawString("Reserved By: " + box.GetInvoiceReservation(SelectedInvoice.ReservationID).ReservedBy + " Room Number: " + 
+                box.GetInvoiceReservation(SelectedInvoice.ReservationID).RoomNumber, info, XBrushes.Black,
+           new XRect(0, 256, page.Width, page.Height),
+           XStringFormats.TopCenter);
+
+            gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString()+" DZD", title, XBrushes.Red,
+         new XRect(0, 315, page.Width, page.Height),
+         XStringFormats.Center);
+
+            //  gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString() +" DZD" , info, XBrushes.Green,
+            //new XRect(0, 300, page.Width, page.Height),
+            //XStringFormats.TopCenter);
+
+
+
+
+
+
 
             // Save the document...
             string filename = string.Format("Invoice_{0}_{1:dd.MM.yyyy_hh-mm-ss}.pdf",
