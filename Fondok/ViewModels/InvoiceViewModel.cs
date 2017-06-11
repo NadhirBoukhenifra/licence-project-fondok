@@ -9,16 +9,10 @@ using System.Linq;
 using System.Windows.Input;
 using Fondok.Commands;
 using System;
+using System.Diagnostics;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System.Windows;
-using System.Collections.Generic;
-using System.Windows.Data;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.IO;
-using System.Xml;
-using System.Windows.Xps;
-using System.Xml.Linq;
-using System.Windows.Xps.Packaging;
 
 namespace Fondok.ViewModels
 {
@@ -406,7 +400,67 @@ namespace Fondok.ViewModels
             //    FixedDocumentSequence fixedDocSeq = xpsDocument.GetFixedDocumentSequence();
             //    pDialog.PrintDocument(fixedDocSeq.DocumentPaginator, "Test print job");
             //}
+            // Create a new PDF document
+            PdfDocument document = new PdfDocument();
+            document.Info.Title = "Invoice" + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID.ToString() +
+                box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceDateTime.ToString();
+            MessageBox.Show(box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceDateTime.ToString());
+            MessageBox.Show(box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID.ToString());
+            // Create an empty page
+            PdfPage page = document.AddPage();
 
+            // Get an XGraphics object for drawing
+            XGraphics gfx = XGraphics.FromPdfPage(page);
+
+            // Create a font
+            XFont btitle = new XFont("Verdana", 48, XFontStyle.Underline);
+            XFont title = new XFont("Verdana", 20, XFontStyle.BoldItalic);
+            XFont info = new XFont("Verdana", 8);
+
+            // Draw the text
+            gfx.DrawString("Hotel El Khams Njoum", title, XBrushes.Aquamarine,
+              new XRect(0, 32, page.Width, page.Height),
+              XStringFormats.TopCenter);
+
+            gfx.DrawString("INVOICE", btitle, XBrushes.DarkGray,
+              new XRect(0, 84, page.Width, page.Height),
+              XStringFormats.TopCenter);
+
+            gfx.DrawString("EMail:  HotelEl@Gmail.com", info, XBrushes.Black,
+              new XRect(32, 172, page.Width, page.Height),
+              XStringFormats.TopLeft);
+            gfx.DrawString("Phone:  +213 0669 59 51 88", info, XBrushes.Black,
+              new XRect(32, 184, page.Width, page.Height),
+              XStringFormats.TopLeft);
+            gfx.DrawString("Tel/Fax:    +213 033 22 33 44", info, XBrushes.Black,
+              new XRect(32, 196, page.Width, page.Height),
+              XStringFormats.TopLeft);
+            gfx.DrawString("WebSite:    www.Hotel.com", info, XBrushes.Black,
+              new XRect(32, 208, page.Width, page.Height),
+              XStringFormats.TopLeft);
+
+
+            gfx.DrawString("Invoice ID: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID.ToString(), info, XBrushes.Black,
+             new XRect(512, 172, page.Width, page.Height),
+             XStringFormats.TopLeft);
+
+            gfx.DrawString("Reservation ID: " + box.GetInvoice(SelectedInvoice.InvoiceID).ReservationID.ToString(), info, XBrushes.Black,
+             new XRect(512, 184, page.Width, page.Height),
+             XStringFormats.TopLeft);
+
+            gfx.DrawString("Invoice Type Payment: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTypePayment.ToString(), info, XBrushes.Black,
+             new XRect(512, 196, page.Width, page.Height),
+             XStringFormats.TopLeft);
+
+            // Save the document...
+            string filename = string.Format("Invoice_{0}_{1:dd.MM.yyyy_hh-mm-ss}.pdf",
+                box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID,
+                box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceDateTime);
+
+            document.Save(filename);
+            
+            // ...and start a viewer.
+            Process.Start(filename);
 
         }
 
