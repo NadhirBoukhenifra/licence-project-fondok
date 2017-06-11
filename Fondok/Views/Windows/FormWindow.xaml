@@ -74,8 +74,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Form Title"
+        PreviewKeyDown="FormTitleField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding FormTitle, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="FormTitleField_PreviewKeyDown" />
+        Text="{Binding FormTitle, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
