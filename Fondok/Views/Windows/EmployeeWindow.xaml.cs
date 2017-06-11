@@ -28,8 +28,8 @@ namespace Fondok.Views.Windows
 
             InitializeComponent();
             DataContext = this;
-
-
+            EmployeeDateOfBirthField.DisplayDateStart = DateTime.Now.AddYears(-60);
+            EmployeeDateOfBirthField.DisplayDateEnd = DateTime.Now.AddYears(-18);
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
             string[] EmployeeJobSource = new string[] { "Admin", "Receptionist" };

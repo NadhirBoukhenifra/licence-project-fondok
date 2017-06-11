@@ -12,9 +12,7 @@ namespace Fondok.Commands
 
         public void JustChar(object sender, KeyEventArgs e)
         {
-            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Back) || (e.Key == Key.Subtract) || (e.Key == Key.OemQuotes)
-                || (e.Key >= Key.Space && e.Key <= Key.Space)
-                )
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || (e.Key == Key.Back) || (e.Key == Key.Subtract) || (e.Key == Key.OemQuotes) || (e.Key == Key.Space))
             {
             }
             else

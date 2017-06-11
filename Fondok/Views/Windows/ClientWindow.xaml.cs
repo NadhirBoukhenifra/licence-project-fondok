@@ -29,7 +29,6 @@ namespace Fondok.Views.Windows
 
             InitializeComponent();
             DataContext = this;
-            ClientDateOfBirthField.SelectedDate = new DateTime(1995,08,25);
             ClientDateOfBirthField.DisplayDateStart = DateTime.Now.AddYears(-100);
             ClientDateOfBirthField.DisplayDateEnd = DateTime.Now.AddYears(-10);
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
@@ -94,8 +93,7 @@ namespace Fondok.Views.Windows
         private void TextBoxPreviewTouchDown(object sender, TouchEventArgs e)
         {
             ClientDateOfBirthField.IsDropDownOpen = true;
-           
-
+           
         }
 
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
