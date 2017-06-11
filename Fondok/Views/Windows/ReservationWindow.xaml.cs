@@ -117,6 +117,7 @@ namespace Fondok.Views.Windows
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckInDateField.IsDropDownOpen = false;
+            Price();
         }
 
 
@@ -129,38 +130,78 @@ namespace Fondok.Views.Windows
         private void TextBoxPreviewTouchDownTwo(object sender, TouchEventArgs e)
         {
             CheckOutDateField.IsDropDownOpen = true;
+          
         }
-
+        //++-------------PRICE----CODE--------SIMON-----------------++
         private void DatePickerSelectedDateChangedTwo(object sender, SelectionChangedEventArgs e)
         {
             CheckOutDateField.IsDropDownOpen = false;
+            Price();
         }
 
         private void ReservationFormField_DropDownClosed(object sender, EventArgs e)
         {
 
+            Price();
+
+          
+        }
+      
+        private void RoomNumberField_DropDownClosed(object sender, EventArgs e)
+        {
+            Price();
+        }
+
+        private void ReservationStatusField_DropDownClosed(object sender, EventArgs e)
+        {
+            Price();
+        }
+
+        private void TypePaymentField_DropDownClosed(object sender, EventArgs e)
+        {
+            Price();
+        }
+
+        private void ReservedByField_DropDownClosed(object sender, EventArgs e)
+        {
+            Price();
+        }
+
+
+        public void Price()
+        {
 
             var context = new DatabaseContext();
 
-            var Rm = (from s in context.Rooms where(s.RoomNumber.ToString() == 
-                      RoomNumberField.SelectedValue.ToString())
-                      select s.RoomPrice).ToArray();
-           
-            var Fr = (from s in context.Forms
-                      where (s.FormTitle.ToString() ==
-ReservationFormField.SelectedValue.ToString())
-                      select s.FormPrice).ToArray<double>();
-          
 
-            DateTime a = CheckOutDateField.SelectedDate.Value;
-            DateTime b = CheckInDateField.SelectedDate.Value;
-            TimeSpan ts = a - b;
-            double days = Math.Abs(ts.Days)+1;
 
-           
+            if (ReservationFormField.SelectedItem != null
+                && RoomNumberField.SelectedItem != null
+                && CheckOutDateField.SelectedDate != null
+                && CheckInDateField.SelectedDate != null)
+            {
+                
+                var Rm = (from s in context.Rooms
+                          where (s.RoomNumber.ToString() ==
+    RoomNumberField.SelectedValue.ToString())
+                          select s.RoomPrice).ToArray();
 
-            TotalPriceField.Text = (Rm[0]  + Fr[0]) * days + " DZD";
-          
+                var Fr = (from s in context.Forms
+                          where (s.FormTitle.ToString() ==
+    ReservationFormField.SelectedValue.ToString())
+                          select s.FormPrice).ToArray<double>();
+
+
+                DateTime a = CheckOutDateField.SelectedDate.Value;
+                DateTime b = CheckInDateField.SelectedDate.Value;
+                TimeSpan ts = a - b;
+                double days = Math.Abs(ts.Days) + 1;
+
+
+
+                TotalPriceField.Text = (Rm[0] + Fr[0]) * days + " DZD";
+            }
+
         }
     }
 }
