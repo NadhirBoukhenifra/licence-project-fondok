@@ -198,6 +198,11 @@ namespace Fondok.ViewModels
             return db.Forms.Where(get => get.FormID.Equals(id)).First();
         }
 
+        public Form GetFormTitle(string title)
+        {
+            return db.Forms.Where(get => get.FormTitle.Equals(title)).First();
+        }
+
         // Update Form Method FirstTime
         public void UpdateForm(
             int FormID,

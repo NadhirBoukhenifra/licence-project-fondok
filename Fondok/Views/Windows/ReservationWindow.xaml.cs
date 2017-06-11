@@ -141,20 +141,22 @@ namespace Fondok.Views.Windows
             var Rm = (from s in context.Rooms where(s.RoomNumber.ToString() == 
                       RoomNumberField.SelectedValue.ToString())
                       select s.RoomPrice).ToArray();
-
+            MessageBox.Show("Window" + Rm[0].ToString());
             var Fr = (from s in context.Forms
                       where (s.FormTitle.ToString() ==
 ReservationFormField.SelectedValue.ToString())
                       select s.FormPrice).ToArray<double>();
+            MessageBox.Show("Window" + Fr[0].ToString());
 
             DateTime a = CheckOutDateField.SelectedDate.Value;
             DateTime b = CheckInDateField.SelectedDate.Value;
             TimeSpan ts = a - b;
-            double days = Math.Abs(ts.Days);
+            double days = Math.Abs(ts.Days)+1;
 
            
 
-            TotalPriceField.Text = (Rm[0] * days) + (Fr[0] * days) + " DZD";
+            TotalPriceField.Text = (Rm[0]  + Fr[0]) * days + " DZD";
+            MessageBox.Show("Window" + TotalPriceField.Text.ToString());
         }
     }
 }
