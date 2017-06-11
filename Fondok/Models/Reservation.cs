@@ -39,5 +39,6 @@ namespace Fondok.Models
         [Column(Name = "TypePayment", DbType = "VARCHAR")]
         public string TypePayment { get; set; }
 
+
     }
 }
