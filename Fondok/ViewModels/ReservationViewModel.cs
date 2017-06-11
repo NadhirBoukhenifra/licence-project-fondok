@@ -250,6 +250,27 @@ namespace Fondok.ViewModels
             }
         }
 
+        // TypePayment Property
+        private string _TypePayment;
+        public string TypePayment
+        {
+            get
+            {
+                return _TypePayment;
+            }
+            set
+            {
+                if (_TypePayment != value)
+                {
+                    _TypePayment = value;
+
+                    EditReservation.TypePayment = _TypePayment;
+
+                    NotifyPropertyChanged("TypePayment");
+                }
+            }
+        }
+
         // Add Conditions & Error Messages
         public string this[string columnName]
         {
@@ -374,13 +395,14 @@ namespace Fondok.ViewModels
             InvoiceDataInteraction ivm = new InvoiceDataInteraction(db);
             RoomBox rb = new RoomBox();
             Invoice inv = new Invoice();
+            InvoiceBox inBox = new InvoiceBox();
 
             var Rm = Reservation.RoomNumber;
             var RmPrice = rvm.GetRoom(Reservation.RoomNumber).RoomPrice;
-            MessageBox.Show("VM" + RmPrice.ToString());
+          
             var Fr = Reservation.ReservationForm;
             var FrPrice = fvm.GetFormTitle(Reservation.ReservationForm).FormPrice;
-            MessageBox.Show("VM" + FrPrice.ToString());
+           
 
             DateTime a = Reservation.CheckOutDate;
             DateTime b = Reservation.CheckInDate;
@@ -388,12 +410,12 @@ namespace Fondok.ViewModels
             double days = Math.Abs(ts.Days);
 
             inv.InvoiceTotal = (FrPrice + RmPrice) * days ;
-            MessageBox.Show("VM" + inv.InvoiceTotal.ToString());
+           
 
-            MessageBox.Show("nadhir"+ (days * RmPrice + days * FrPrice).ToString());
+           
 
             inv.InvoiceDateTime = DateTime.Now;
-            inv.InvoiceTypePayment = "Cash";
+            inv.InvoiceTypePayment = Reservation.TypePayment;
             inv.ReservationID = Reservation.ReservationID;
 
             ivm.AddInvoice(inv);
@@ -402,7 +424,10 @@ namespace Fondok.ViewModels
 
             rb.Rooms.ResetBindings();
             db.SaveChanges();
-            
+
+            inBox.Invoices.ResetBindings();
+
+
         }
 
         // Get Reservation Method
@@ -420,7 +445,8 @@ namespace Fondok.ViewModels
             string ReservedBy,
             int ReservedFor,
             int RoomNumber,
-            string ReservationForm
+            string ReservationForm,
+            string TypePayment
             )
         {
             Reservation Reservation = GetReservation(ReservationID);
@@ -430,7 +456,7 @@ namespace Fondok.ViewModels
             Reservation.ReservedBy = ReservedBy;
             Reservation.ReservedFor = ReservedFor;
             Reservation.RoomNumber = RoomNumber;
-            Reservation.ReservationForm = ReservationForm;
+            Reservation.TypePayment = TypePayment;
             db.SaveChanges();
 
             //Amine Modification
@@ -451,7 +477,9 @@ namespace Fondok.ViewModels
                 update.ReservedBy,
                 update.ReservedFor,
                 update.RoomNumber,
-                update.ReservationForm
+                update.ReservationForm,           
+                update.TypePayment
+
                 );
         }
 
