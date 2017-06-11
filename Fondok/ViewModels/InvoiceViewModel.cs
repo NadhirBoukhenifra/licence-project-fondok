@@ -12,6 +12,13 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Data;
+using System.Windows.Controls;
+using System.Windows.Documents;
+using System.IO;
+using System.Xml;
+using System.Windows.Xps;
+using System.Xml.Linq;
+using System.Windows.Xps.Packaging;
 
 namespace Fondok.ViewModels
 {
@@ -341,6 +348,7 @@ namespace Fondok.ViewModels
             deleteCommand = new DelegateCommand(DeleteInvoice);
             updateCommand = new DelegateCommand(UpdateInvoice);
             createCommand = new DelegateCommand(CreateInvoice);
+            printCommand = new DelegateCommand(PrintInvoice);
         }
 
         // Check if Invoice Selected?
@@ -358,6 +366,14 @@ namespace Fondok.ViewModels
                 return deleteCommand;
             }
         }
+        private ICommand printCommand;
+        public ICommand PrintCommand
+        {
+            get
+            {
+                return printCommand;
+            }
+        }
 
         // Delete the Selected Invoice Method & Refresh Invoices Binding :)
         public void DeleteInvoice()
@@ -369,6 +385,31 @@ namespace Fondok.ViewModels
             box.DeleteInvoice(SelectedInvoice.InvoiceID);
             Invoices.ResetBindings();
         }
+
+        public void PrintInvoice()
+        {
+            if (!IsSelected())
+            {
+                return;
+            }
+
+            //// Create the print dialog object and set options
+            //PrintDialog pDialog = new PrintDialog();
+            //pDialog.PageRangeSelection = PageRangeSelection.AllPages;
+            //pDialog.UserPageRangeEnabled = true;
+
+            //// Display the dialog. This returns true if the user presses the Print button.
+            //Nullable<Boolean> print = pDialog.ShowDialog();
+            //if (print == true)
+            //{
+            //    XpsDocument xpsDocument = new XpsDocument(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\FixedDocumentSequence.xps", FileAccess.ReadWrite);
+            //    FixedDocumentSequence fixedDocSeq = xpsDocument.GetFixedDocumentSequence();
+            //    pDialog.PrintDocument(fixedDocSeq.DocumentPaginator, "Test print job");
+            //}
+
+
+        }
+
 
         // Implementation Of UpdateCommand Property
         private DelegateCommand updateCommand;
