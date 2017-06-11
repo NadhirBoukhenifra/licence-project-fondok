@@ -35,5 +35,7 @@ namespace Fondok.Models
 
         [Column(Name = "ReservationForm", DbType = "VARCHAR")]
         public string ReservationForm { get; set; }
+        [Column(Name = "TypePayment", DbType = "VARCHAR")]
+        public string TypePayment { get; set; }
     }
 }
