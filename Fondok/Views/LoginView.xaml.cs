@@ -37,31 +37,31 @@ namespace Fondok.Views
 
 
         {
-            
-            //using (var context = new DatabaseContext())
-            //{
-            //    var EmployeesList = (from s in context.Employees where s.EmployeeUserName == this.userNameField.Text select s).ToList<Employee>();
+
+            using (var context = new DatabaseContext())
+            {
+                var EmployeesList = (from s in context.Employees where s.EmployeeUserName == this.userNameField.Text select s).ToList<Employee>();
 
 
-            //    if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
-            //    {
-            //        MessageBox.Show(" Welcome: "  + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirstName + " " + EmployeesList[0].EmployeeLastName);
-            //        Application.Current.MainWindow.Show();
-            //        this.Hide();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Error");
-            //    }
+                if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
+                {
+                    MessageBox.Show(" Welcome: " + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirstName + " " + EmployeesList[0].EmployeeLastName);
+                    Application.Current.MainWindow.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
 
-            //    //MessageBox.Show(EmployeesList[0].EmployeeUserName + EmployeesList[0].EmployeeEMail + EmployeesList.Count());
-
-
-
-            //}
+                //MessageBox.Show(EmployeesList[0].EmployeeUserName + EmployeesList[0].EmployeeEMail + EmployeesList.Count());
 
 
-            
+
+            }
+
+
+
 
         }
 

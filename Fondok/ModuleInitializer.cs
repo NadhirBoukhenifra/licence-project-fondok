@@ -34,7 +34,6 @@ namespace Fondok
             _container.RegisterTypeForNavigation<InvoiceView>();
             _container.RegisterTypeForNavigation<ReportView>();
 
-            //_container.RegisterTypeForNavigation<BookView>();
         }
     }
 }
