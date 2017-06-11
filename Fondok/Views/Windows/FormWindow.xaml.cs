@@ -73,5 +73,10 @@ namespace Fondok.Views.Windows
             Verif.JustChar(sender, e);
         }
         Commands.Verifications Verif = new Commands.Verifications();
+
+        private void FormPriceField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Verif.JustNum(sender, e);
+        }
     }
 }
