@@ -8,6 +8,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   Title="Client Settings"
   Width="512"
+  Height="962"
   MinWidth="512"
   MaxWidth="512"
   Background="{DynamicResource MaterialDesignPaper}"
@@ -70,18 +71,18 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=ClientFirstNameField, Path=BorderBrush}"
         Kind="Face" />
-        
+
       <TextBox
         x:Name="ClientFirstNameField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         HorizontalAlignment="Left"
-          
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client First Name"
+        PreviewKeyDown="ClientFirstNameField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientFirstNameField_PreviewKeyDown" />
+        Text="{Binding ClientFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
     <Grid Grid.Row="2">
       <Grid.ColumnDefinitions>
@@ -106,8 +107,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client Last Name"
+        PreviewKeyDown="ClientLastNameField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientLastNameField_PreviewKeyDown" />
+        Text="{Binding ClientLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="3">
@@ -235,8 +237,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Client ID Number"
+        PreviewKeyDown="ClientIDNumberField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding ClientIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="ClientIDNumberField_PreviewKeyDown" />
+        Text="{Binding ClientIDNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="7">

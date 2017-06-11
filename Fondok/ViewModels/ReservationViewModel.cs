@@ -48,9 +48,33 @@ namespace Fondok.ViewModels
             {
                 CheckOutDate = DateTime.Now;
             }
+            //var context = new DatabaseContext();
 
+            //var ReservedBySource = (from s in context.Employees select s.EmployeeUserName).ToArray();
+
+            //ReservedByField.ItemsSource = ReservedBySource;
+
+            //TotalPrice = "15000";
         }
 
+        // CheckInDate Property
+        private string _TotalPrice;
+        public string TotalPrice
+        {
+            get
+            {
+                return _TotalPrice;
+            }
+            set
+            {
+                if (_TotalPrice != value)
+                {
+                    _TotalPrice = value;
+                    //EditReservation._TotalPrice = _TotalPrice;
+                    NotifyPropertyChanged("TotalPrice");
+                }
+            }
+        }
 
         //IsValidProperty For Validation
         private bool _IsValidProperty;
@@ -333,8 +357,14 @@ namespace Fondok.ViewModels
 
             MessageBox.Show(Reservation.RoomNumber.ToString());
             RoomDataInteraction rvm = new RoomDataInteraction(db);
+
             rvm.UpdateRoomStatus(Reservation.RoomNumber, "Reserved");
-            
+
+            //ReservationViewModel nb = new ReservationViewModel();
+            //nb.TotalPrice = "999999";
+
+            //var ReservedBySource = (from s in context.Employees select s.EmployeeUserName).ToArray();
+
 
             db.SaveChanges();
             

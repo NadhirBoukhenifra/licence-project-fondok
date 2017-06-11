@@ -131,8 +131,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee Phone"
+        PreviewKeyDown="EmployeePhoneField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EmployeePhone, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="EmployeePhoneField_PreviewKeyDown" />
+        Text="{Binding EmployeePhone, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="4">
@@ -187,8 +188,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee FirstName"
+        PreviewKeyDown="EmployeeFirstNameField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EmployeeFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="EmployeeFirstNameField_PreviewKeyDown" />
+        Text="{Binding EmployeeFirstName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="6">
@@ -214,8 +216,9 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Employee LastName"
+        PreviewKeyDown="EmployeeLastNameField_PreviewKeyDown"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding EmployeeLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="EmployeeLastNameField_PreviewKeyDown" />
+        Text="{Binding EmployeeLastName, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
     </Grid>
 
     <Grid Grid.Row="7">

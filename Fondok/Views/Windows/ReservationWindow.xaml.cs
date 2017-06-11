@@ -131,5 +131,30 @@ namespace Fondok.Views.Windows
         {
             CheckOutDateField.IsDropDownOpen = false;
         }
+
+        private void ReservationFormField_DropDownClosed(object sender, EventArgs e)
+        {
+
+
+            var context = new DatabaseContext();
+
+            var Rm = (from s in context.Rooms where(s.RoomNumber.ToString() == 
+                      RoomNumberField.SelectedValue.ToString())
+                      select s.RoomPrice).ToArray();
+
+            var Fr = (from s in context.Forms
+                      where (s.FormTitle.ToString() ==
+ReservationFormField.SelectedValue.ToString())
+                      select s.FormPrice).ToArray<double>();
+
+            DateTime a = CheckOutDateField.SelectedDate.Value;
+            DateTime b = CheckInDateField.SelectedDate.Value;
+            TimeSpan ts = a - b;
+            double days = Math.Abs(ts.Days);
+
+           
+
+            TotalPriceField.Text = (Rm[0] * days) + (Fr[0] * days) + " DZD";
+        }
     }
 }
