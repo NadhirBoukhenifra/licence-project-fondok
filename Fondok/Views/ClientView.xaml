@@ -116,7 +116,7 @@
         Grid.Column="2"
         Height="36"
         Margin="8,0,16,0"
-        Command="{Binding PrintCommand}"
+        Command="{Binding CreateCommand}"
         Content="Add Client"
         FontSize="18"
         FontWeight="Bold"
