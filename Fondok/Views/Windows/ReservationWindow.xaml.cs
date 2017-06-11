@@ -32,11 +32,7 @@ namespace Fondok.Views.Windows
 
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
             var context = new DatabaseContext();
-           
 
-            string[] TypePaymentSource = new string[] { "Cash Money", "Bank Check", "Master Card", "Western Union" };
-
-            TypePaymentField.ItemsSource = TypePaymentSource;
 
             string[] ReservationStatusSource = new string[] { "InComplete", "Complete" };
 
@@ -145,12 +141,12 @@ namespace Fondok.Views.Windows
             var Rm = (from s in context.Rooms where(s.RoomNumber.ToString() == 
                       RoomNumberField.SelectedValue.ToString())
                       select s.RoomPrice).ToArray();
-           
+            MessageBox.Show("Window" + Rm[0].ToString());
             var Fr = (from s in context.Forms
                       where (s.FormTitle.ToString() ==
 ReservationFormField.SelectedValue.ToString())
                       select s.FormPrice).ToArray<double>();
-          
+            MessageBox.Show("Window" + Fr[0].ToString());
 
             DateTime a = CheckOutDateField.SelectedDate.Value;
             DateTime b = CheckInDateField.SelectedDate.Value;
@@ -160,7 +156,7 @@ ReservationFormField.SelectedValue.ToString())
            
 
             TotalPriceField.Text = (Rm[0]  + Fr[0]) * days + " DZD";
-          
+            MessageBox.Show("Window" + TotalPriceField.Text.ToString());
         }
     }
 }
