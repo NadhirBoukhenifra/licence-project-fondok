@@ -420,6 +420,7 @@ namespace Fondok.ViewModels
             XFont btitle = new XFont("Verdana", 48, XFontStyle.Underline);
             XFont title = new XFont("Verdana", 20, XFontStyle.BoldItalic);
             XFont info = new XFont("Verdana", 8);
+            XFont bottom = new XFont("Verdana", 8, XFontStyle.Underline);
 
             // Draw the text
             gfx.DrawString("Hotel El Khams Njoum", title, XBrushes.Aquamarine,
@@ -462,7 +463,7 @@ namespace Fondok.ViewModels
 
 
 
-            gfx.DrawString("Reserved By: " + box.GetInvoiceReservation(SelectedInvoice.ReservationID).ReservedBy + " Room Number: " + 
+            gfx.DrawString("Reserved By: " + box.GetInvoiceReservation(SelectedInvoice.ReservationID).ReservedBy + " | Room Number: " + 
                 box.GetInvoiceReservation(SelectedInvoice.ReservationID).RoomNumber, info, XBrushes.Black,
            new XRect(0, 256, page.Width, page.Height),
            XStringFormats.TopCenter);
@@ -472,6 +473,10 @@ namespace Fondok.ViewModels
             gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString()+" DZD", title, XBrushes.Red,
          new XRect(0, 315, page.Width, page.Height),
          XStringFormats.TopCenter);
+
+            gfx.DrawString("Responsible receptionist signature : " , bottom, XBrushes.DarkGray,
+         new XRect(32, 500, page.Width, page.Height),
+         XStringFormats.TopLeft);
 
             //  gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString() +" DZD" , info, XBrushes.Green,
             //new XRect(0, 300, page.Width, page.Height),
