@@ -189,8 +189,8 @@ namespace Fondok.ViewModels
         }
 
         // ReservedFor Property
-        private int _ReservedFor;
-        public int ReservedFor
+        private string _ReservedFor;
+        public string ReservedFor
         {
             get
             {
@@ -282,8 +282,8 @@ namespace Fondok.ViewModels
                 {   //Amin Mod Fixed today's date to be accepted + fixed the condition
                     case "CheckInDate":
                         DateTime now = DateTime.Now.AddHours(00-DateTime.Now.Hour).AddMinutes(00 - DateTime.Now.Minute).AddSeconds(00 - DateTime.Now.Second).AddMilliseconds(0- DateTime.Now.Millisecond);
-                        if (CheckInDate < now )
-                            return "Check in date must be at least" + now;
+                        if (CheckInDate < now.AddHours(-1) )
+                            return "Check in date must be at least" + now.ToShortDateString();
                         break;
                     case "CheckOutDate":
                         if (CheckOutDate < CheckInDate.AddDays(1))
@@ -298,7 +298,7 @@ namespace Fondok.ViewModels
 
                         break;
                     case "ReservedFor":
-                        if (ReservedFor > 0) return FillRequired;
+                        if (ReservedFor == null || string.IsNullOrEmpty(ReservedFor) || string.IsNullOrWhiteSpace(ReservedFor)) return FillRequired;
 
                         break;
                     case "RoomNumber":
@@ -444,7 +444,7 @@ namespace Fondok.ViewModels
             DateTime CheckOutDate,
             string ReservationStatus,
             string ReservedBy,
-            int ReservedFor,
+            string ReservedFor,
             int RoomNumber,
             string ReservationForm,
             string TypePayment

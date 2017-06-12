@@ -53,7 +53,7 @@ namespace Fondok.Views.Windows
 
 
             //Fixed By Med Amin (Showing ParentClients Firstname and Lastname and ID Number to avoid name there conflits  )
-            var ReservedForSource = (from s in context.Clients where s.ClientParent==null select s.ClientFirstName+" "+s.ClientLastName+"    ID N°"+s.ClientIDNumber).ToArray();
+            var ReservedForSource = (from s in context.Clients where s.ClientParent==null select s.ClientFirstName+" "+s.ClientLastName+ " | ID N°" + s.ClientIDNumber).ToArray();
           
 
             ReservedForField.ItemsSource = ReservedForSource;

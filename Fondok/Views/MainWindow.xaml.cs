@@ -12,11 +12,23 @@ namespace Fondok.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        //public static string grade; Amine
         public MainWindow()
-        {
+        {   
             InitializeComponent();
             ReservationButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-
+            //if (grade != "Admin")  Amin
+            //{
+            //    InvoiceButton.Visibility = Visibility.Collapsed;
+            //    InvoiceIcon.Visibility = Visibility.Collapsed;
+            //    FormButton.Visibility = Visibility.Collapsed;
+            //    FormIcon.Visibility = Visibility.Collapsed;
+            //    EmployeeButton.Visibility = Visibility.Collapsed;
+            //    EmployeeIcon.Visibility = Visibility.Collapsed;
+            //    ReportButton.Visibility = Visibility.Collapsed;
+            //    ReportIcon.Visibility = Visibility.Collapsed;
+            //}
+            
             dateText.Text = DateTime.Now.ToLongDateString();
         }
 
@@ -51,6 +63,7 @@ namespace Fondok.Views
 
         private void RoomClick(object sender, RoutedEventArgs e)
         {
+            
             RoomButton.Style = (Style)FindResource("MaterialDesignRaisedAccentButton");
             RoomButton.Foreground = new SolidColorBrush(Colors.White);
             ReservationButton.Foreground = (Brush)FindResource("PrimaryHueMidBrush");

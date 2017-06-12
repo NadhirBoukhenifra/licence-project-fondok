@@ -35,6 +35,7 @@ namespace Fondok.Views.Windows
             string[] EmployeeJobSource = new string[] { "Admin", "Receptionist" };
 
             EmployeeJobField.ItemsSource = EmployeeJobSource;
+            EmployeeJobField.SelectedItem = -1;
 
         }
         private void AddEmployeeClick(object sender, RoutedEventArgs e)

@@ -39,7 +39,7 @@ namespace Fondok.Views.Windows
             string[] RoomStatusSource = new string[] { "Reserved", "Not Reserved", "Out Service" };
 
             RoomStatusField.ItemsSource = RoomStatusSource;
-
+            RoomStatusField.SelectedIndex = -1;
         }
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {

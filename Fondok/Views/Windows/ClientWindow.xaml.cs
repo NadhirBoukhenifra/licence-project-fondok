@@ -44,7 +44,7 @@ namespace Fondok.Views.Windows
             //DataContext = this;
             var context = new DatabaseContext();
 
-            var ClientParentSource = (from s in context.Clients select s.ClientID).ToArray();
+            var ClientParentSource = (from s in context.Clients where s.ClientParent==null select s.ClientID).ToArray();
 
             ClientParentField.ItemsSource = ClientParentSource;
 

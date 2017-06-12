@@ -464,7 +464,7 @@ namespace Fondok.ViewModels
 
 
             gfx.DrawString("Reserved By: " + box.GetInvoiceReservation(SelectedInvoice.ReservationID).ReservedBy + " | Room Number: " + 
-                box.GetInvoiceReservation(SelectedInvoice.ReservationID).RoomNumber, info, XBrushes.Black,
+                box.GetInvoiceReservation(SelectedInvoice.ReservationID).RoomNumber+" | Payed By: "+ box.GetInvoiceReservation(SelectedInvoice.ReservationID).ReservedFor, info, XBrushes.Black,
            new XRect(0, 256, page.Width, page.Height),
            XStringFormats.TopCenter);
 
@@ -488,8 +488,8 @@ namespace Fondok.ViewModels
 
 
 
-            // Save the document...
-            string filename = string.Format("Invoice_{0}_{1:dd.MM.yyyy_hh-mm-ss}.pdf",
+            // Save the document... Amin mod (save it to the invoices folder)
+            string filename = string.Format("..\\..\\..\\Invoices\\Invoice_{0}_{1:dd.MM.yyyy_hh-mm-ss}.pdf",
                 box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceID,
                 box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceDateTime);
 

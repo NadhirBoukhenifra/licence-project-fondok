@@ -41,6 +41,10 @@ namespace Fondok.Views
             using (var context = new DatabaseContext())
             {
                 var EmployeesList = (from s in context.Employees where s.EmployeeUserName == this.userNameField.Text select s).ToList<Employee>();
+                var EmployeeGrade =(from s in context.Employees where s.EmployeeUserName == this.userNameField.Text && s.EmployeePassWord==this.userPasswordField.Password select s).ToList<Employee>();
+                
+                
+                //MainWindow.grade = EmployeeGrade[0].EmployeeJob; Amine
 
 
                 if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)

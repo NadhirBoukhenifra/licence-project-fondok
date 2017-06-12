@@ -46,9 +46,9 @@ namespace Fondok.Views.Windows
             var ReservationIDSource = (from s in context.Reservations select s.ReservationID).ToArray();
 
             ReservationIDField.ItemsSource = ReservationIDSource;
-
+            InvoiceTypePaymentField.SelectedIndex = -1;
             InvoiceDateTimeField.DisplayDateStart = DateTime.Now.AddYears(-2);
-            InvoiceDateTimeField.DisplayDateStart = DateTime.Now.AddYears(2);
+            InvoiceDateTimeField.DisplayDateEnd = DateTime.Now.AddYears(2);
             InvoiceTotalField.Text = "550";
         }
         private void AddInvoiceClick(object sender, RoutedEventArgs e)
