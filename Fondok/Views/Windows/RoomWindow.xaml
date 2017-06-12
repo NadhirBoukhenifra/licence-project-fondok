@@ -106,7 +106,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomFloorField_GotFocus" />
     </Grid>
 
     <Grid Grid.Row="3">
@@ -135,7 +135,7 @@
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomType, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomType}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomTypeField_DropDownClosed" />
     </Grid>
 
     <Grid Grid.Row="4">
@@ -162,7 +162,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Capacity"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomCapacityField_GotFocus" />
     </Grid>
     <Grid Grid.Row="5">
       <Grid.ColumnDefinitions>
@@ -190,7 +190,7 @@
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomStatus, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomStatus}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomStatusField_DropDownClosed" />
     </Grid>
 
     <Grid Grid.Row="6">
@@ -217,7 +217,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Price"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
+        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomPriceField_GotFocus" />
     </Grid>
 
 

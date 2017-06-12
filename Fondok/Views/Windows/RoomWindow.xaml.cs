@@ -24,7 +24,7 @@ namespace Fondok.Views.Windows
         private int errorCount;
         public RoomWindow()
         {
-
+            
 
             InitializeComponent();
             DataContext = this;
@@ -44,6 +44,7 @@ namespace Fondok.Views.Windows
         private void AddRoomClick(object sender, RoutedEventArgs e)
         {
             DialogResult = true;
+           
 
         }
 
@@ -76,5 +77,74 @@ namespace Fondok.Views.Windows
             AddRoomButton.IsEnabled = errorCount == 0;
         }
 
+        private void RoomNumberField_LostFocus(object sender, RoutedEventArgs e)
+        {
+            
+            }
+        public void exist_same_num()
+        {
+            var context = new DatabaseContext();
+            //int rn = Int32.Parse(RoomNumberField.Text);
+            var rnn = RoomNumberField.Text;
+         
+            var Rm = (from s in context.Rooms
+                      where (s.RoomNumber.ToString() ==
+rnn.ToString())
+                      select s.RoomNumber).ToArray();
+
+            if (RoomNumberField.Text.Length > 0)
+            {
+                int rn = Int32.Parse(RoomNumberField.Text);
+                Rm.Contains(rn);
+                //MessageBox.Show("xxx");
+
+                if (Rm.Contains(rn) == true)
+                {
+
+                    MessageBox.Show("room is here DAB!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    RoomNumberField.Clear();
+
+
+                }
+
+            }
+           
+
+                
+            
+
+           
+        }
+
+        private void RoomFloorField_GotFocus(object sender, RoutedEventArgs e)
+        {
+            exist_same_num();
+        }
+
+      
+
+       
+
+      
+
+        private void RoomPriceField_GotFocus(object sender, RoutedEventArgs e)
+        {
+            exist_same_num();
+        }
+
+        private void RoomTypeField_DropDownClosed(object sender, EventArgs e)
+        {
+            exist_same_num();
+        }
+
+        private void RoomCapacityField_GotFocus(object sender, RoutedEventArgs e)
+        {
+            exist_same_num();
+        }
+
+        private void RoomStatusField_DropDownClosed(object sender, EventArgs e)
+        {
+            exist_same_num();
+        }
     }
 }
