@@ -146,5 +146,26 @@ rnn.ToString())
         {
             exist_same_num();
         }
+
+        private void RoomNumberField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Verif.JustNum(sender, e);
+        }
+        Commands.Verifications Verif = new Commands.Verifications();
+
+        private void RoomFloorField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Verif.JustNum(sender, e);
+        }
+
+        private void RoomCapacityField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Verif.JustNum(sender, e);
+        }
+
+        private void RoomPriceField_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            Verif.JustNum(sender, e);
+        }
     }
 }

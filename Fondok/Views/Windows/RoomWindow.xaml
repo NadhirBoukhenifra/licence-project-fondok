@@ -24,45 +24,45 @@
   mc:Ignorable="d">
 
     <Grid Margin="0,16,0,16">
-    <Grid.RowDefinitions>
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
-      <RowDefinition Height="*" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
 
-    </Grid.RowDefinitions>
-    <Grid Grid.Row="0" VerticalAlignment="Center">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:Card
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card
         Grid.Row="0"
         Grid.Column="1"
         Padding="0,12,0,12"
         VerticalAlignment="Center"
         materialDesign:ShadowAssist.ShadowDepth="Depth1">
-        <TextBlock
+                <TextBlock
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           FontWeight="Black"
           Foreground="{StaticResource SecondaryAccentBrush}"
           Text="Room Settings:" />
-      </materialDesign:Card>
+            </materialDesign:Card>
 
-    </Grid>
-    <Grid Grid.Row="1">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -71,7 +71,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomNumberField, Path=BorderBrush}"
         Kind="Numeric" />
-      <TextBox
+            <TextBox
         x:Name="RoomNumberField"
         Grid.Row="2"
         Grid.Column="1"
@@ -80,15 +80,15 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" />
-    </Grid>
-    <Grid Grid.Row="2">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        Text="{Binding RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomNumberField_PreviewKeyDown" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -97,7 +97,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomFloorField, Path=BorderBrush}"
         Kind="Layers" />
-      <TextBox
+            <TextBox
         x:Name="RoomFloorField"
         Grid.Row="2"
         Grid.Column="1"
@@ -106,16 +106,16 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomFloorField_GotFocus" />
-    </Grid>
+        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomFloorField_GotFocus" PreviewKeyDown="RoomFloorField_PreviewKeyDown" />
+        </Grid>
 
-    <Grid Grid.Row="3">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -124,7 +124,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomTypeField, Path=BorderBrush}"
         Kind="AccountMultiple" />
-      <ComboBox
+            <ComboBox
         x:Name="RoomTypeField"
         Grid.Row="2"
         Grid.Column="1"
@@ -136,15 +136,15 @@
         ItemsSource="{Binding RoomType, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomType}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomTypeField_DropDownClosed" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="4">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -153,24 +153,25 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomCapacityField, Path=BorderBrush}"
         Kind="Counter" />
-      <TextBox
+            <TextBox
         x:Name="RoomCapacityField"
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
+          MaxLength="1"
         materialDesign:HintAssist.Hint="Room Capacity"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomCapacityField_GotFocus" />
-    </Grid>
-    <Grid Grid.Row="5">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomCapacityField_GotFocus" PreviewKeyDown="RoomCapacityField_PreviewKeyDown" />
+        </Grid>
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -179,7 +180,7 @@
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomStatusField, Path=BorderBrush}"
         Kind="Hotel" />
-      <ComboBox
+            <ComboBox
         x:Name="RoomStatusField"
         Grid.Row="2"
         Grid.Column="1"
@@ -191,15 +192,15 @@
         ItemsSource="{Binding RoomStatus, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomStatus}"
         Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomStatusField_DropDownClosed" />
-    </Grid>
+        </Grid>
 
-    <Grid Grid.Row="6">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <materialDesign:PackIcon
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <materialDesign:PackIcon
         Grid.Row="2"
         Grid.Column="1"
         Width="28"
@@ -207,27 +208,25 @@
         HorizontalAlignment="Right"
         VerticalAlignment="Center"
         Foreground="{Binding ElementName=RoomPriceField, Path=BorderBrush}"
-        Kind="Numeric" />
-      <TextBox
+        Kind="Coin" />
+            <TextBox
         x:Name="RoomPriceField"
-        Grid.Row="2"
         Grid.Column="1"
-        Width="320"
-        HorizontalAlignment="Left"
         VerticalAlignment="Center"
+          MaxLength="6"
         materialDesign:HintAssist.Hint="Room Price"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomPriceField_GotFocus" />
-    </Grid>
+        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomPriceField_GotFocus" PreviewKeyDown="RoomPriceField_PreviewKeyDown" Margin="0,16" />
+        </Grid>
 
 
-    <Grid Grid.Row="7">
-      <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="320" />
-        <ColumnDefinition Width="*" />
-      </Grid.ColumnDefinitions>
-      <Button
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button
         x:Name="AddRoomButton"
         Grid.Column="1"
         Height="48"
@@ -238,6 +237,6 @@
         FontWeight="Bold"
         Foreground="#DDFFFFFF"
         Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+        </Grid>
     </Grid>
-  </Grid>
 </Window>
