@@ -39,14 +39,15 @@ namespace Fondok.ViewModels
             RoomNumber = EditReservation.RoomNumber;
             ReservationForm = EditReservation.ReservationForm;
 
-            // ReservationDateOfBirth Get 01/01/0001 First Time?? 
+            // Reservation Check In Get 01/01/0001 First Time?? 
             if (CheckInDate == DateTime.MinValue)
             {
                 CheckInDate = DateTime.Now;
             }
+            // Reservation Check Out Get 01/01/0001 First Time??
             if (CheckOutDate == DateTime.MinValue)
             {
-                CheckOutDate = DateTime.Now;
+                CheckOutDate = DateTime.Now.AddDays(1);
             }
             //var context = new DatabaseContext();
 
@@ -276,16 +277,17 @@ namespace Fondok.ViewModels
         {
             get
             {
-                string FillRequired = "Please Fill The Field";
+                string FillRequired = "Please Fill in this field";
                 switch (columnName)
-                {
+                {   //Amin Mod Fixed today's date to be accepted + fixed the condition
                     case "CheckInDate":
-                        if (CheckInDate > DateTime.Now )
-                            return "Date <: " + DateTime.Now;
+                        DateTime now = DateTime.Now.AddHours(00-DateTime.Now.Hour).AddMinutes(00 - DateTime.Now.Minute).AddSeconds(00 - DateTime.Now.Second).AddMilliseconds(0- DateTime.Now.Millisecond);
+                        if (CheckInDate < now )
+                            return "Check in date must be at least" + now;
                         break;
                     case "CheckOutDate":
-                        if (CheckOutDate < DateTime.Now)
-                            return "Date >: " + DateTime.Now;
+                        if (CheckOutDate < CheckInDate.AddDays(1))
+                            return "Please enter a Date after: " + CheckInDate.AddDays(1)+" with at least one day";
                         break;
                     case "ReservationStatus":
                         if (ReservationStatus == null) return FillRequired;

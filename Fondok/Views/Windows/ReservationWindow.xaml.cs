@@ -34,11 +34,11 @@ namespace Fondok.Views.Windows
             var context = new DatabaseContext();
            
 
-            string[] TypePaymentSource = new string[] { "Cash Money", "Bank Check", "Master Card", "Western Union" };
+            string[] TypePaymentSource = new string[] { "Cash Money", "Bank Check", "Credit Card", "Western Union" };
 
             TypePaymentField.ItemsSource = TypePaymentSource;
 
-            string[] ReservationStatusSource = new string[] { "InComplete", "Complete" };
+            string[] ReservationStatusSource = new string[] { "Incomplete", "Complete" };
 
             ReservationStatusField.ItemsSource = ReservationStatusSource;
 
@@ -50,12 +50,16 @@ namespace Fondok.Views.Windows
             //var rsrv = (from s in context.Reservations select (s.ReservedFor)).ToList();
             //var ReservedForSource = clnt.Except(rsrv).ToArray();
 
-            var ReservedForSource = (from s in context.Clients select s.ClientID).ToArray();
+
+
+            //Fixed By Med Amin (Showing ParentClients Firstname and Lastname and ID Number to avoid name there conflits  )
+            var ReservedForSource = (from s in context.Clients where s.ClientParent==null select s.ClientFirstName+" "+s.ClientLastName+"    ID N°"+s.ClientIDNumber).ToArray();
+          
 
             ReservedForField.ItemsSource = ReservedForSource;
 
             var RoomNumberSource = (from s in context.Rooms
-                                    where (s.RoomStatus != "Reserved" && s.RoomStatus != "Out Service")
+                                    where (s.RoomStatus == "Not Reserved")
                                     select s.RoomID
                                     ).ToArray();
 
@@ -67,6 +71,17 @@ namespace Fondok.Views.Windows
             ReservedForField.SelectedIndex = -1;
             ReservationFormField.SelectedIndex = -1;
             RoomNumberField.SelectedIndex = -1;
+            //Amin Mod Check out can't be before Check in
+            CheckInDateField.DisplayDateStart = DateTime.Now;
+            CheckInDateField.DisplayDateEnd = DateTime.Now.AddDays(90);
+            CheckInDateField.SelectedDate = DateTime.Now;
+            CheckOutDateField.SelectedDate = ((DateTime)CheckInDateField.SelectedDate).AddDays(1);
+            CheckOutDateField.DisplayDateStart = ((DateTime)CheckInDateField.SelectedDate).AddDays(2);
+            CheckOutDateField.DisplayDateEnd = ((DateTime)CheckOutDateField.DisplayDateStart).AddDays(100);
+          
+            {
+
+            }
         }
         private void AddReservationClick(object sender, RoutedEventArgs e)
         {
@@ -113,10 +128,15 @@ namespace Fondok.Views.Windows
         {
             CheckInDateField.IsDropDownOpen = true;
         }
-
+        //IF CheckIn Date Changes  CheckOut Date will Change if it's been earlier (In DatePicker)
         private void DatePickerSelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckInDateField.IsDropDownOpen = false;
+            if(CheckOutDateField.SelectedDate< CheckInDateField.SelectedDate) {
+                CheckOutDateField.SelectedDate = ((DateTime)CheckInDateField.SelectedDate).AddDays(1);
+            }
+            CheckOutDateField.DisplayDateStart = ((DateTime)CheckInDateField.SelectedDate).AddDays(2);
+            CheckOutDateField.DisplayDateEnd = ((DateTime)CheckOutDateField.DisplayDateStart).AddDays(100);
             Price();
         }
 
