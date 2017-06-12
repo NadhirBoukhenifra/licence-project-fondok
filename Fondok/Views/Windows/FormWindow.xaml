@@ -100,7 +100,7 @@
         Width="320"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
-          MaxLength="5"
+          MaxLength="6"
         materialDesign:HintAssist.Hint="Form Price"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
         Text="{Binding FormPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="FormPriceField_PreviewKeyDown" />

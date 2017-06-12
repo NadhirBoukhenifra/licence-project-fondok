@@ -206,6 +206,7 @@
         Grid.Row="2"
         Grid.Column="1"
         Width="320"
+          MaxLength="7"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Invoice Total"
