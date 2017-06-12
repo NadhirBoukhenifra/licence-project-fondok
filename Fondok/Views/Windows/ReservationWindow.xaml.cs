@@ -202,7 +202,7 @@ namespace Fondok.Views.Windows
             {
                 
                 var Rm = (from s in context.Rooms
-                          where (s.RoomNumber.ToString() ==
+                          where (s.RoomID.ToString() ==
     RoomNumberField.SelectedValue.ToString())
                           select s.RoomPrice).ToArray();
 

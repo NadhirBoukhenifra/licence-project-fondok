@@ -376,8 +376,19 @@ namespace Fondok.ViewModels
         // Adding Method
         public void AddReservation(Reservation Reservation)
         {
+            
+            //string[] ReservedForFirstNameArr = Reservation.ReservedFor.Split(' ');
+            //string ReservedForFirstName = ReservedForFirstNameArr[0];
+            //string ReservedForLastName = ReservedForFirstNameArr[1];
+            //string[] ReservedForIDN = Reservation.ReservedFor.Split('°');
+            //string IDN = ReservedForIDN[1];
+            ////MessageBox.Show("First Name="+ReservedForFirstName);
+            ////MessageBox.Show("Last Name=" + ReservedForLastName);
+            ////MessageBox.Show("IDN=" + IDN);
+            //var ReservedForSource = (from s in db.Clients where s.ClientFirstName == ReservedForFirstName && s.ClientIDNumber==Int32.Parse(IDN) && s.ClientLastName==ReservedForLastName select s.ClientID).ToArray();
+            //int clientid = ReservedForSource.ElementAt(0);
+            //Reservation.ReservedFor = clientid;
             db.Reservations.Add(Reservation);
-
             RoomDataInteraction rvm = new RoomDataInteraction(db);
             FormDataInteraction fvm = new FormDataInteraction(db);
             Room rm = new Room();
