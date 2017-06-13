@@ -12,6 +12,7 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Data;
+using Fondok.Views;
 
 namespace Fondok.ViewModels
 {
@@ -283,6 +284,8 @@ namespace Fondok.ViewModels
         {
             db.Rooms.Add(Room);
             db.SaveChanges();
+
+
         }
 
         // Get Room Method
@@ -311,6 +314,8 @@ namespace Fondok.ViewModels
             Room.RoomPrice = RoomPrice;
 
             db.SaveChanges();
+
+
         }
         // Update RoomStatus (getReserved) Amine Modification
         public void UpdateRoomStatus(
@@ -322,6 +327,10 @@ namespace Fondok.ViewModels
             Room.RoomStatus = RoomStatus;
 
             db.SaveChanges();
+            RoomView rv = new RoomView();
+            rv.RoomsGrid.Items.Refresh();
+            RoomBox rb = new RoomBox();
+            rb.UpdateRoom();
             
         }
 
@@ -338,6 +347,8 @@ namespace Fondok.ViewModels
                 update.RoomStatus,
                 update.RoomPrice
                 );
+
+
         }
 
 
@@ -346,6 +357,8 @@ namespace Fondok.ViewModels
         {
             db.Rooms.Remove(GetRoom(id));
             db.SaveChanges();
+
+
         }
     }
 

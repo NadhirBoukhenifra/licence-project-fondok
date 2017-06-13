@@ -23,6 +23,8 @@ namespace Fondok.Views
         public RoomView()
         {
             InitializeComponent();
+            RoomsGrid.UpdateLayout();
+            RoomsGrid.Items.Refresh();
         }
 
         void RoomViewLoaded(object sender, RoutedEventArgs e)
