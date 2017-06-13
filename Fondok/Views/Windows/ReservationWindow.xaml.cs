@@ -83,9 +83,28 @@ namespace Fondok.Views.Windows
 
             }
         }
+        public void all_feilds ()
+        {
+            if (ReservationStatusField.SelectedIndex != -1 && ReservedByField.SelectedIndex != -1 
+                && ReservedForField.SelectedIndex != -1 && RoomNumberField.SelectedIndex != -1 
+                && ReservationFormField.SelectedIndex != -1 && TypePaymentField.SelectedIndex != -1)
+            {
+                DialogResult = true;
+               
+
+            }else
+            {
+                MessageBox.Show("Please fill all fields", "Fields required" ,MessageBoxButton.OK,MessageBoxImage.Warning );
+
+
+            }
+        }
         private void AddReservationClick(object sender, RoutedEventArgs e)
         {
-            DialogResult = true;
+
+
+            all_feilds();
+            
 
         }
 
@@ -163,8 +182,8 @@ namespace Fondok.Views.Windows
         {
 
             Price();
-
           
+
         }
       
         private void RoomNumberField_DropDownClosed(object sender, EventArgs e)

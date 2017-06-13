@@ -108,7 +108,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Floor"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomFloorField_GotFocus" PreviewKeyDown="RoomFloorField_PreviewKeyDown" />
+        Text="{Binding RoomFloor, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomFloorField_PreviewKeyDown" />
         </Grid>
 
         <Grid Grid.Row="3">
@@ -137,7 +137,7 @@
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomType, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomType}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomTypeField_DropDownClosed" />
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
         </Grid>
 
         <Grid Grid.Row="4">
@@ -165,7 +165,7 @@
           MaxLength="1"
         materialDesign:HintAssist.Hint="Room Capacity"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomCapacityField_GotFocus" PreviewKeyDown="RoomCapacityField_PreviewKeyDown" />
+        Text="{Binding RoomCapacity, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomCapacityField_PreviewKeyDown" />
         </Grid>
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
@@ -193,7 +193,7 @@
         IsSynchronizedWithCurrentItem="True"
         ItemsSource="{Binding RoomStatus, Mode=OneTime, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}"
         SelectedItem="{Binding EditRoom.RoomStatus}"
-        Style="{StaticResource MaterialDesignFloatingHintComboBox}" DropDownClosed="RoomStatusField_DropDownClosed" />
+        Style="{StaticResource MaterialDesignFloatingHintComboBox}" />
         </Grid>
 
         <Grid Grid.Row="6">
@@ -218,7 +218,7 @@
           MaxLength="6"
         materialDesign:HintAssist.Hint="Room Price"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" GotFocus="RoomPriceField_GotFocus" PreviewKeyDown="RoomPriceField_PreviewKeyDown" Margin="0,16" />
+        Text="{Binding RoomPrice, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomPriceField_PreviewKeyDown" Margin="0,16" />
         </Grid>
 
 

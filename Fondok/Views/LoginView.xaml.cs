@@ -32,12 +32,14 @@ namespace Fondok.Views
         }
 
 
-
+        int Att = 4;
+        int x = 3;
 
         private void LoginClick(object sender, RoutedEventArgs e)
 
 
         {
+          
 
             using (var context = new DatabaseContext())
             {
@@ -61,10 +63,32 @@ namespace Fondok.Views
                     }
                     else
                     {
-                        MessageBox.Show("Invalid Password");
+                        MessageBox.Show("Invalid Entries" );
+                        this.userPasswordField.Clear();
+                        this.userNameField.Clear();
+                        this.userNameField.Focus();
+
+
                     }
                 }
-                else MessageBox.Show("Invalid Entries");
+                else
+                {
+                   
+                        MessageBox.Show("   " + "Invalid Entries" + "   \n"+"   " +"Attempts reset :" + (x));
+                    this.userPasswordField.Clear();
+                    this.userNameField.Clear();
+
+                    Att--;
+                        x--;
+                   
+                   
+                    if (Att < 1)
+                    {
+                        MessageBox.Show("   "+" Shutdown   \n"+"    " + "  Contanct © FONDOK-DEV.TEAM ","fondok",MessageBoxButton.OK);
+                        Application.Current.Shutdown();
+                        Process.GetCurrentProcess().Kill();
+                    }
+                }
 
 
 
