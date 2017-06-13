@@ -470,7 +470,7 @@ namespace Fondok.ViewModels
 
            
 
-            gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString()+" DZD", title, XBrushes.Red,
+            gfx.DrawString("Invoice Total: " + box.GetInvoice(SelectedInvoice.InvoiceID).InvoiceTotal.ToString()+" DA", title, XBrushes.Red,
          new XRect(0, 315, page.Width, page.Height),
          XStringFormats.TopCenter);
 

@@ -219,7 +219,7 @@ namespace Fondok.Views.Windows
 
 
 
-                TotalPriceField.Text = (Rm[0] + Fr[0]) * days + " DZD";
+                TotalPriceField.Text = (Rm[0] + Fr[0]) * days + " DA";
             }
 
         }

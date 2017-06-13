@@ -101,7 +101,7 @@ rnn.ToString())
                 if (Rm.Contains(rn) == true)
                 {
 
-                    MessageBox.Show("room is here DAB!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Room Number allready exist!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
                     RoomNumberField.Clear();
 
 
