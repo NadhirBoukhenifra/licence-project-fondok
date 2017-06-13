@@ -242,11 +242,12 @@ namespace Fondok.Views
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure to Exit? Mainwindow", "Exit from Fondok", MessageBoxButton.YesNo);
+
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     //MessageBox.Show("Good Bye :) Mainwindow", "Fondok");
-
+                  
 
                     //System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                     Application.Current.Shutdown();
@@ -263,7 +264,11 @@ namespace Fondok.Views
 
         private void LogOut(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
+            this.Hide();
+            LoginView n = new Views.LoginView();
+            n.Show();
+
         }
 
 

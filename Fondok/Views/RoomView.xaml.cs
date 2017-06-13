@@ -32,6 +32,7 @@ namespace Fondok.Views
             RoomsGrid.UpdateLayout();
             RoomsGrid.Items.Refresh();
 
+            
         }
     }
 }
