@@ -83,7 +83,7 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Username"
-        Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        Style="{StaticResource MaterialDesignFloatingHintTextBox}" KeyDown="userNameField_KeyDown" />
     </Grid>
     <!--  / username input  -->
 
@@ -111,7 +111,7 @@
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Password"
-        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" KeyDown="userPasswordField_KeyDown" />
     </Grid>
     <!--  / password input  -->
 

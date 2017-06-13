@@ -90,5 +90,22 @@ namespace Fondok.Views
             
 
         }
+
+        private void userNameField_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                LoginClick(this, new RoutedEventArgs());
+            }
+        }
+
+        private void userPasswordField_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                LoginClick(this, new RoutedEventArgs());
+            }
+
+        }
     }
 }
