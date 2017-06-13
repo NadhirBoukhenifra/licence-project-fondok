@@ -72,11 +72,11 @@ namespace Fondok.Views
         private void WindowClosing(object sender, CancelEventArgs e)
         {
             //MessageBox.Show("Good Bye From LoginWindow :)!");
-            MessageBoxResult result = MessageBox.Show("Are you sure to Exit? LoginWindow", "Exit from Fondok", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Are you sure to Exit?", "Exit from Fondok", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Good Bye :) Login", "Fondok");
+                    MessageBox.Show("Good Bye :) ", "Fondok");
 
                     Application.Current.Shutdown();
                     Process.GetCurrentProcess().Kill();
