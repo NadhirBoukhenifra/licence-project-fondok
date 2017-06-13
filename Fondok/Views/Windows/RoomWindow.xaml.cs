@@ -100,7 +100,7 @@ namespace Fondok.Views.Windows
                 if (Rm.Contains(rn) == true)
                 {
 
-                    MessageBox.Show("Room Number allready exist!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
+                    //MessageBox.Show("Room Number allready exist!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
                     //RoomNumberField.Clear();
 
 

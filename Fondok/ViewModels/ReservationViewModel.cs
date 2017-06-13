@@ -12,6 +12,7 @@ using System;
 using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Data;
+using Fondok.Views;
 
 namespace Fondok.ViewModels
 {
@@ -431,14 +432,18 @@ namespace Fondok.ViewModels
             inv.InvoiceTypePayment = Reservation.TypePayment;
             inv.ReservationID = Reservation.ReservationID;
 
-            ivm.AddInvoice(inv);
-
-            ivm.UpdateInvoice(inv);
 
             db.SaveChanges();
             rb.UpdateRoom();
-            inBox.Invoices.ResetBindings();
 
+            ivm.AddInvoice(inv);
+            InvoiceView rv = new InvoiceView();
+            rv.InvoicesGrid.Items.Refresh();
+            InvoiceBox rib= new InvoiceBox();
+            rib.UpdateInvoice();
+            ivm.UpdateInvoice(inv);
+            inBox.Invoices.ResetBindings();
+                 
 
         }
 

@@ -344,6 +344,7 @@ namespace Fondok.ViewModels
         int RoomNumber,
         string RoomStatus  )
         {
+
             Room Room = GetRoom(RoomNumber);
 
             Room.RoomStatus = RoomStatus;
