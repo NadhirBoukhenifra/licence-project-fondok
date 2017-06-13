@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fondok.Context;
+using Fondok.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +23,15 @@ namespace Fondok.Views
     {
         public ReservationView()
         {
+            DatabaseContext db = new DatabaseContext();
+            ReservationDataInteraction rdi = new ReservationDataInteraction(db);
+            foreach(var reservation in db.Reservations)
+            {
+                if (reservation.CheckOutDate < DateTime.Now.AddDays(-1))
+                {
+                    rdi.DeleteReservation(reservation.ReservationID);
+                }
+            }
             InitializeComponent();
         }
         void ReservationViewLoaded(object sender, RoutedEventArgs e)

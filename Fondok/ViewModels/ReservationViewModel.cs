@@ -391,21 +391,22 @@ namespace Fondok.ViewModels
             db.Reservations.Add(Reservation);
             RoomDataInteraction rvm = new RoomDataInteraction(db);
             FormDataInteraction fvm = new FormDataInteraction(db);
-            Room rm = new Room();
+            //Room rm = new Room();
             Form Frm = new Form();
+            RoomBox rb = new RoomBox();
+            rb.UpdateRoom();
+            rvm.UpdateRoomStatus(Reservation.RoomNumber, "Reserved");
 
-            //rvm.UpdateRoomStatus(Reservation.RoomNumber, "Reserved");
-
-            rm = rvm.GetRoom(Reservation.RoomNumber);
-            rm.RoomStatus = "Reserved";
-            rvm.UpdateRoom(rm);
+            //rm = rvm.GetRoom(Reservation.RoomNumber);
+            //rm.RoomStatus = "Reserved";
+            //rvm.UpdateRoom(rm);
             //ReservationViewModel nb = new ReservationViewModel();
             //nb.TotalPrice = "999999";
 
             //var ReservedBySource = (from s in context.Employees select s.EmployeeUserName).ToArray();
 
             InvoiceDataInteraction ivm = new InvoiceDataInteraction(db);
-            RoomBox rb = new RoomBox();
+
             Invoice inv = new Invoice();
             InvoiceBox inBox = new InvoiceBox();
 
@@ -434,9 +435,8 @@ namespace Fondok.ViewModels
 
             ivm.UpdateInvoice(inv);
 
-            rb.Rooms.ResetBindings();
             db.SaveChanges();
-
+            rb.UpdateRoom();
             inBox.Invoices.ResetBindings();
 
 
