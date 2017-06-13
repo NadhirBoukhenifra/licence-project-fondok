@@ -135,7 +135,7 @@ namespace Fondok.Views.Windows
             if(CheckOutDateField.SelectedDate< CheckInDateField.SelectedDate) {
                 CheckOutDateField.SelectedDate = ((DateTime)CheckInDateField.SelectedDate).AddDays(1);
             }
-            CheckOutDateField.DisplayDateStart = ((DateTime)CheckInDateField.SelectedDate).AddDays(2);
+            CheckOutDateField.DisplayDateStart = ((DateTime)CheckInDateField.SelectedDate).AddDays(1);
             CheckOutDateField.DisplayDateEnd = ((DateTime)CheckOutDateField.DisplayDateStart).AddDays(100);
             Price();
         }

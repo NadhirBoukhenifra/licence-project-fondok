@@ -25,6 +25,7 @@ namespace Fondok.Views
     /// </summary>
     public partial class LoginView : Window
     {
+        //public static string grade="recep";
         public LoginView()
         {
             InitializeComponent();
@@ -42,21 +43,32 @@ namespace Fondok.Views
             {
                 var EmployeesList = (from s in context.Employees where s.EmployeeUserName == this.userNameField.Text select s).ToList<Employee>();
                 var EmployeeGrade =(from s in context.Employees where s.EmployeeUserName == this.userNameField.Text && s.EmployeePassWord==this.userPasswordField.Password select s).ToList<Employee>();
-                
-                
-                //MainWindow.grade = EmployeeGrade[0].EmployeeJob; Amine
+
+                //if (EmployeeGrade.Count > 0)
+                //{
+                //    grade = EmployeeGrade[0].EmployeeJob;
+                //}
+
+                if (EmployeesList.Count > 0)
+                {
+                    if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
+                    {
+                        MessageBox.Show(" Welcome: " + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirstName + " " + EmployeesList[0].EmployeeLastName);
+                        //MainWindow mw = new MainWindow();
+                        //Application.Current.MainWindow = mw;
+                        Application.Current.MainWindow.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Password");
+                    }
+                }
+                else MessageBox.Show("Invalid Entries");
 
 
-                if (EmployeesList[0].EmployeeUserName == this.userNameField.Text && EmployeesList[0].EmployeePassWord == this.userPasswordField.Password)
-                {
-                    MessageBox.Show(" Welcome: " + EmployeesList[0].EmployeeJob + ", " + EmployeesList[0].EmployeeFirstName + " " + EmployeesList[0].EmployeeLastName);
-                    Application.Current.MainWindow.Show();
-                    this.Hide();
-                }
-                else
-                {
-                    MessageBox.Show("Error");
-                }
+
+                
 
                 //MessageBox.Show(EmployeesList[0].EmployeeUserName + EmployeesList[0].EmployeeEMail + EmployeesList.Count());
 

@@ -12,12 +12,13 @@ namespace Fondok.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        //public static string grade; Amine
+        //public static string grade;
         public MainWindow()
         {   
             InitializeComponent();
             ReservationButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
-            //if (grade != "Admin")  Amin
+            //MessageBox.Show(LoginView.grade);
+            //if (LoginView.grade != "Admin")
             //{
             //    InvoiceButton.Visibility = Visibility.Collapsed;
             //    InvoiceIcon.Visibility = Visibility.Collapsed;
@@ -28,7 +29,7 @@ namespace Fondok.Views
             //    ReportButton.Visibility = Visibility.Collapsed;
             //    ReportIcon.Visibility = Visibility.Collapsed;
             //}
-            
+
             dateText.Text = DateTime.Now.ToLongDateString();
         }
 
