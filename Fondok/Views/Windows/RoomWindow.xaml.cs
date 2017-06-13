@@ -115,10 +115,7 @@ namespace Fondok.Views.Windows
            
         }
 
-        private void RoomFloorField_GotFocus(object sender, RoutedEventArgs e)
-        {
-            exist_same_num();
-        }
+      
 
       
 
@@ -126,25 +123,13 @@ namespace Fondok.Views.Windows
 
       
 
-        private void RoomPriceField_GotFocus(object sender, RoutedEventArgs e)
-        {
-            exist_same_num();
-        }
+     
 
-        private void RoomTypeField_DropDownClosed(object sender, EventArgs e)
-        {
-            exist_same_num();
-        }
+       
 
-        private void RoomCapacityField_GotFocus(object sender, RoutedEventArgs e)
-        {
-            exist_same_num();
-        }
+       
 
-        private void RoomStatusField_DropDownClosed(object sender, EventArgs e)
-        {
-            exist_same_num();
-        }
+
 
         private void RoomNumberField_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -166,5 +151,7 @@ namespace Fondok.Views.Windows
         {
             Verif.JustNum(sender, e);
         }
+
+       
     }
 }
