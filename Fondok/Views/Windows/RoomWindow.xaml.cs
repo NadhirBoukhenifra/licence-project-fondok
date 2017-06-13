@@ -88,8 +88,7 @@ namespace Fondok.Views.Windows
             var rnn = RoomNumberField.Text;
          
             var Rm = (from s in context.Rooms
-                      where (s.RoomNumber.ToString() ==
-rnn.ToString())
+                      where (s.RoomNumber.ToString() == rnn.ToString())
                       select s.RoomNumber).ToArray();
 
             if (RoomNumberField.Text.Length > 0)
@@ -102,7 +101,7 @@ rnn.ToString())
                 {
 
                     MessageBox.Show("Room Number allready exist!", "ALLREADY EXIST!", MessageBoxButton.OK, MessageBoxImage.Information);
-                    RoomNumberField.Clear();
+                    //RoomNumberField.Clear();
 
 
                 }

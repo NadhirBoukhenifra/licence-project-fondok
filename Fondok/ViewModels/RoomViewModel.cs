@@ -13,6 +13,7 @@ using System.Windows;
 using System.Collections.Generic;
 using System.Windows.Data;
 using Fondok.Views;
+using System.Windows.Controls;
 
 namespace Fondok.ViewModels
 {
@@ -196,7 +197,26 @@ namespace Fondok.ViewModels
                 }
             }
         }
+        public bool Nn(int n)
+        {
 
+            var context = new DatabaseContext();
+                      
+            var Rm = (from s in context.Rooms
+                      where (s.RoomNumber == RoomNumber)
+                      select s.RoomNumber).ToArray();
+
+            if (Rm.Contains(RoomNumber) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
         // Add Conditions & Error Messages
         public string this[string columnName]
         {
@@ -207,6 +227,8 @@ namespace Fondok.ViewModels
                 {
                     case "RoomNumber":
                         if (RoomNumber <= 0 || RoomNumber > 9999) return FillRequired;
+                        if (Nn(RoomNumber)) return "Room Number allready exist!";
+
                         break;
                     case "RoomFloor":
                         if (RoomFloor <= 0 || RoomFloor > 99) return FillRequired;
@@ -465,6 +487,7 @@ namespace Fondok.ViewModels
             {
                 box.UpdateRoom(SelectedRoom);
                 Rooms.ResetBindings();
+                
             }
         }
 

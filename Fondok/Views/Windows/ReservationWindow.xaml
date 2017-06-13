@@ -8,7 +8,7 @@
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   Title="Reservation Settings"
   Width="512"
- Height="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenHeightKey}}"
+ Height="680"
 
   MinWidth="512"
   MaxWidth="512"
