@@ -232,7 +232,6 @@ namespace Fondok.ViewModels
                         if (RoomNumber <= 0 || RoomNumber > 9999) return FillRequired;
                         if(!updating)
                         if (Nn(RoomNumber)) return "Room Number testing allready exist!";
-
                         break;
                     case "RoomFloor":
                         if (RoomFloor <= 0 || RoomFloor > 99) return FillRequired;
