@@ -32,7 +32,7 @@ namespace Fondok.Views.Windows
 
             this.AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
 
-            string[] RoomTypeSource = new string[] { "Single", "Double", "Double Double" };
+            string[] RoomTypeSource = new string[] { "Single", "Double", "Duplex" };
 
             RoomTypeField.ItemsSource = RoomTypeSource;
 
@@ -152,6 +152,9 @@ namespace Fondok.Views.Windows
             Verif.JustNum(sender, e);
         }
 
-       
+        private void RoomNumberField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

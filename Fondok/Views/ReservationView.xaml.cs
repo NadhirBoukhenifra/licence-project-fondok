@@ -24,7 +24,7 @@ namespace Fondok.Views
         public ReservationView()
         {
             DatabaseContext db = new DatabaseContext();
-            ReservationDataInteraction rdi = new ReservationDataInteraction(db);
+           ReservationDataInteraction rdi = new ReservationDataInteraction(db);
             foreach(var reservation in db.Reservations)
             {
                 if (reservation.CheckOutDate < DateTime.Now.AddDays(-1))

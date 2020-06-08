@@ -81,7 +81,7 @@
         VerticalAlignment="Center"
         materialDesign:HintAssist.Hint="Room Number"
         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-        Text="{Binding RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomNumberField_PreviewKeyDown" />
+        Text="{Binding RoomNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged, NotifyOnValidationError=true}" PreviewKeyDown="RoomNumberField_PreviewKeyDown" TextChanged="RoomNumberField_TextChanged" />
         </Grid>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>

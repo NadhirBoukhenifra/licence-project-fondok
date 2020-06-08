@@ -3,12 +3,13 @@ using Fondok.Views;
 using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
-using System;
+
 
 namespace Fondok
 {
     public class ModuleInitializer : IModule
     {
+        
         IRegionManager _regionManager;
         IUnityContainer _container;
 
@@ -26,6 +27,7 @@ namespace Fondok
 
         public void Initialize()
         {
+            
             _container.RegisterTypeForNavigation<RoomView>();
             _container.RegisterTypeForNavigation<ClientView>();
             _container.RegisterTypeForNavigation<EmployeeView>();

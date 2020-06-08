@@ -12,7 +12,7 @@ namespace Fondok.ViewModels
 {
     class LoginViewModel : BindableBase
     {
-        private string _title = "HMS Login";
+        private string _title = "Welcome to Hotel Manager V 1.0";
         public string Title
         {
             get

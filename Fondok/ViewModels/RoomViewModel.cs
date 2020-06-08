@@ -21,13 +21,16 @@ namespace Fondok.ViewModels
     // RoomViewModel Class
     class RoomViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
-
+        bool updating = false;
+       
         //Constructor Null FirstTime
-        public RoomViewModel() : this(null) { }
+        public RoomViewModel() : this(null) {
+            //MessageBox.Show("I'm Here rooms");
+        }
         // Constructor With Param Of The Model
         public RoomViewModel(Room Room)
         {
-
+           // MessageBox.Show("I'm Here rooms");
             // Add Room To Edit
             EditRoom = Room;
 
@@ -227,7 +230,8 @@ namespace Fondok.ViewModels
                 {
                     case "RoomNumber":
                         if (RoomNumber <= 0 || RoomNumber > 9999) return FillRequired;
-                        if (Nn(RoomNumber)) return "Room Number allready exist!";
+                        if(!updating)
+                        if (Nn(RoomNumber)) return "Room Number testing allready exist!";
 
                         break;
                     case "RoomFloor":
@@ -271,7 +275,15 @@ namespace Fondok.ViewModels
             if (window.ShowDialog() == true) { return true; }
             return false;
         }
-
+        public bool Run(String update)
+        {
+            this.updating = true;
+            RoomWindow window = new RoomWindow();
+            window.DataContext = this;
+            window.RoomNumberField.IsEnabled = false;
+            if (window.ShowDialog() == true) { return true; }
+            return false;
+        }
         // MVVM NotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -482,10 +494,10 @@ namespace Fondok.ViewModels
 
             // Create View Model With Selected Room To Edit
             RoomViewModel vm = new RoomViewModel(SelectedRoom);
-
+            
             // Run The Room Window And Add Selected Room To Edit & Refresh Binding
-            if (vm.Run())
-            {
+            if (vm.Run("Update"))
+            {   
                 box.UpdateRoom(SelectedRoom);
                 Rooms.ResetBindings();
                 

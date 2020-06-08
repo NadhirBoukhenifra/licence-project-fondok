@@ -505,9 +505,12 @@ namespace Fondok.ViewModels
         {
             Reservation Reservation = GetReservation(id);
             RoomDataInteraction rdi = new RoomDataInteraction(db);
+            RoomBox rb = new RoomBox();
+            rb.UpdateRoom();
             rdi.UpdateRoomStatus(Reservation.RoomNumber, "Not Reserved");
             db.Reservations.Remove(GetReservation(id));
             db.SaveChanges();
+
         }
     }
 
